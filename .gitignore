@@ -36,3 +36,13 @@ yarn-error.log*
 # Misc
 .DS_Store
 *.pem
+
+# AI Agent Instructions & Customizations
+.agents/
+.agent/
+_agents/
+_agent/
+agents.md
+AGENTS.md
+skill.md
+SKILL.md
