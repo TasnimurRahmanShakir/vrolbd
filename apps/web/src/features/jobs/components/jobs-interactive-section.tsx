@@ -139,10 +139,10 @@ export function JobsInteractiveSection() {
                 <button
                   onClick={() => setActiveApplyingJob(job)}
                   type="button"
-                  className="inline-flex items-center gap-1.5 px-4 py-2 text-xs font-bold uppercase tracking-wider text-[#0A192F] bg-[#C5A059] hover:bg-[#D4AF37] transition-all rounded-xl shadow-md cursor-pointer"
+                  className="inline-flex items-center gap-1.5 px-4 py-2 text-xs font-bold uppercase tracking-wider text-[#0A192F] bg-gradient-to-r from-[#E2CB8F] via-[#C5A059] to-[#AA853C] hover:opacity-95 transition-all rounded-xl shadow-md cursor-pointer"
                 >
                   <Icon name="send" size={14} />
-                  Deploy Dossier
+                  Apply Now
                 </button>
               </div>
             </div>
@@ -155,6 +155,8 @@ export function JobsInteractiveSection() {
         <ApplicationModal
           jobId={activeApplyingJob.id}
           jobTitle={activeApplyingJob.title}
+          job={activeApplyingJob}
+          initialMode="details"
           onClose={() => setActiveApplyingJob(null)}
         />
       )}

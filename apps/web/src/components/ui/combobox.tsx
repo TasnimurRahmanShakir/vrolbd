@@ -131,10 +131,10 @@ export function Combobox({
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 4, scale: 0.98 }}
             transition={{ duration: 0.15, ease: "easeOut" }}
-            className={`absolute left-0 right-0 top-full mt-2.5 z-50 rounded-xl shadow-2xl overflow-hidden border ${
+            className={`absolute left-0 right-0 top-full mt-2.5 z-[100] rounded-xl shadow-2xl overflow-hidden border ${
               isDark
-                ? "bg-[#0A192F] border-[#C5A059]/40 text-slate-100"
-                : "bg-white border-slate-200 text-slate-800"
+                ? "bg-[#0A192F] border-[#C5A059]/40 text-slate-100 shadow-[0_20px_50px_rgba(10,25,47,0.6)]"
+                : "bg-white border-slate-200 text-slate-800 shadow-[0_20px_50px_rgba(0,0,0,0.15)]"
             }`}
             style={{
               minWidth: "240px",

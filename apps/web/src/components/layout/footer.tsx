@@ -166,10 +166,21 @@ export function Footer() {
         {/* Bottom Bar */}
         <div className="pt-8 border-t border-white/10 flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-slate-400">
           <p>{t.copyright}</p>
-          <div className="flex items-center gap-6">
-            <span className="text-[11px] text-slate-400">
-              {t.hq}
-            </span>
+          <div className="flex flex-wrap items-center gap-4 sm:gap-6 text-[11px] text-slate-400">
+            <span>{t.hq}</span>
+            <span className="hidden sm:inline text-slate-600">•</span>
+            <div className="flex items-center gap-1.5 font-medium text-slate-400">
+              <span>Developed by</span>
+              <a
+                href="https://jolforingbd.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-1 text-[#C5A059] hover:text-[#E2CB8F] font-bold transition-colors underline decoration-[#C5A059]/40 hover:decoration-[#E2CB8F] underline-offset-4"
+              >
+                <span>Jolforing</span>
+                <Icon name="arrow_outward" size={13} />
+              </a>
+            </div>
           </div>
         </div>
       </div>

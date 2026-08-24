@@ -15,7 +15,7 @@ export default function NotFound() {
           Page Not Located
         </h1>
         <p className="text-sm text-slate-300 mb-8 leading-relaxed">
-          The requested recruitment dossier, application path, or system view does not exist within the VROLBD registry.
+          The requested recruitment vacancy, candidate profile, or portal view does not exist within the VROLBD registry.
         </p>
 
         <Link

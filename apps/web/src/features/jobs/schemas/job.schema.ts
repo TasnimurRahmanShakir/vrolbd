@@ -12,6 +12,10 @@ export const JobSchema = z.object({
   type: z.enum(["Full-Time", "Contract", "Seasonal"]),
   tags: z.array(z.string()),
   featured: z.boolean().default(false),
+  description: z.string().optional(),
+  responsibilities: z.array(z.string()).optional(),
+  requirements: z.array(z.string()).optional(),
+  benefits: z.array(z.string()).optional(),
 });
 
 export type Job = z.infer<typeof JobSchema>;

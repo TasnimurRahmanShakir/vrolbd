@@ -1,4 +1,5 @@
 import { create } from "zustand";
+import { persist, createJSONStorage } from "zustand/middleware";
 
 export type Language = "en" | "bn";
 
@@ -8,14 +9,30 @@ interface LanguageState {
   toggleLanguage: () => void;
 }
 
-export const useLanguageStore = create<LanguageState>((set) => ({
-  language: "en",
-  setLanguage: (language) => set({ language }),
-  toggleLanguage: () =>
-    set((state) => ({
-      language: state.language === "en" ? "bn" : "en",
-    })),
-}));
+export const useLanguageStore = create<LanguageState>()(
+  persist(
+    (set) => ({
+      language: "en",
+      setLanguage: (language) => set({ language }),
+      toggleLanguage: () =>
+        set((state) => ({
+          language: state.language === "en" ? "bn" : "en",
+        })),
+    }),
+    {
+      name: "vrolbd-language-storage",
+      storage: createJSONStorage(() =>
+        typeof window !== "undefined"
+          ? localStorage
+          : {
+            getItem: () => null,
+            setItem: () => { },
+            removeItem: () => { },
+          }
+      ),
+    }
+  )
+);
 
 export const translations = {
   en: {
@@ -31,7 +48,7 @@ export const translations = {
       applyNow: "Apply Now",
     },
     hero: {
-      licenseBadge: "Govt. Approved Agency • RL-2849 | Lic. 1173",
+      licenseBadge: "Govt. Approved Agency • License 1173",
       headlineLead: "Global Talent.",
       headlineAccent: "Precision Deployment.",
       description:
@@ -44,10 +61,114 @@ export const translations = {
       statRetentionLabel: "Contract Retention",
       radarTitle: "Global Deployment Radar",
       dhakaHq: "DHAKA HQ",
+      gatewayEmployerTab: "Overseas Employers & EPC Mega-Projects",
+      gatewayCandidateTab: "Candidates Seeking Verified Overseas Jobs",
+      gatewayEmployerHeading: "Mobilize 50 to 5,000+ Skilled Workers",
+      gatewayCandidateHeading: "Secure 100% Legal Government Visa",
+      gatewayEmployerSub: "Turnkey trade testing, biometric verification & rapid consular dispatch.",
+      gatewayCandidateSub: "Tax-free wages, verified contracts, and pre-departure boarding support.",
+      gatewayEmployerBtn: "Submit Bulk Manpower Demand",
+      gatewayCandidateBtn: "Apply for Verified Openings",
+    },
+    pipeline: {
+      tag: "HOW IT WORKS • THE DEPLOYMENT ARCHITECTURE",
+      heading: "Recruitment, Reimagined.",
+      subheading:
+        "A transparent, end-to-end recruitment ecosystem delivering precision workforce mobilization for enterprise employers and verified careers for candidates.",
+      tabEmployer: "For Employers",
+      tabCandidate: "For Candidates",
+      employerBadge: "Turnkey Employer Pipeline",
+      candidateBadge: "Candidate Pathway",
+    },
+    bento: {
+      tag: "Sector Specializations",
+      heading: "Accredited Manpower Supply Disciplines",
+      subheading:
+        "Customized talent pools mobilized across international megaprojects, hospitals, resorts, and industrial corridors.",
+      complianceTitle: "Zero Worker Exploitation Charter",
+      complianceDesc: "100% compliant with ILO fair recruitment protocols and BMET legal migration mandates.",
+    },
+    estimator: {
+      tag: "Live Mobilization Estimator",
+      heading: "Manpower Deployment Timeline & Feasibility",
+      subheading: "Configure your requisition parameters to compute expected consular turnaround and deployment readiness.",
+      destinationLabel: "Destination Corridor",
+      tradeLabel: "Required Manpower Trade",
+      headcountLabel: "Worker Mobilization Volume",
+      scanningTitle: "Synchronizing Embassy Consular Pipelines...",
+      scanningDesc: "Analyzing consular quotas, trade testing capacity, and flight slots.",
+      resultLeadTime: "Estimated Turnaround:",
+      daysUnit: "Days",
+      resultDossiers: "Ready Profiles:",
+      resultTradeTest: "Testing Capacity:",
+      actionBtn: "Request Fast-Track Mobilization Quote",
+    },
+    marquee: {
+      tag: "Real-Time Requisitions",
+      heading: "Live Overseas Employment Openings",
+      subheading: "Pre-approved governmental work visas with competitive tax-free wages and full corporate boarding.",
+      pauseHint: "Hover card to pause stream",
+      applyBtn: "Apply Now",
+    },
+    jobModal: {
+      tabDetails: "Job Details",
+      tabApply: "Apply Now",
+      positionsCount: "Open Positions",
+      overview: "Position Overview",
+      responsibilities: "Key Responsibilities",
+      requirements: "Requirements & Qualifications",
+      verifiedPackage: "Verified Employment Package",
+      benefitAirfare: "Free Airfare & Return Tickets",
+      benefitHousing: "Company-Furnished Housing",
+      benefitMedical: "Full Medical & Insurance",
+      benefitBmet: "BMET Smart Card Protected",
+      btnProceed: "Apply Now for this Position",
+      btnClose: "Close",
+      formHeading: "Overseas Employment Intake",
+      formSubheading: "Complete candidate details and attach your CV for fast-track trade testing & consular clearance.",
+      fullName: "Candidate Full Legal Name *",
+      fullNamePlaceholder: "e.g. Rafiqul Islam",
+      passport: "Passport / Govt NID Number *",
+      passportPlaceholder: "e.g. EA0849201",
+      email: "Email Address *",
+      emailPlaceholder: "candidate@gmail.com",
+      phone: "Direct Phone / WhatsApp *",
+      phonePlaceholder: "+880 1700-000000",
+      trade: "Primary Trade / Specialization *",
+      tradePlaceholder: "e.g. 6G Pipe Welder / Electrician",
+      experience: "Years of Trade Experience *",
+      cvLabel: "Curriculum Vitae (CV / Resume) *",
+      cvMandatory: "(Mandatory)",
+      cvPrompt: "Click to upload your CV / Resume",
+      cvHint: "Drag and drop or browse (.pdf, .doc, .docx)",
+      cvAttached: "Attached",
+      declaration: "I confirm that the submitted candidate credentials and CV are accurate and authorize VROLBD to perform government BMET clearance.",
+      btnBack: "Back to Details",
+      btnSubmit: "Submit Application",
+      btnSubmitting: "Submitting Application...",
+      successBadge: "100% Legal BMET Regulated Pathway",
+      successTitle: "Application Successfully Registered",
+      successSub: "Your candidate profile and CV have been logged in the VROLBD Global Candidate System.",
+      appRef: "Application Reference:",
+      trackingToken: "Security Clearance Token:",
+      targetPost: "Target Post:",
+      btnAcknowledge: "Acknowledge & Close",
+    },
+    visionaries: {
+      tag: "Leadership & Governance",
+      heading: "The Visionaries",
+      subheading: "Architecting ethical, high-velocity workforce solutions for global infrastructure.",
+    },
+    b2bCta: {
+      tag: "Enterprise Manpower Gateway",
+      heading: "Mobilize Your Workforce with VROLBD",
+      subheading: "Contact our executive account directorship for customized candidate profiles, technical testing, and priority consular dispatch.",
+      btnRequest: "Submit Manpower Request",
+      btnHotline: "Direct Executive Line",
     },
     auth: {
       loginTitle: "Candidate & Partner Login",
-      loginSubtitle: "Access your visa dossier, trade tests, and deployment tracking.",
+      loginSubtitle: "Access your visa profile, trade tests, and deployment tracking.",
       registerTitle: "Create Candidate Profile",
       registerSubtitle: "Join Bangladesh's premier overseas manpower deployment network.",
       email: "Email Address",
@@ -65,7 +186,7 @@ export const translations = {
       tagline: "Government-licensed recruitment infrastructure connecting skilled, technical, and engineering manpower to global enterprise corridors.",
       hq: "Corporate Headquarters: Dhaka • Dubai • Riyadh • Doha",
       isoCertified: "ISO 9001:2015 Certified",
-      govtLicense: "Government License RL-2849 / Lic. 1173",
+      govtLicense: "Government License 1173",
       copyright: "© 2026 VROLBD Systems. All rights reserved.",
       quickLinks: "Quick Links",
       aboutUs: "About VROLBD",
@@ -99,7 +220,7 @@ export const translations = {
       applyNow: "আবেদন করুন",
     },
     hero: {
-      licenseBadge: "সরকারি অনুমোদিত রিক্রুটিং এজেন্সি • RL-2849 | Lic. 1173",
+      licenseBadge: "সরকারি অনুমোদিত রিক্রুটিং এজেন্সি • লাইসেন্স ১১৭৩",
       headlineLead: "বিশ্বমানের জনশক্তি।",
       headlineAccent: "নিখুঁত কর্মসংস্থান।",
       description:
@@ -112,6 +233,110 @@ export const translations = {
       statRetentionLabel: "চুক্তি স্থায়িত্ব",
       radarTitle: "গ্লোবাল ডিপ্লয়মেন্ট রাডার",
       dhakaHq: "ঢাকা হেডকোয়ার্টার",
+      gatewayEmployerTab: "আন্তর্জাতিক নিয়োগকারী ও প্রজেক্ট",
+      gatewayCandidateTab: "বিদেশে চাকরির জন্য প্রার্থী",
+      gatewayEmployerHeading: "৫০ থেকে ৫,০০০+ দক্ষ কর্মী ডিপ্লয় করুন",
+      gatewayCandidateHeading: "১০০% নিরাপদ সরকারি ভিসায় চাকরি নিন",
+      gatewayEmployerSub: "ট্রেড টেস্ট, বায়োমেট্রিক স্ক্রিনিং এবং দ্রুত কনস্যুলার ভিসা প্রসেসিং।",
+      gatewayCandidateSub: "ট্যাক্স-ফ্রি বেতন, আইনগত চুক্তি এবং সার্বক্ষণিক এয়ারপোর্ট সাপোর্ট।",
+      gatewayEmployerBtn: "বাল্ক ম্যানপাওয়ার ডিমান্ড জমা দিন",
+      gatewayCandidateBtn: "অনুমোদিত পদে আবেদন করুন",
+    },
+    pipeline: {
+      tag: "প্রসেসিং আর্কিটেকচার • এন্ড-টু-এন্ড",
+      heading: "নিয়োগ প্রক্রিয়া, আধুনিক রূপান্তরে।",
+      subheading:
+        "আন্তর্জাতিক নিয়োগকারী প্রতিষ্ঠান এবং দক্ষ জনশক্তির জন্য একটি দ্রুত, স্বচ্ছ এবং পূর্ণাঙ্গ ওয়ার্কফোর্স ইকোসিস্টেম।",
+      tabEmployer: "কোম্পানিদের জন্য",
+      tabCandidate: "চাকরিপ্রার্থীদের জন্য",
+      employerBadge: "কোম্পানি মোবিলাইজেশন",
+      candidateBadge: "প্রার্থী জার্নি",
+    },
+    bento: {
+      tag: "সেক্টর স্পেশালাইজেশন",
+      heading: "যেসব খাতে আমরা দক্ষ জনশক্তি সরবরাহ করি",
+      subheading:
+        "আন্তর্জাতিক মেগাপ্রজেক্ট, হাসপাতাল, রিসোর্ট ও শিল্প কারখানার জন্য যোগ্যতাসম্পন্ন কর্মী বাহিনী।",
+      complianceTitle: "নৈতিক ও নিরাপদ অভিবাসন সনদ",
+      complianceDesc: "আইএলও এবং বিএমইটি অনুমোদিত শতভাগ বৈধ ও শোষণমুক্ত কর্মসংস্থান ব্যবস্থা।",
+    },
+    estimator: {
+      tag: "লাইভ মবিলাইজেশন ক্যালকুলেটর",
+      heading: "ম্যানপাওয়ার ডিপ্লয়মেন্ট টাইমলাইন ক্যালকুলেটর",
+      subheading: "আপনার প্রয়োজনীয় শ্রমশক্তির বিবরণ দিন এবং সম্ভাব্য ভিসা ও ফ্লাইটের সময়কাল জানুন।",
+      destinationLabel: "গন্তব্য করিডোর",
+      tradeLabel: "প্রয়োজনীয় ট্রেড / কাজের ধরন",
+      headcountLabel: "শ্রমিকের সংখ্যা",
+      scanningTitle: "কনস্যুলার পাইপলাইন যাচাই হচ্ছে...",
+      scanningDesc: "ভিসা কোটা, ট্রেড টেস্ট ক্যাপাসিটি এবং ফ্লাইট স্লট যাচাই করা হচ্ছে।",
+      resultLeadTime: "সম্ভাব্য প্রসেসিং সময়:",
+      daysUnit: "দিন",
+      resultDossiers: "রেডি কর্মী প্রোফাইল:",
+      resultTradeTest: "দৈনিক টেস্ট ক্ষমতা:",
+      actionBtn: "ফাস্ট-ট্র্যাক রিক্রুটমেন্ট কোটেশন চান",
+    },
+    marquee: {
+      tag: "সরাসরি চাকরির সুযোগ",
+      heading: "চলমান আন্তর্জাতিক চাকরির সার্কুলার",
+      subheading: "পূর্ব-অনুমোদিত সরকারি কাজের ভিসা, আকর্ষণীয় বেতন ও সম্পূর্ণ আবাসন সুবিধা।",
+      pauseHint: "কার্ডে মাউস রাখলে স্ক্রল থামবে",
+      applyBtn: "আবেদন করুন",
+    },
+    jobModal: {
+      tabDetails: "চাকরির বিবরণী",
+      tabApply: "আবেদন ফরম",
+      positionsCount: "টি শূন্যপদ",
+      overview: "পদের সংক্ষিপ্ত বিবরণ",
+      responsibilities: "মূল দায়িত্বসমূহ",
+      requirements: "যোগ্যতা ও অভিজ্ঞতা",
+      verifiedPackage: "অনুমোদিত চাকরির সুবিধাসমূহ",
+      benefitAirfare: "ফ্রি বিমান টিকিট (আসা-যাওয়া)",
+      benefitHousing: "কোম্পানির সুসজ্জিত বাসস্থান",
+      benefitMedical: "সম্পূর্ণ চিকিৎসা ও জীবন বীমা",
+      benefitBmet: "সরকারি বিএমইটি স্মার্ট কার্ড সুরক্ষা",
+      btnProceed: "এই পদের জন্য সরাসরি আবেদন করুন",
+      btnClose: "বন্ধ করুন",
+      formHeading: "বিদেশে চাকরির আবেদনপত্র",
+      formSubheading: "দ্রুত ট্রেড টেস্ট ও সরকারি ভিসা প্রসেসিংয়ের জন্য আপনার তথ্য ও সিভি প্রদান করুন।",
+      fullName: "প্রার্থীর পূর্ণ নাম (পাসপোর্ট অনুযায়ী) *",
+      fullNamePlaceholder: "যেমন: মো: রফিকুল ইসলাম",
+      passport: "পাসপোর্ট অথবা এনআইডি নম্বর *",
+      passportPlaceholder: "যেমন: EA0849201",
+      email: "ইমেইল অ্যাড্রেস *",
+      emailPlaceholder: "candidate@gmail.com",
+      phone: "মোবাইল / হোয়াটসঅ্যাপ নম্বর *",
+      phonePlaceholder: "+৮৮০ ১৭০০-০০০০০০",
+      trade: "প্রধান পেশা / কাজের ধরন *",
+      tradePlaceholder: "যেমন: ৬জি পাইপ ওয়েল্ডার / ইলেকট্রিশিয়ান",
+      experience: "কাজের অভিজ্ঞতার বছর *",
+      cvLabel: "সিভি / বায়োডাটা *",
+      cvMandatory: "(বাধ্যতামূলক)",
+      cvPrompt: "আপনার সিভি / বায়োডাটা আপলোড করতে ক্লিক করুন",
+      cvHint: "ড্র্যাগ করুন অথবা ফাইল সিলেক্ট করুন (.pdf, .doc, .docx)",
+      cvAttached: "সংযুক্ত হয়েছে",
+      declaration: "আমি নিশ্চিত করছি যে প্রদত্ত সকল তথ্য ও সিভি সঠিক এবং ভিআরওএলবিডিকে সরকারি বিএমইটি ও কনস্যুলার যাচাইয়ের অনুমতি দিচ্ছি।",
+      btnBack: "আগের পাতায় ফিরুন",
+      btnSubmit: "আবেদনপত্র জমা দিন",
+      btnSubmitting: "আবেদনপত্র জমা হচ্ছে...",
+      successBadge: "১০০% নিরাপদ সরকারি অভিবাসন",
+      successTitle: "আবেদন সফলভাবে সম্পন্ন হয়েছে",
+      successSub: "আপনার প্রোফাইল ও সিভি ভিআরওএলবিডি গ্লোবাল সিস্টেমে সফলভাবে সংরক্ষিত হয়েছে।",
+      appRef: "আবেদন রেফারেন্স নম্বর:",
+      trackingToken: "সিকিউরিটি ট্র্যাকিং টোকেন:",
+      targetPost: "আবেদনের পদ:",
+      btnAcknowledge: "সম্পন্ন করুন ও বন্ধ করুন",
+    },
+    visionaries: {
+      tag: "নেতৃত্ব ও পরিচালনা পর্ষদ",
+      heading: "দ্য ভিশনারিজ",
+      subheading: "আন্তর্জাতিক মেগাপ্রজেক্টের জন্য নৈতিক ও দক্ষ জনশক্তি প্ল্যাটফর্মের নির্মাতা।",
+    },
+    b2bCta: {
+      tag: "বি২বি এন্টারপ্রাইজ গেটওয়ে",
+      heading: "আপনার প্রজেক্টের জন্য বিশ্বস্ত জনশক্তি নিশ্চিত করুন",
+      subheading: "কাস্টমাইজড কর্মী প্রোফাইল, ট্রেড টেস্টিং এবং দ্রুত ভিসা প্রসেসিংয়ের জন্য আমাদের এক্সিকিউটিভ টিমের সাথে যোগাযোগ করুন।",
+      btnRequest: "ম্যানপাওয়ার রিকোয়েস্ট পাঠান",
+      btnHotline: "এক্সিকিউটিভ হটলাইন",
     },
     auth: {
       loginTitle: "প্রার্থী ও পার্টনার লগইন",
@@ -133,7 +358,7 @@ export const translations = {
       tagline: "দক্ষ ও কারিগরি জনশক্তিকে আন্তর্জাতিক চাকরির বাজারে পৌঁছে দেওয়ার নির্ভরযোগ্য সরকারি অনুমোদিত প্ল্যাটফর্ম।",
       hq: "কর্পোরেট হেডকোয়ার্টার: ঢাকা • দুবাই • রিয়াদ • দোহা",
       isoCertified: "আইএসও ৯০০১:২০১৫ সার্টিফাইড",
-      govtLicense: "সরকারি লাইসেন্স RL-2849 / Lic. 1173",
+      govtLicense: "সরকারি লাইসেন্স ১১৭৩",
       copyright: "© ২০২৬ VROLBD সিস্টেমস। সর্বস্বত্ব সংরক্ষিত।",
       quickLinks: "দ্রুত লিঙ্ক",
       aboutUs: "আমাদের সম্পর্কে",

@@ -28,10 +28,11 @@ export function Icon({
   return (
     <span
       className={cn(
-        "material-symbols-outlined inline-flex items-center justify-center select-none leading-none",
+        "material-symbols-outlined inline-flex items-center justify-center select-none leading-none shrink-0",
         className
       )}
       style={{
+        fontFamily: "'Material Symbols Outlined', sans-serif",
         fontVariationSettings,
         fontSize: sizeStyle,
         width: sizeStyle,
