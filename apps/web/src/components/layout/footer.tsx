@@ -5,13 +5,18 @@ import Link from "next/link";
 import Image from "next/image";
 import { Icon } from "@/components/ui/icon";
 import { useLanguageStore, translations } from "@/stores/language.store";
+import FloatingContactButtons from '@/components/layout/FloatingContactButtons';
 
 export function Footer() {
   const { language } = useLanguageStore();
   const t = translations[language].footer;
 
+
+
   return (
-    <footer className="w-full glass-panel border-t border-white/10 bg-[#071324]/90 backdrop-blur-xl relative overflow-hidden">
+    <>
+      <FloatingContactButtons />
+      <footer className="w-full glass-panel border-t border-white/10 bg-[#071324]/90 backdrop-blur-xl relative overflow-hidden">
       {/* Subtle top atmospheric accent */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-3/4 h-[1px] bg-gradient-to-r from-transparent via-[#C5A059]/40 to-transparent pointer-events-none" />
 
@@ -184,5 +189,6 @@ export function Footer() {
         </div>
       </div>
     </footer>
+      </>
   );
 }

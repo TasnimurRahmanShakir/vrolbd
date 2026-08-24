@@ -97,7 +97,7 @@ export const LEADERSHIP_PROFILES: VisionaryLeader[] = [
     titleEn: "Founding President",
     titleBn: "প্রতিষ্ঠাতা ও আন্তর্জাতিক সম্প্রসারণ",
     statementEn:
-      "Architect of VROLBD's global expansion, institutional prestige, and sovereign bilateral mobilization network.",
+      "Architect of Vision Recruiting's global expansion, institutional prestige, and sovereign bilateral mobilization network.",
     statementBn:
       "আন্তর্জাতিক সম্প্রসারণ, কৌশল নির্ধারণ ও নেতৃত্বের প্রধান। কোম্পানির ভবিষ্যৎ রূপরেখা ও বিশ্বমঞ্চে প্রাতিষ্ঠানিক মর্যাদা বহনকারী।",
     image: "/images/leaders/leader-5.jpg",

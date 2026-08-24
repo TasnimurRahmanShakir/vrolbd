@@ -156,7 +156,7 @@ export const MOCK_JOBS: Job[] = [
     ],
     requirements: [
       "Minimum 4+ years of refinery, offshore, or power plant welding experience",
-      "Must pass VROLBD multi-axis trade test center X-Ray test in Dhaka",
+      "Must pass Vision Recruiting multi-axis trade test center X-Ray test in Dhaka",
       "Valid GAMCA medical fitness certificate",
     ],
     benefits: [

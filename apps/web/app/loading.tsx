@@ -12,7 +12,7 @@ export default function Loading() {
         </div>
         <div className="text-center">
           <p className="text-sm font-semibold tracking-widest text-[#C5A059] uppercase">
-            VROLBD Overseas Gateway
+            Vision Recruiting Overseas Gateway
           </p>
           <p className="text-xs text-slate-400 mt-1">Initializing Secure Portal...</p>
         </div>

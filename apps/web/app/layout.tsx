@@ -32,7 +32,7 @@ const plusJakarta = Plus_Jakarta_Sans({
 });
 
 export const metadata: Metadata = {
-  title: "VROLBD | Premier Overseas Recruitment & Global Talent Architecture",
+  title: "Vision Recruiting | Premier Overseas Recruitment & Global Talent Architecture",
   description:
     "Enterprise overseas recruitment portal providing state-of-the-art talent deployment, manpower sourcing, and global workforce solutions.",
 };

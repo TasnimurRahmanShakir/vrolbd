@@ -47,7 +47,7 @@ export function ManpowerEstimatorSection() {
               <span className="w-3 h-3 rounded-full bg-emerald-400/80 inline-block" />
             </div>
             <span className="text-xs font-mono font-semibold tracking-wider text-slate-300">
-              VROLBD-SIMULATOR://MOBILIZATION-ENGINE-v2.6
+              VISION-RECRUITING-SIMULATOR://MOBILIZATION-ENGINE-v2.6
             </span>
           </div>
 

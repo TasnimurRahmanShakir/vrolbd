@@ -287,7 +287,7 @@ export default function AboutPage() {
                   <span className="px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider bg-[#C5A059]/15 text-[#8C6A2B] border border-[#C5A059]/30 inline-block mb-1">
                     Dhaka Headquarters
                   </span>
-                  <h4 className="text-base font-bold text-[#0A192F]">VROLBD Corporate Tower</h4>
+                  <h4 className="text-base font-bold text-[#0A192F]">Vision Recruiting Corporate Tower</h4>
                   <p className="text-xs text-slate-600 leading-relaxed">
                     Banani Commercial Area, Dhaka 1213, Bangladesh. Comprehensive candidate biometric screening, central trade testing, and ministry consular hub.
                   </p>

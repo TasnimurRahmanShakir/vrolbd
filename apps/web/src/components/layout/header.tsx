@@ -2,6 +2,7 @@
 
 import React from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { Icon } from "@/components/ui/icon";
 import { useHeader } from "./hooks/use-header";
 import { AuthModal } from "./auth-modal";
@@ -24,18 +25,24 @@ export function Header() {
         <div className="max-w-[1440px] mx-auto px-4 sm:px-6 h-20 flex items-center justify-between gap-4">
           {/* Logo & Brand Identity */}
           <Link href="/" className="flex items-center gap-3 group">
-            <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-[#E2CB8F] via-[#C5A059] to-[#8C6A2B] p-0.5 shadow-lg group-hover:scale-105 transition-transform">
-              <div className="w-full h-full bg-[#0A192F] rounded-[10px] flex items-center justify-center">
-                <Icon name="flight_takeoff" className="text-[#C5A059] text-xl" />
-              </div>
+            <div className="relative w-11 h-11 sm:w-12 sm:h-12 rounded-xl overflow-hidden border border-[#C5A059]/30 shadow-lg bg-black/40 p-1 flex items-center justify-center group-hover:border-[#C5A059]/70 group-hover:scale-105 transition-all">
+              <Image
+                src="/footer-logo.jpeg"
+                alt="Vision Recruiting & Overseas Ltd."
+                width={48}
+                height={48}
+                className="w-full h-full object-contain brightness-105"
+              />
             </div>
             <div>
-              <span className="text-lg font-extrabold tracking-wider text-white font-['Outfit'] block">
-                VROL<span className="text-[#C5A059]">BD</span>
+              <span className="text-base sm:text-lg font-extrabold tracking-wider text-white font-['Outfit'] block leading-none">
+                {/* VROL<span className="text-[#C5A059]">BD</span> */}
+                VISION RECRUITING <br />
+                AND OVERSEAS LTD.
               </span>
-              <span className="block text-[9px] uppercase tracking-[0.25em] text-slate-400 font-semibold leading-tight">
-                {language === "bn" ? "ওভারসিজ রিক্রুটমেন্ট আর্কিটেকচার" : "Overseas Deployment Architecture"}
-              </span>
+              {/* <span className="block text-[8px] sm:text-[9px] uppercase tracking-[0.16em] text-[#C5A059] font-semibold leading-tight mt-1">
+                VISION RECRUITMENT OVERSEAS LTD
+              </span> */}
             </div>
           </Link>
 

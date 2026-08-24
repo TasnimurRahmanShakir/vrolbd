@@ -69,8 +69,8 @@ export function VisionariesSection() {
 
           <p className="text-xs sm:text-sm text-slate-600 leading-relaxed max-w-md">
             {language === "bn"
-              ? "ভিআরওএলবিডি-র পরিচালনা পর্ষদ নীতিগত সততা, কূটনৈতিক সম্পর্ক এবং আন্তর্জাতিক মানের পেশাদারিত্বের সমন্বয়ে বাংলাদেশের দক্ষ জনশক্তিকে বিশ্বমঞ্চের মেগাপ্রজেক্টে নিয়োজিত করতে অঙ্গীকারবদ্ধ।"
-              : "The governance architecture of VROLBD is steered by distinguished diplomatic, operations, and technical pioneers committed to establishing sovereign ethical migration standards and elevating Bangladeshi talent across global mega-projects."}
+              ? "ভিশন রিক্রুটিং-এর পরিচালনা পর্ষদ নীতিগত সততা, কূটনৈতিক সম্পর্ক এবং আন্তর্জাতিক মানের পেশাদারিত্বের সমন্বয়ে বাংলাদেশের দক্ষ জনশক্তিকে বিশ্বমঞ্চের মেগাপ্রজেক্টে নিয়োজিত করতে অঙ্গীকারবদ্ধ।"
+              : "The governance architecture of Vision Recruiting is steered by distinguished diplomatic, operations, and technical pioneers committed to establishing sovereign ethical migration standards and elevating Bangladeshi talent across global mega-projects."}
           </p>
 
           {/* 🎯 Real-Time Synced Interactive Board of Directors Roster */}

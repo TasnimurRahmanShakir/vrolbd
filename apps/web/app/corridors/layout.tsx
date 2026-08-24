@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Global Deployment Corridors | VROLBD Overseas Recruitment (License 1173)",
+  title: "Global Deployment Corridors | Vision Recruiting (License 1173)",
   description:
-    "Explore VROLBD's sovereign international manpower corridors in Saudi Arabia, UAE, Qatar, Kuwait, Oman, Bahrain, and Europe. Pre-approved governmental visa quotas, direct embassy attestation, and rapid turnkey deployment.",
+    "Explore Vision Recruiting's sovereign international manpower corridors in Saudi Arabia, UAE, Qatar, Kuwait, Oman, Bahrain, and Europe. Pre-approved governmental visa quotas, direct embassy attestation, and rapid turnkey deployment.",
   keywords: [
     "Saudi Arabia Manpower Corridor",
     "Dubai UAE Recruitment Agency",
@@ -11,18 +11,18 @@ export const metadata: Metadata = {
     "Kuwait MOH Nursing Agency",
     "Oman Substation Engineer Jobs",
     "Bahrain HVAC Technician Jobs",
-    "VROLBD Global Corridors",
+    "Vision Recruiting Global Corridors",
     "BMET License 1173 Corridors",
   ],
   alternates: {
     canonical: "https://vrolbd.com/corridors",
   },
   openGraph: {
-    title: "Global Deployment Corridors | VROLBD Overseas Recruitment (License 1173)",
+    title: "Global Deployment Corridors | Vision Recruiting (License 1173)",
     description:
       "Direct government-to-government and enterprise-grade bilateral workforce deployment across GCC mega-infrastructure and European industrial corridors.",
     url: "https://vrolbd.com/corridors",
-    siteName: "VROLBD Overseas Recruitment Ltd.",
+    siteName: "Vision Recruiting & Overseas Ltd.",
     locale: "en_US",
     type: "website",
   },
@@ -39,7 +39,7 @@ export default function CorridorsLayout({
     name: "Overseas Manpower Mobilization Corridors",
     provider: {
       "@type": "Organization",
-      name: "VROLBD Overseas Recruitment Ltd.",
+      name: "Vision Recruiting & Overseas Ltd.",
       sameAs: "https://vrolbd.com",
     },
     areaServed: ["Saudi Arabia", "United Arab Emirates", "Qatar", "Kuwait", "Oman", "Bahrain", "Poland", "Romania"],
