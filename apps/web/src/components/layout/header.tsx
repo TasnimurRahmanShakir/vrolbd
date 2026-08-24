@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+import Link from "next/link";
 import { Icon } from "@/components/ui/icon";
 import { useHeader } from "./hooks/use-header";
 import { AuthModal } from "./auth-modal";
@@ -22,7 +23,7 @@ export function Header() {
       <header className="fixed top-0 left-0 right-0 z-50 w-full bg-[#0A192F] border-b border-white/10 shadow-xl transition-all">
         <div className="max-w-[1440px] mx-auto px-4 sm:px-6 h-20 flex items-center justify-between gap-4">
           {/* Logo & Brand Identity */}
-          <a href="#" className="flex items-center gap-3 group">
+          <Link href="/" className="flex items-center gap-3 group">
             <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-[#E2CB8F] via-[#C5A059] to-[#8C6A2B] p-0.5 shadow-lg group-hover:scale-105 transition-transform">
               <div className="w-full h-full bg-[#0A192F] rounded-[10px] flex items-center justify-center">
                 <Icon name="flight_takeoff" className="text-[#C5A059] text-xl" />
@@ -36,45 +37,45 @@ export function Header() {
                 {language === "bn" ? "ওভারসিজ রিক্রুটমেন্ট আর্কিটেকচার" : "Overseas Deployment Architecture"}
               </span>
             </div>
-          </a>
+          </Link>
 
           {/* Desktop Navigation Links */}
           <nav className="hidden lg:flex items-center gap-7 text-xs font-medium uppercase tracking-wider text-slate-300">
-            <a
-              href="#"
+            <Link
+              href="/"
               className="hover:text-[#C5A059] transition-colors flex items-center gap-1.5 py-1"
             >
               <Icon name="home" size={16} className="text-[#C5A059]" />
               <span>{t.home}</span>
-            </a>
-            <a
-              href="#capabilities"
+            </Link>
+            <Link
+              href="/about"
               className="hover:text-[#C5A059] transition-colors flex items-center gap-1.5 py-1"
             >
               <Icon name="info" size={16} className="text-[#C5A059]" />
               <span>{t.about}</span>
-            </a>
-            <a
-              href="#opportunities"
+            </Link>
+            <Link
+              href="/jobs"
               className="hover:text-[#C5A059] transition-colors flex items-center gap-1.5 py-1"
             >
               <Icon name="travel_explore" size={16} className="text-[#C5A059]" />
               <span>{t.jobSearch}</span>
-            </a>
-            <a
-              href="#corridors"
+            </Link>
+            <Link
+              href="/corridors"
               className="hover:text-[#C5A059] transition-colors flex items-center gap-1.5 py-1"
             >
               <Icon name="public" size={16} className="text-[#C5A059]" />
               <span>{t.corridors}</span>
-            </a>
-            <a
-              href="#compliance"
+            </Link>
+            <Link
+              href="/compliance"
               className="hover:text-[#C5A059] transition-colors flex items-center gap-1.5 py-1"
             >
               <Icon name="verified_user" size={16} className="text-[#C5A059]" />
               <span>{t.compliance}</span>
-            </a>
+            </Link>
           </nav>
 
           {/* Actions & Utilities */}
@@ -135,46 +136,46 @@ export function Header() {
         {mobileMenuOpen && (
           <div className="lg:hidden border-t border-white/10 bg-[#0A192F] shadow-2xl px-6 py-5 space-y-4 animate-in fade-in slide-in-from-top-4 duration-200">
             <nav className="flex flex-col gap-3 text-xs font-medium uppercase tracking-wider text-slate-200">
-              <a
-                href="#"
+              <Link
+                href="/"
                 onClick={() => setMobileMenuOpen(false)}
                 className="flex items-center gap-2.5 py-2 px-3 rounded-lg hover:bg-white/5 hover:text-[#C5A059] transition-colors"
               >
                 <Icon name="home" size={18} className="text-[#C5A059]" />
                 <span>{t.home}</span>
-              </a>
-              <a
-                href="#capabilities"
+              </Link>
+              <Link
+                href="/about"
                 onClick={() => setMobileMenuOpen(false)}
                 className="flex items-center gap-2.5 py-2 px-3 rounded-lg hover:bg-white/5 hover:text-[#C5A059] transition-colors"
               >
                 <Icon name="info" size={18} className="text-[#C5A059]" />
                 <span>{t.about}</span>
-              </a>
-              <a
-                href="#opportunities"
+              </Link>
+              <Link
+                href="/jobs"
                 onClick={() => setMobileMenuOpen(false)}
                 className="flex items-center gap-2.5 py-2 px-3 rounded-lg hover:bg-white/5 hover:text-[#C5A059] transition-colors"
               >
                 <Icon name="travel_explore" size={18} className="text-[#C5A059]" />
                 <span>{t.jobSearch}</span>
-              </a>
-              <a
-                href="#corridors"
+              </Link>
+              <Link
+                href="/corridors"
                 onClick={() => setMobileMenuOpen(false)}
                 className="flex items-center gap-2.5 py-2 px-3 rounded-lg hover:bg-white/5 hover:text-[#C5A059] transition-colors"
               >
                 <Icon name="public" size={18} className="text-[#C5A059]" />
                 <span>{t.corridors}</span>
-              </a>
-              <a
-                href="#compliance"
+              </Link>
+              <Link
+                href="/compliance"
                 onClick={() => setMobileMenuOpen(false)}
                 className="flex items-center gap-2.5 py-2 px-3 rounded-lg hover:bg-white/5 hover:text-[#C5A059] transition-colors"
               >
                 <Icon name="verified_user" size={18} className="text-[#C5A059]" />
                 <span>{t.compliance}</span>
-              </a>
+              </Link>
             </nav>
 
             {/* Mobile Auth Buttons */}

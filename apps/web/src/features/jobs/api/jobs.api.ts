@@ -1,7 +1,7 @@
 import { Job, JobFilter } from "../schemas/job.schema";
 
 // Seeded enterprise jobs for VROLBD
-const MOCK_JOBS: Job[] = [
+export const MOCK_JOBS: Job[] = [
   {
     id: "job-101",
     title: "Senior MEP Project Engineer",
@@ -134,11 +134,250 @@ const MOCK_JOBS: Job[] = [
       "Free medical services throughout Kuwait government hospitals",
     ],
   },
+  {
+    id: "job-105",
+    title: "6G TIG & High-Pressure Pipe Welder",
+    country: "Kingdom of Saudi Arabia",
+    city: "Jubail",
+    category: "Engineering & Construction",
+    salary: "9,000 - 13,000 SAR / mo",
+    positions: 45,
+    deadline: "2026-10-30",
+    type: "Full-Time",
+    tags: ["Aramco Standard", "Alloy Steel", "X-Ray Tested"],
+    featured: true,
+    description:
+      "Execute high-pressure pipe welding across petrochemical refinery expansions in Jubail Industrial City. Must pass 100% X-Ray and hydrostatic pressure tests on carbon and stainless steel joints.",
+    responsibilities: [
+      "Weld 6G position high-pressure steam and gas piping using GTAW / SMAW",
+      "Preheat and maintain interpass temperature controls as per WPS specs",
+      "Perform beveling, fit-up inspections, and root pass penetration",
+      "Ensure adherence to Saudi Aramco safety and hot-work permits",
+    ],
+    requirements: [
+      "Minimum 4+ years of refinery, offshore, or power plant welding experience",
+      "Must pass VROLBD multi-axis trade test center X-Ray test in Dhaka",
+      "Valid GAMCA medical fitness certificate",
+    ],
+    benefits: [
+      "Full corporate camp accommodations, dining, and daily transport",
+      "High overtime rate multiplier with tax-free monthly savings",
+      "Annual round-trip airfare and BMET smart card insurance",
+    ],
+  },
+  {
+    id: "job-106",
+    title: "Executive Sous Chef (Continental & Arabic)",
+    country: "United Arab Emirates",
+    city: "Abu Dhabi",
+    category: "Hospitality & Tourism",
+    salary: "14,000 - 18,500 AED / mo",
+    positions: 8,
+    deadline: "2026-11-15",
+    type: "Full-Time",
+    tags: ["5-Star Resort", "HACCP Master", "Menu Development"],
+    featured: false,
+    description:
+      "Direct culinary brigades across luxury beachfront luxury resorts in Abu Dhabi. Manage culinary innovation, VIP banqueting, and HACCP compliance.",
+    responsibilities: [
+      "Supervise kitchen stations, meat preparation, and international buffets",
+      "Manage kitchen procurement, inventory turnover, and food cost margins",
+      "Enforce food hygiene, temperature logs, and luxury plating standards",
+    ],
+    requirements: [
+      "Degree or Diploma in Culinary Arts with 6+ years in 5-star hotel kitchens",
+      "HACCP certified with fluent English communication",
+      "Proven leadership of multinational culinary teams",
+    ],
+    benefits: [
+      "Executive family visa sponsorship and housing allowance",
+      "Full health insurance, gratuity tier, and performance bonus",
+      "Annual 30 days paid leave with executive business airfare",
+    ],
+  },
+  {
+    id: "job-107",
+    title: "Industrial Electrical & BMS Commissioning Engineer",
+    country: "Oman",
+    city: "Muscat",
+    category: "Engineering & Construction",
+    salary: "1,100 - 1,500 OMR / mo",
+    positions: 15,
+    deadline: "2026-10-25",
+    type: "Full-Time",
+    tags: ["Substation", "Schneider BMS", "SCADA Control"],
+    featured: false,
+    description:
+      "Oversee 33kV/11kV electrical substation testing, switchgear commissioning, and building management automation for Muscat international commercial hubs.",
+    responsibilities: [
+      "Conduct transformer dielectric tests, relay calibrations, and CT/PT testing",
+      "Program and commission Schneider/Siemens BMS automated controllers",
+      "Prepare as-built electrical schematics and client handover documentation",
+    ],
+    requirements: [
+      "B.Sc. in Electrical & Electronic Engineering (EEE)",
+      "4+ years of industrial substation or high-voltage commissioning experience",
+      "Valid passport with GAMCA clearance",
+    ],
+    benefits: [
+      "Company-furnished executive apartment and vehicle allowance",
+      "Annual flight tickets, complete medical insurance, and end-of-service gratuity",
+    ],
+  },
+  {
+    id: "job-108",
+    title: "Heavy Scaffolding Inspector & Supervisor (CISRS)",
+    country: "Qatar",
+    city: "Ras Laffan",
+    category: "Industrial & Manufacturing",
+    salary: "7,500 - 10,500 QAR / mo",
+    positions: 35,
+    deadline: "2026-11-10",
+    type: "Contract",
+    tags: ["LNG Plant", "CISRS Level 3", "Offshore Safety"],
+    featured: true,
+    description:
+      "Direct heavy industrial tube and coupler scaffolding erection, load testing, and tag inspections across the North Field LNG expansion project in Qatar.",
+    responsibilities: [
+      "Inspect suspended, cantilever, and complex industrial scaffolding structures",
+      "Issue scaffold green safety tags and maintain daily load registers",
+      "Lead toolbox safety talks and enforce 100% tie-off safety protocols",
+    ],
+    requirements: [
+      "CISRS Level 2 or Level 3 Scaffolding Inspector Certification",
+      "3+ years experience in oil & gas or mega-industrial facilities",
+      "Working knowledge of Qatar Energy safety guidelines",
+    ],
+    benefits: [
+      "Full LNG city corporate accommodation with dining and medical",
+      "Tax-free salary with guaranteed minimum overtime hours",
+      "Round-trip air ticket with BMET clearance support",
+    ],
+  },
+  {
+    id: "job-109",
+    title: "Automotive Diagnostics & EV Specialist",
+    country: "United Arab Emirates",
+    city: "Dubai",
+    category: "Industrial & Manufacturing",
+    salary: "11,000 - 15,000 AED / mo",
+    positions: 20,
+    deadline: "2026-11-20",
+    type: "Full-Time",
+    tags: ["Electric Vehicles", "CAN-Bus", "OBD-II Telematics"],
+    featured: false,
+    description:
+      "Perform high-voltage battery diagnostic testing, inverter repair, and electronic CAN-bus calibration for premier automotive dealership networks in Dubai.",
+    responsibilities: [
+      "Diagnose EV high-voltage powertrains and hybrid electronic transmission systems",
+      "Program ECU firmware updates using OEM specialized diagnostic software",
+      "Execute ADAS sensor calibration and electronic wheel alignment checks",
+    ],
+    requirements: [
+      "Diploma in Automobile or Mechatronics Engineering",
+      "Certified in High-Voltage EV safety (Level 2 or 3)",
+      "3+ years experience in modern dealership service workshops",
+    ],
+    benefits: [
+      "Furnished company housing or executive monthly housing allowance",
+      "Annual flight ticket to home country, full medical coverage",
+      "OEM factory certified upskilling and training programs",
+    ],
+  },
+  {
+    id: "job-110",
+    title: "Senior Radiologist & Medical Imaging Technologist",
+    country: "Kingdom of Saudi Arabia",
+    city: "Dammam",
+    category: "Healthcare & Medical",
+    salary: "15,000 - 21,000 SAR / mo",
+    positions: 10,
+    deadline: "2026-12-01",
+    type: "Full-Time",
+    tags: ["MRI / CT Scan", "Saudi Prometric", "Tertiary Hospital"],
+    featured: true,
+    description:
+      "Operate high-resolution 3T MRI, 128-slice CT scanners, and digital fluoroscopy equipment across leading tertiary private hospital chains in Eastern Province.",
+    responsibilities: [
+      "Perform advanced diagnostic MRI neuro, musculoskeletal, and cardiac scans",
+      "Ensure radiation safety compliance (ALARA) and contrast media administration",
+      "Collaborate with consulting radiologists on PACS electronic reports",
+    ],
+    requirements: [
+      "B.Sc. in Medical Imaging / Radiography Technology",
+      "Passed Saudi Prometric exam with valid SCFHS classification eligibility",
+      "3+ years of tertiary hospital diagnostic imaging experience",
+    ],
+    benefits: [
+      "Furnished family accommodation or high-tier residential stipend",
+      "Full family medical coverage and annual return flight tickets",
+      "Tax-free salary with paid CME education leave",
+    ],
+  },
+  {
+    id: "job-111",
+    title: "HVAC Central Plant Master Technician",
+    country: "Bahrain",
+    city: "Manama",
+    category: "Engineering & Construction",
+    salary: "750 - 1,050 BHD / mo",
+    positions: 18,
+    deadline: "2026-11-05",
+    type: "Full-Time",
+    tags: ["Centrifugal Chillers", "York / Carrier", "AHU Overhaul"],
+    featured: false,
+    description:
+      "Manage central district cooling plants, cooling towers, and centrifugal chillers for major shopping complexes and diplomatic towers in Manama.",
+    responsibilities: [
+      "Overhaul York, Carrier, and Trane water-cooled centrifugal chillers",
+      "Refrigerant leak detection, oil analysis, and compressor rebuilding",
+      "Balance chilled water flow rates and inspect VAV air handling systems",
+    ],
+    requirements: [
+      "Diploma in Air Conditioning & Refrigeration (RAC)",
+      "4+ years experience with large-scale industrial district cooling systems",
+      "Valid trade test certificate and GAMCA medical clearance",
+    ],
+    benefits: [
+      "Furnished company staff housing and daily transport",
+      "Free medical services, paid annual vacation, and air tickets",
+    ],
+  },
+  {
+    id: "job-112",
+    title: "Industrial Logistics & Forklift Fleet Lead",
+    country: "Kingdom of Saudi Arabia",
+    city: "Jeddah",
+    category: "Industrial & Manufacturing",
+    salary: "6,500 - 9,000 SAR / mo",
+    positions: 40,
+    deadline: "2026-10-28",
+    type: "Full-Time",
+    tags: ["Cold Chain", "WMS Inventory", "Reach Truck"],
+    featured: false,
+    description:
+      "Supervise automated high-bay warehouse logistics, reach truck operations, and cold storage pharmaceutical/food inventory distribution at King Abdullah Port corridor.",
+    responsibilities: [
+      "Manage fleet of electric reach trucks, VNA forklifts, and pallet jacks",
+      "Operate SAP / Oracle WMS barcode scanning and dispatch scheduling",
+      "Maintain cold-chain temperature compliance and warehouse safety rules",
+    ],
+    requirements: [
+      "Valid Saudi / GCC heavy forklift driving license",
+      "2+ years experience in large FMCG or pharmaceutical distribution hubs",
+      "Basic English communication and inventory literacy",
+    ],
+    benefits: [
+      "Free company camp accommodation and dining facilities",
+      "Generous shift overtime pay and performance incentives",
+      "Government BMET smart card insurance and annual return tickets",
+    ],
+  },
 ];
 
 export async function fetchJobs(filter?: JobFilter): Promise<Job[]> {
   // Simulate network latency for async lifecycle showcase
-  await new Promise((res) => setTimeout(res, 400));
+  await new Promise((res) => setTimeout(res, 300));
 
   let filtered = [...MOCK_JOBS];
   if (filter?.search) {
@@ -147,7 +386,9 @@ export async function fetchJobs(filter?: JobFilter): Promise<Job[]> {
       (j) =>
         j.title.toLowerCase().includes(s) ||
         j.country.toLowerCase().includes(s) ||
-        j.category.toLowerCase().includes(s)
+        j.city.toLowerCase().includes(s) ||
+        j.category.toLowerCase().includes(s) ||
+        j.tags.some((t) => t.toLowerCase().includes(s))
     );
   }
   if (filter?.category && filter.category !== "All") {

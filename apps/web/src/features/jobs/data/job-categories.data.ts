@@ -9,7 +9,9 @@ export const JOB_CATEGORIES = [
 export const JOB_COUNTRIES = [
   "All",
   "United Arab Emirates",
-  "Qatar",
   "Kingdom of Saudi Arabia",
+  "Qatar",
   "Kuwait",
+  "Oman",
+  "Bahrain",
 ];

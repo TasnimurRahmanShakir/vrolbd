@@ -24,8 +24,8 @@ export const JobFilterSchema = z.object({
   search: z.string().optional(),
   country: z.string().optional(),
   category: z.string().optional(),
-  page: z.number().int().positive().default(1),
-  limit: z.number().int().positive().default(10),
+  page: z.number().int().positive().optional(),
+  limit: z.number().int().positive().optional(),
 });
 
 export type JobFilter = z.infer<typeof JobFilterSchema>;
