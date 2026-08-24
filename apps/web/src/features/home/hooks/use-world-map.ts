@@ -1,4 +1,4 @@
-import React, { useState, useMemo, useCallback, useRef } from "react";
+import React, { useState, useMemo, useCallback, useRef, useEffect } from "react";
 import { geoNaturalEarth1, geoPath } from "d3-geo";
 import * as topojson from "topojson-client";
 import worldDataRaw from "../data/world-110m.json";
@@ -45,9 +45,9 @@ export function useWorldMap(): UseWorldMapReturn {
   const [activeCorridor, setActiveCorridor] = useState<DestinationCorridor | null>(null);
   const [tooltipPos, setTooltipPos] = useState<{ x: number; y: number }>({ x: 0, y: 0 });
 
-  // Pan & Zoom Navigation States (Initial focused zoom on major corridors)
-  const [zoom, setZoom] = useState(1.25);
-  const [pan, setPan] = useState({ x: -20, y: -10 });
+  // Pan & Zoom Navigation States (Slightly zoomed and centered on Bangladesh by default)
+  const [zoom, setZoom] = useState(1.4);
+  const [pan, setPan] = useState({ x: 0, y: 0 });
   const [isDragging, setIsDragging] = useState(false);
   const [dragStart, setDragStart] = useState({ x: 0, y: 0 });
 
@@ -58,11 +58,13 @@ export function useWorldMap(): UseWorldMapReturn {
     return map;
   }, []);
 
-  // Natural Earth Projection with focal scale
+  // Natural Earth Projection centered directly on Bangladesh (90.41° E, 23.81° N)
   const { countriesPaths, originPoint, destinationPoints } = useMemo(() => {
     const projection = geoNaturalEarth1()
-      .scale(215)
-      .translate([460, 245]);
+      .rotate([-90.4125, 0, 0])
+      .center([0, 22])
+      .scale(245)
+      .translate([480, 240]);
 
     const pathGenerator = geoPath().projection(projection);
 
@@ -87,12 +89,11 @@ export function useWorldMap(): UseWorldMapReturn {
       };
     });
 
-    const origin = projection(DHAKA_COORDINATES) || [0, 0];
+    const origin = projection(DHAKA_COORDINATES) || [480, 240];
 
     const dests: DestinationPoint[] = DESTINATIONS.map((d) => {
       const [px, py] = projection(d.coordinates) || [0, 0];
       const dx = px - origin[0];
-      const dy = py - origin[1];
       const midX = (origin[0] + px) / 2;
       const midY = (origin[1] + py) / 2;
       const curvature = Math.min(Math.abs(dx) * 0.38, 60);
@@ -120,20 +121,20 @@ export function useWorldMap(): UseWorldMapReturn {
 
   // Zoom Controls
   const handleZoomIn = useCallback(() => {
-    setZoom((z) => Math.min(Number((z + 0.4).toFixed(2)), 6.0));
+    setZoom((z) => Math.min(Number((z + 0.3).toFixed(2)), 6.0));
   }, []);
 
   const handleZoomOut = useCallback(() => {
     setZoom((z) => {
-      const next = Math.max(Number((z - 0.4).toFixed(2)), 0.7);
+      const next = Math.max(Number((z - 0.3).toFixed(2)), 0.8);
       if (next <= 1) setPan({ x: 0, y: 0 });
       return next;
     });
   }, []);
 
   const handleReset = useCallback(() => {
-    setZoom(1.25);
-    setPan({ x: -20, y: -10 });
+    setZoom(1.4);
+    setPan({ x: 0, y: 0 });
     setActiveCorridor(null);
     setHoveredInfo(null);
   }, []);
@@ -167,19 +168,39 @@ export function useWorldMap(): UseWorldMapReturn {
     setIsDragging(false);
   };
 
-  // Mouse Wheel Zoom
+  // Passive wheel fallback for React JSX handler
   const handleWheel = (e: React.WheelEvent) => {
     e.preventDefault();
-    if (e.deltaY < 0) {
-      setZoom((z) => Math.min(Number((z + 0.25).toFixed(2)), 6.0));
-    } else {
-      setZoom((z) => {
-        const next = Math.max(Number((z - 0.25).toFixed(2)), 0.7);
-        if (next <= 1) setPan({ x: 0, y: 0 });
-        return next;
-      });
-    }
   };
+
+  // Non-passive wheel event listener on container element to block page scroll and zoom map
+  useEffect(() => {
+    const el = containerRef.current;
+    if (!el) return;
+
+    const onWheelBlockAndZoom = (e: WheelEvent) => {
+      // Prevent normal page scroll when cursor is over the map
+      e.preventDefault();
+      e.stopPropagation();
+
+      const step = 0.2;
+      if (e.deltaY < 0) {
+        setZoom((prev) => Math.min(Number((prev + step).toFixed(2)), 6.0));
+      } else {
+        setZoom((prev) => {
+          const next = Math.max(Number((prev - step).toFixed(2)), 0.8);
+          if (next <= 1) setPan({ x: 0, y: 0 });
+          return next;
+        });
+      }
+    };
+
+    el.addEventListener("wheel", onWheelBlockAndZoom, { passive: false });
+
+    return () => {
+      el.removeEventListener("wheel", onWheelBlockAndZoom);
+    };
+  }, []);
 
   return {
     containerRef,

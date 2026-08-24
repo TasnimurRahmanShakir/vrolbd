@@ -4,9 +4,13 @@ import React from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Icon } from "@/components/ui/icon";
 import { useWorldMap } from "../hooks/use-world-map";
+import { useLanguageStore, translations } from "@/stores/language.store";
 import { DestinationCorridor } from "../types/corridor.types";
 
 export function InteractiveWorldMap() {
+  const { language } = useLanguageStore();
+  const t = translations[language].hero;
+
   const {
     containerRef,
     svgRef,
@@ -54,7 +58,7 @@ export function InteractiveWorldMap() {
             <span className="relative inline-flex rounded-full h-2 w-2 bg-[#C5A059]" />
           </span>
           <span className="text-[11px] font-bold tracking-widest text-[#C5A059] uppercase font-['Outfit']">
-            Global Deployment Radar
+            {t.radarTitle}
           </span>
         </div>
 
@@ -119,7 +123,7 @@ export function InteractiveWorldMap() {
 
           {/* Master Navigable Group with Transform Pan & Zoom */}
           <g
-            transform={`translate(480, 245) translate(${pan.x}, ${pan.y}) scale(${zoom}) translate(-480, -245)`}
+            transform={`translate(480, 240) translate(${pan.x}, ${pan.y}) scale(${zoom}) translate(-480, -240)`}
             style={{ transition: isDragging ? "none" : "transform 0.2s ease-out" }}
           >
             {/* High-Contrast Country Geometries (Clearly Visible against dark bg) */}
@@ -244,7 +248,7 @@ export function InteractiveWorldMap() {
                 fontFamily="Outfit, sans-serif"
                 letterSpacing="0.4"
               >
-                DHAKA HQ
+                {t.dhakaHq}
               </text>
             </g>
 
@@ -403,7 +407,9 @@ export function InteractiveWorldMap() {
 
       {/* Minimal Flat Corridor Filter Chips */}
       <div className="relative z-20 pt-2 flex items-center gap-2 overflow-x-auto no-scrollbar">
-        <span className="text-[10px] uppercase font-bold text-slate-400 shrink-0">Corridors:</span>
+        <span className="text-[10px] uppercase font-bold text-slate-400 shrink-0">
+          {language === "bn" ? "করিডোর:" : "Corridors:"}
+        </span>
         {destinations.map((dest) => {
           const isSelected = activeTarget?.id === dest.id;
           return (

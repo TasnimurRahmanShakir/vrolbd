@@ -1,42 +1,28 @@
 "use client";
 
-import React, { useState } from "react";
-import { useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
+import React from "react";
 import { Icon } from "@/components/ui/icon";
-import { ApplicationFormData, ApplicationFormSchema } from "../schemas/application.schema";
-import { ApplicationModalProps, ApplicationSubmissionResult } from "../types/application.types";
-import { useSubmitApplication } from "../hooks/use-submit-application";
-import { useUIStore } from "@/stores/ui.store";
+import { ApplicationModalProps } from "../types/application.types";
+import { useApplicationModal } from "../hooks/use-application-modal";
 
-export function ApplicationModal({ jobId = "job-101", jobTitle = "Senior MEP Project Engineer", onClose }: ApplicationModalProps) {
-  const [successDossier, setSuccessDossier] = useState<ApplicationSubmissionResult | null>(null);
+export function ApplicationModal(props: ApplicationModalProps) {
+  const { jobId = "job-101", jobTitle = "Senior MEP Project Engineer", onClose } = props;
 
   const {
-    register,
-    handleSubmit,
-    formState: { errors, isSubmitting },
-    reset,
-  } = useForm<ApplicationFormData>({
-    resolver: zodResolver(ApplicationFormSchema),
-    defaultValues: {
-      jobId,
-      experienceYears: 3,
-      declarationAccepted: false,
+    form: {
+      register,
+      formState: { errors },
     },
+    successDossier,
+    isPending,
+    isError,
+    errorMessage,
+    onSubmit,
+  } = useApplicationModal({
+    jobId,
+    jobTitle,
+    onClose,
   });
-
-  const mutation = useSubmitApplication();
-
-  const onSubmit = async (data: ApplicationFormData) => {
-    try {
-      const res = await mutation.mutateAsync(data);
-      setSuccessDossier(res);
-      reset();
-    } catch {
-      // Handled via mutation.isError
-    }
-  };
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-[#050B14]/80 backdrop-blur-md">
@@ -44,7 +30,7 @@ export function ApplicationModal({ jobId = "job-101", jobTitle = "Senior MEP Pro
         {/* Close Button */}
         <button
           onClick={onClose}
-          disabled={mutation.isPending || isSubmitting}
+          disabled={isPending}
           className="absolute top-5 right-5 p-2 rounded-full text-slate-400 hover:text-white hover:bg-white/10 transition-colors"
           type="button"
           aria-label="Close dialog"
@@ -97,18 +83,14 @@ export function ApplicationModal({ jobId = "job-101", jobTitle = "Senior MEP Pro
               </p>
             </div>
 
-            {mutation.isError && (
+            {isError && (
               <div className="mb-4 p-3 rounded-xl bg-red-500/10 border border-red-500/30 flex items-center gap-2 text-xs text-red-300">
                 <Icon name="error" size={18} className="text-red-400 shrink-0" />
-                <span>
-                  {mutation.error instanceof Error
-                    ? mutation.error.message
-                    : "Transmission failed. Please review your details and retry."}
-                </span>
+                <span>{errorMessage || "Transmission failed. Please review your details and retry."}</span>
               </div>
             )}
 
-            <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
+            <form onSubmit={onSubmit} className="space-y-4">
               <input type="hidden" {...register("jobId")} />
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -238,17 +220,17 @@ export function ApplicationModal({ jobId = "job-101", jobTitle = "Senior MEP Pro
                 <button
                   type="button"
                   onClick={onClose}
-                  disabled={mutation.isPending}
+                  disabled={isPending}
                   className="px-4 py-2 text-xs font-semibold text-slate-300 hover:text-white transition-colors"
                 >
                   Cancel
                 </button>
                 <button
                   type="submit"
-                  disabled={mutation.isPending}
+                  disabled={isPending}
                   className="inline-flex items-center gap-2 px-6 py-2.5 text-xs font-bold uppercase tracking-wider text-[#0A192F] bg-[#C5A059] hover:bg-[#D4AF37] disabled:opacity-50 transition-all rounded-xl shadow-lg"
                 >
-                  {mutation.isPending ? (
+                  {isPending ? (
                     <>
                       <Icon name="progress_activity" size={16} className="animate-spin" />
                       <span>Transmitting Dossier...</span>
