@@ -1,6 +1,8 @@
 "use client";
 
 import React from "react";
+import Link from "next/link";
+import Image from "next/image";
 import { Icon } from "@/components/ui/icon";
 import { useLanguageStore, translations } from "@/stores/language.store";
 
@@ -16,24 +18,21 @@ export function Footer() {
       <div className="max-w-[1440px] mx-auto px-4 sm:px-6 pt-16 pb-12 space-y-12">
         {/* Main Footer Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10">
-          
+
           {/* Brand Col (2 cols on lg) */}
           <div className="lg:col-span-2 space-y-4">
-            <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-[#E2CB8F] via-[#C5A059] to-[#8C6A2B] p-0.5 shadow-lg">
-                <div className="w-full h-full bg-[#0A192F] rounded-[10px] flex items-center justify-center">
-                  <Icon name="flight_takeoff" className="text-[#C5A059] text-xl" />
-                </div>
+            {/* Custom Brand Logo */}
+            <Link href="/" className="inline-block group max-w-[260px] sm:max-w-[290px] w-full">
+              <div className="rounded-2xl overflow-hidden border border-[#C5A059]/25 shadow-lg bg-black/30 p-1.5 backdrop-blur-sm group-hover:border-[#C5A059]/60 transition-all duration-300">
+                <Image
+                  src="/footer-logo.jpeg"
+                  alt="Vision Recruiting & Overseas Ltd. (License 1173)"
+                  width={320}
+                  height={180}
+                  className="w-full h-auto object-contain rounded-xl brightness-105 group-hover:scale-[1.02] transition-transform duration-300"
+                />
               </div>
-              <div>
-                <span className="text-xl font-extrabold tracking-wider text-white font-['Outfit'] block">
-                  VROL<span className="text-[#C5A059]">BD</span>
-                </span>
-                <span className="text-[10px] uppercase tracking-[0.2em] text-slate-400 font-semibold">
-                  Overseas Recruitment Ltd.
-                </span>
-              </div>
-            </div>
+            </Link>
 
             <p className="text-xs text-slate-300 leading-relaxed max-w-sm">
               {t.tagline}
@@ -59,34 +58,34 @@ export function Footer() {
             </h4>
             <ul className="space-y-2.5 text-xs text-slate-300">
               <li>
-                <a href="#" className="hover:text-[#C5A059] transition-colors flex items-center gap-1.5">
+                <Link href="/" className="hover:text-[#C5A059] transition-colors flex items-center gap-1.5">
                   <Icon name="chevron_right" size={14} className="text-[#C5A059]" />
                   {language === "bn" ? "হোমপেজ" : "Home"}
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#capabilities" className="hover:text-[#C5A059] transition-colors flex items-center gap-1.5">
+                <Link href="/about" className="hover:text-[#C5A059] transition-colors flex items-center gap-1.5">
                   <Icon name="chevron_right" size={14} className="text-[#C5A059]" />
                   {t.aboutUs}
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#opportunities" className="hover:text-[#C5A059] transition-colors flex items-center gap-1.5">
+                <Link href="/jobs" className="hover:text-[#C5A059] transition-colors flex items-center gap-1.5">
                   <Icon name="chevron_right" size={14} className="text-[#C5A059]" />
                   {t.jobSearch}
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#corridors" className="hover:text-[#C5A059] transition-colors flex items-center gap-1.5">
+                <Link href="/corridors" className="hover:text-[#C5A059] transition-colors flex items-center gap-1.5">
                   <Icon name="chevron_right" size={14} className="text-[#C5A059]" />
                   {language === "bn" ? "আন্তর্জাতিক করিডোর" : "Global Corridors"}
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#b2b-gateway" className="hover:text-[#C5A059] transition-colors flex items-center gap-1.5">
+                <Link href="/compliance" className="hover:text-[#C5A059] transition-colors flex items-center gap-1.5">
                   <Icon name="chevron_right" size={14} className="text-[#C5A059]" />
-                  {t.b2bSolutions}
-                </a>
+                  {language === "bn" ? "কমপ্লায়েন্স ও আইন" : "Compliance & Standards"}
+                </Link>
               </li>
             </ul>
           </div>
@@ -99,34 +98,34 @@ export function Footer() {
             </h4>
             <ul className="space-y-2.5 text-xs text-slate-300">
               <li>
-                <a href="#compliance" className="hover:text-[#C5A059] transition-colors flex items-center gap-1.5">
+                <Link href="/compliance" className="hover:text-[#C5A059] transition-colors flex items-center gap-1.5">
                   <Icon name="verified_user" size={14} className="text-[#C5A059]" />
                   {t.ethicalRecruitment}
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#capabilities" className="hover:text-[#C5A059] transition-colors flex items-center gap-1.5">
+                <Link href="/about" className="hover:text-[#C5A059] transition-colors flex items-center gap-1.5">
                   <Icon name="fingerprint" size={14} className="text-[#C5A059]" />
                   {t.tradeTesting}
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#compliance" className="hover:text-[#C5A059] transition-colors flex items-center gap-1.5">
+                <Link href="/compliance" className="hover:text-[#C5A059] transition-colors flex items-center gap-1.5">
                   <Icon name="shield" size={14} className="text-[#C5A059]" />
                   {t.bmetClearance}
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#" className="hover:text-[#C5A059] transition-colors flex items-center gap-1.5">
+                <Link href="/compliance" className="hover:text-[#C5A059] transition-colors flex items-center gap-1.5">
                   <Icon name="policy" size={14} className="text-[#C5A059]" />
                   {t.privacyPolicy}
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#" className="hover:text-[#C5A059] transition-colors flex items-center gap-1.5">
+                <Link href="/compliance" className="hover:text-[#C5A059] transition-colors flex items-center gap-1.5">
                   <Icon name="description" size={14} className="text-[#C5A059]" />
                   {t.termsOfService}
-                </a>
+                </Link>
               </li>
             </ul>
           </div>
