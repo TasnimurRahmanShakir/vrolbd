@@ -1,286 +1,36 @@
 "use client";
 
-import React, { useState, useMemo, useRef, useEffect, useCallback } from "react";
+import React from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { geoNaturalEarth1, geoPath } from "d3-geo";
-import * as topojson from "topojson-client";
-import worldDataRaw from "../data/world-110m.json";
-import { ISO_NUMERIC_TO_COUNTRY } from "../data/country-names";
 import { Icon } from "@/components/ui/icon";
-
-export interface DestinationCorridor {
-  id: string;
-  name: string;
-  countryCode: string;
-  isoId: string;
-  city: string;
-  region: string;
-  coordinates: [number, number]; // [Longitude, Latitude]
-  deployedCount: number;
-  activeOpenings: number;
-  processingDays: string;
-  topSectors: string[];
-}
-
-export interface HoveredCountryInfo {
-  name: string;
-  isoId: string;
-  corridor?: DestinationCorridor;
-}
-
-// Dhaka, Bangladesh Origin Coordinates
-const DHAKA_COORDINATES: [number, number] = [90.4125, 23.8103];
-
-const DESTINATIONS: DestinationCorridor[] = [
-  {
-    id: "saudi",
-    name: "Kingdom of Saudi Arabia",
-    countryCode: "KSA",
-    isoId: "682",
-    city: "Riyadh, Jeddah & Dammam",
-    region: "GCC Corridor",
-    coordinates: [45.0792, 23.8859],
-    deployedCount: 18450,
-    activeOpenings: 120,
-    processingDays: "12-14 Days",
-    topSectors: ["Construction & MEP", "Industrial Logistics", "Healthcare"],
-  },
-  {
-    id: "uae",
-    name: "United Arab Emirates",
-    countryCode: "UAE",
-    isoId: "784",
-    city: "Dubai & Abu Dhabi",
-    region: "GCC Corridor",
-    coordinates: [54.3773, 24.4539],
-    deployedCount: 12300,
-    activeOpenings: 85,
-    processingDays: "10-14 Days",
-    topSectors: ["Luxury Hospitality", "Electrical Eng", "Facility Mgmt"],
-  },
-  {
-    id: "qatar",
-    name: "State of Qatar",
-    countryCode: "QAT",
-    isoId: "634",
-    city: "Doha & Lusail",
-    region: "GCC Corridor",
-    coordinates: [51.25, 25.35],
-    deployedCount: 8640,
-    activeOpenings: 45,
-    processingDays: "14-18 Days",
-    topSectors: ["Oil & Gas Infrastructure", "Security", "Civil Works"],
-  },
-  {
-    id: "kuwait",
-    name: "State of Kuwait",
-    countryCode: "KWT",
-    isoId: "414",
-    city: "Kuwait City",
-    region: "GCC Corridor",
-    coordinates: [47.4818, 29.3117],
-    deployedCount: 4890,
-    activeOpenings: 32,
-    processingDays: "15-20 Days",
-    topSectors: ["Healthcare & Nursing", "Heavy Transport", "Refinery"],
-  },
-  {
-    id: "oman",
-    name: "Sultanate of Oman",
-    countryCode: "OMN",
-    isoId: "512",
-    city: "Muscat & Salalah",
-    region: "GCC Corridor",
-    coordinates: [57.5589, 21.4735],
-    deployedCount: 3420,
-    activeOpenings: 24,
-    processingDays: "14-16 Days",
-    topSectors: ["Marine Logistics", "Agriculture Tech", "Construction"],
-  },
-  {
-    id: "malaysia",
-    name: "Malaysia",
-    countryCode: "MYS",
-    isoId: "458",
-    city: "Kuala Lumpur & Penang",
-    region: "Southeast Asia",
-    coordinates: [101.9758, 4.2105],
-    deployedCount: 5780,
-    activeOpenings: 60,
-    processingDays: "20-25 Days",
-    topSectors: ["Semiconductor Manufacturing", "Plantations", "Services"],
-  },
-  {
-    id: "japan",
-    name: "Japan",
-    countryCode: "JPN",
-    isoId: "392",
-    city: "Tokyo & Osaka",
-    region: "East Asia",
-    coordinates: [138.2529, 36.2048],
-    deployedCount: 920,
-    activeOpenings: 18,
-    processingDays: "30-45 Days",
-    topSectors: ["TITP Technical Interns", "Caregiving (SSW)", "Automotive"],
-  },
-  {
-    id: "romania",
-    name: "Romania & EU",
-    countryCode: "ROU",
-    isoId: "642",
-    city: "Bucharest",
-    region: "European Union",
-    coordinates: [24.9668, 45.9432],
-    deployedCount: 1650,
-    activeOpenings: 28,
-    processingDays: "45-60 Days",
-    topSectors: ["Automotive Assembly", "Hospitality", "Industrial Welding"],
-  },
-];
+import { useWorldMap } from "../hooks/use-world-map";
+import { DestinationCorridor } from "../types/corridor.types";
 
 export function InteractiveWorldMap() {
-  const containerRef = useRef<HTMLDivElement>(null);
-  const svgRef = useRef<SVGSVGElement>(null);
-
-  // Interaction states
-  const [hoveredInfo, setHoveredInfo] = useState<HoveredCountryInfo | null>(null);
-  const [activeCorridor, setActiveCorridor] = useState<DestinationCorridor | null>(null);
-  const [tooltipPos, setTooltipPos] = useState<{ x: number; y: number }>({ x: 0, y: 0 });
-
-  // Pan & Zoom Navigation States (Default zoomed-in state for clear visibility)
-  const [zoom, setZoom] = useState(1.25);
-  const [pan, setPan] = useState({ x: -20, y: -10 });
-  const [isDragging, setIsDragging] = useState(false);
-  const [dragStart, setDragStart] = useState({ x: 0, y: 0 });
-
-  // Map destination corridors by ISO id
-  const corridorByIso = useMemo(() => {
-    const map = new Map<string, DestinationCorridor>();
-    DESTINATIONS.forEach((d) => map.set(d.isoId, d));
-    return map;
-  }, []);
-
-  // Natural Earth Projection with optimized focal scale
-  const { countriesPaths, originPoint, destinationPoints } = useMemo(() => {
-    const projection = geoNaturalEarth1()
-      .scale(215)
-      .translate([460, 245]);
-
-    const pathGenerator = geoPath().projection(projection);
-
-    // Extract geojson features from topojson
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    const worldGeo = topojson.feature(worldDataRaw as any, (worldDataRaw as any).objects.countries) as any;
-    
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    const paths = worldGeo.features.map((feature: any, idx: number) => {
-      const rawId = String(feature.id || "");
-      const paddedId = rawId && rawId !== "-99" ? rawId.padStart(3, "0") : `poly-${idx}`;
-      const countryName = ISO_NUMERIC_TO_COUNTRY[paddedId] || ISO_NUMERIC_TO_COUNTRY[rawId] || "International Territory";
-      const corridor = corridorByIso.get(paddedId) || corridorByIso.get(rawId);
-
-      return {
-        key: `country-poly-${idx}-${paddedId}`,
-        id: paddedId,
-        name: countryName,
-        corridor,
-        path: pathGenerator(feature) || "",
-      };
-    });
-
-    const origin = projection(DHAKA_COORDINATES) || [0, 0];
-
-    const dests = DESTINATIONS.map((d) => {
-      const [px, py] = projection(d.coordinates) || [0, 0];
-      const dx = px - origin[0];
-      const dy = py - origin[1];
-      const midX = (origin[0] + px) / 2;
-      const midY = (origin[1] + py) / 2;
-      const curvature = Math.min(Math.abs(dx) * 0.38, 60);
-      const ctrlX = midX;
-      const ctrlY = midY - curvature;
-
-      const pathData = `M ${origin[0]} ${origin[1]} Q ${ctrlX} ${ctrlY} ${px} ${py}`;
-
-      return {
-        ...d,
-        px,
-        py,
-        pathData,
-      };
-    });
-
-    return {
-      countriesPaths: paths,
-      originPoint: { x: origin[0], y: origin[1] },
-      destinationPoints: dests,
-    };
-  }, [corridorByIso]);
-
-  const activeTarget = hoveredInfo?.corridor || activeCorridor;
-
-  // Zoom Helpers (Up to 6.0x deep zoom)
-  const handleZoomIn = useCallback(() => {
-    setZoom((z) => Math.min(Number((z + 0.4).toFixed(2)), 6.0));
-  }, []);
-
-  const handleZoomOut = useCallback(() => {
-    setZoom((z) => {
-      const next = Math.max(Number((z - 0.4).toFixed(2)), 0.7);
-      if (next <= 1) setPan({ x: 0, y: 0 });
-      return next;
-    });
-  }, []);
-
-  const handleReset = useCallback(() => {
-    setZoom(1.25);
-    setPan({ x: -20, y: -10 });
-    setActiveCorridor(null);
-    setHoveredInfo(null);
-  }, []);
-
-  // Mouse drag pan handlers
-  const handleMouseDown = (e: React.MouseEvent) => {
-    if (e.button !== 0) return;
-    setIsDragging(true);
-    setDragStart({ x: e.clientX - pan.x, y: e.clientY - pan.y });
-  };
-
-  const handleMouseMove = (e: React.MouseEvent) => {
-    if (!containerRef.current) return;
-    const rect = containerRef.current.getBoundingClientRect();
-    
-    setTooltipPos({
-      x: e.clientX - rect.left,
-      y: e.clientY - rect.top,
-    });
-
-    if (isDragging) {
-      const maxPanX = 650 * (zoom + 0.5);
-      const maxPanY = 450 * (zoom + 0.5);
-      const newX = Math.max(-maxPanX, Math.min(maxPanX, e.clientX - dragStart.x));
-      const newY = Math.max(-maxPanY, Math.min(maxPanY, e.clientY - dragStart.y));
-      setPan({ x: newX, y: newY });
-    }
-  };
-
-  const handleMouseUp = () => {
-    setIsDragging(false);
-  };
-
-  // Mouse wheel zoom (Deep zoom up to 6.0x)
-  const handleWheel = (e: React.WheelEvent) => {
-    e.preventDefault();
-    if (e.deltaY < 0) {
-      setZoom((z) => Math.min(Number((z + 0.25).toFixed(2)), 6.0));
-    } else {
-      setZoom((z) => {
-        const next = Math.max(Number((z - 0.25).toFixed(2)), 0.7);
-        if (next <= 1) setPan({ x: 0, y: 0 });
-        return next;
-      });
-    }
-  };
+  const {
+    containerRef,
+    svgRef,
+    countriesPaths,
+    originPoint,
+    destinationPoints,
+    destinations,
+    hoveredInfo,
+    activeCorridor,
+    activeTarget,
+    tooltipPos,
+    zoom,
+    pan,
+    isDragging,
+    handleZoomIn,
+    handleZoomOut,
+    handleReset,
+    handleMouseDown,
+    handleMouseMove,
+    handleMouseUp,
+    handleWheel,
+    setHoveredInfo,
+    setActiveCorridor,
+  } = useWorldMap();
 
   return (
     <div
@@ -348,7 +98,7 @@ export function InteractiveWorldMap() {
         </div>
       </div>
 
-      {/* Main Authentic SVG World Map with Smooth Pan & Zoom */}
+      {/* Main Authentic SVG World Map */}
       <div className="relative w-full aspect-[960/490] min-h-[380px] sm:min-h-[440px] lg:min-h-[480px] flex items-center justify-center overflow-hidden">
         <svg
           ref={svgRef}
@@ -382,7 +132,7 @@ export function InteractiveWorldMap() {
           >
             {/* Authentic Real World Continents & Country Polygons */}
             <g>
-              {countriesPaths.map((item: { key: string; id: string; name: string; corridor?: DestinationCorridor; path: string }) => {
+              {countriesPaths.map((item) => {
                 const isHovered = hoveredInfo?.isoId === item.id;
                 const isCorridor = Boolean(item.corridor);
                 const isActiveCorridor = activeTarget?.isoId === item.id;
@@ -578,7 +328,7 @@ export function InteractiveWorldMap() {
               {hoveredInfo?.corridor || activeCorridor ? (
                 // Full Corridor Intelligence Card
                 (() => {
-                  const data = hoveredInfo?.corridor || activeCorridor!;
+                  const data: DestinationCorridor = hoveredInfo?.corridor || activeCorridor!;
                   return (
                     <div>
                       <div className="flex items-center justify-between mb-1.5">
@@ -654,7 +404,7 @@ export function InteractiveWorldMap() {
       {/* Corridor Filter Chips */}
       <div className="relative z-20 pt-3.5 flex items-center gap-2 overflow-x-auto no-scrollbar">
         <span className="text-[10px] uppercase font-bold text-slate-400 shrink-0">Explore Corridors:</span>
-        {DESTINATIONS.map((dest) => {
+        {destinations.map((dest) => {
           const isSelected = activeTarget?.id === dest.id;
           return (
             <button

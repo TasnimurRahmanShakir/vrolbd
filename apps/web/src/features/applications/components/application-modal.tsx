@@ -5,17 +5,12 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Icon } from "@/components/ui/icon";
 import { ApplicationFormData, ApplicationFormSchema } from "../schemas/application.schema";
+import { ApplicationModalProps, ApplicationSubmissionResult } from "../types/application.types";
 import { useSubmitApplication } from "../hooks/use-submit-application";
 import { useUIStore } from "@/stores/ui.store";
 
-interface ApplicationModalProps {
-  jobId?: string;
-  jobTitle?: string;
-  onClose: () => void;
-}
-
 export function ApplicationModal({ jobId = "job-101", jobTitle = "Senior MEP Project Engineer", onClose }: ApplicationModalProps) {
-  const [successDossier, setSuccessDossier] = useState<{ dossierId: string; trackingCode: string } | null>(null);
+  const [successDossier, setSuccessDossier] = useState<ApplicationSubmissionResult | null>(null);
 
   const {
     register,

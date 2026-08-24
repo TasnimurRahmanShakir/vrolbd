@@ -1,11 +1,4 @@
-import { ApplicationFormData } from "../schemas/application.schema";
-
-export interface ApplicationSubmissionResult {
-  dossierId: string;
-  timestamp: string;
-  status: "REGISTERED" | "SECURITY_CHECK_PENDING";
-  trackingCode: string;
-}
+import { ApplicationFormData, ApplicationSubmissionResult } from "../types/application.types";
 
 export async function submitApplication(
   data: ApplicationFormData

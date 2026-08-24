@@ -5,7 +5,7 @@ import { useJobs } from "../hooks/use-jobs";
 import { Icon } from "@/components/ui/icon";
 import { AsyncBoundary } from "@/components/common/async-boundary";
 import { ApplicationModal } from "@/features/applications/components/application-modal";
-import { Job } from "../schemas/job.schema";
+import { Job } from "../types/job.types";
 
 const CATEGORIES = ["All", "Engineering & Construction", "Hospitality & Tourism", "Industrial & Manufacturing", "Healthcare & Medical"];
 const COUNTRIES = ["All", "United Arab Emirates", "Qatar", "Kingdom of Saudi Arabia", "Kuwait"];
