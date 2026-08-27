@@ -2,6 +2,7 @@
 
 import React from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { motion } from "framer-motion";
 import { Header, Footer, LanguageWrapper } from "@/components/layout";
 import { Icon } from "@/components/ui/icon";
@@ -24,9 +25,24 @@ export default function CompliancePage() {
         {/* Global Navigation */}
         <Header />
 
+        {/* 📜 Government BMET & ISO Compliance Accreditation Composition (Centered Symmetrically) */}
+        <div className="absolute top-0 left-0 right-0 h-[640px] sm:h-[740px] lg:h-[800px] pointer-events-none overflow-hidden select-none z-0">
+          <Image
+            src="/images/bmet-realistic-composition.webp"
+            alt="BMET Government License & ISO 9001:2015 Accreditation"
+            fill
+            unoptimized
+            priority
+            className="object-cover object-center opacity-70 sm:opacity-80 [mask-image:radial-gradient(ellipse_at_center,rgba(0,0,0,1)_0%,rgba(0,0,0,0.85)_55%,transparent_95%)]"
+          />
+          {/* Symmetrical Left, Right, & Bottom Ambient Protective Gradients */}
+          <div className="absolute inset-0 bg-gradient-to-t from-[#0A192F] via-transparent to-[#0A192F]/40" />
+          <div className="absolute inset-0 bg-gradient-to-r from-[#0A192F]/70 via-transparent to-[#0A192F]/70" />
+        </div>
+
         {/* 🏛️ 1. Hero Section */}
         <section className="py-14 sm:py-20 px-4 sm:px-6 max-w-[1440px] mx-auto relative z-10">
-          <div className="max-w-4xl space-y-6">
+          <div className="max-w-4xl space-y-6 relative z-10">
             <motion.div
               initial={{ opacity: 0, y: -10 }}
               animate={{ opacity: 1, y: 0 }}
@@ -103,7 +119,7 @@ export default function CompliancePage() {
         */}
         <div className="w-full bg-[#F4F6F9] text-slate-800 relative pt-12 pb-16 transition-colors border-t border-slate-200/80">
           <div className="max-w-[1440px] mx-auto px-4 sm:px-6 space-y-16">
-            
+
             {/* 🛡️ 2. Six Pillars of Ethical Recruitment */}
             <section className="space-y-8">
               <SectionHeader
@@ -115,93 +131,195 @@ export default function CompliancePage() {
 
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 {/* Pillar 1 */}
-                <div className="p-7 rounded-3xl bg-white border border-slate-200 shadow-md space-y-3.5 hover:border-[#C5A059] transition-all group">
-                  <div className="w-12 h-12 rounded-2xl bg-[#0A192F] text-[#C5A059] flex items-center justify-center shadow-md">
-                    <Icon name="payments" size={24} />
+                <div className="p-4 sm:p-5 rounded-3xl bg-white border border-slate-200 shadow-md hover:border-[#C5A059] hover:shadow-xl transition-all duration-300 group hover:-translate-y-1 flex flex-col justify-between">
+                  <div>
+                    <div className="relative w-full h-44 rounded-2xl overflow-hidden mb-4 border border-slate-200/80 shadow-xs">
+                      <Image
+                        src="/images/compliance/pillar1_zero_fee.webp"
+                        alt="Employer-Pays Principle"
+                        fill
+                        sizes="(max-width: 1024px) 100vw, 33vw"
+                        className="object-cover object-center group-hover:scale-105 transition-transform duration-500"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-black/30" />
+                      <div className="absolute top-2.5 left-2.5 w-9 h-9 rounded-xl bg-black/60 backdrop-blur-md border border-white/20 text-[#E2CB8F] flex items-center justify-center shadow-sm">
+                        <Icon name="payments" size={20} />
+                      </div>
+                      <div className="absolute bottom-2.5 left-3 right-3">
+                        <span className="text-[10px] font-bold uppercase tracking-wider text-white drop-shadow-md">
+                          ILO Zero-Fee Principle
+                        </span>
+                      </div>
+                    </div>
+                    <h3 className="text-base sm:text-lg font-bold text-[#0A192F] font-serif group-hover:text-[#8C6A2B] transition-colors mb-2">
+                      {language === "bn" ? "১. নিয়োগকারী-প্রদত্ত শূন্য ফি নীতি" : "1. Employer-Pays Principle"}
+                    </h3>
+                    <p className="text-xs text-slate-600 leading-relaxed">
+                      {language === "bn"
+                        ? "আন্তর্জাতিক শ্রম সংস্থা (ILO) নির্দেশিকা অনুসারে প্রার্থীদের কাছ থেকে কোনো প্রকার রিক্রুটমেন্ট ফি নেওয়া হয় না। সম্পূর্ণ খরচ নিয়োগকারী প্রতিষ্ঠান বহন করে।"
+                        : "Strict adherence to ILO Fair Recruitment Guidelines where all recruitment and mobilization fees are borne by the employer, never the jobseeker."}
+                    </p>
                   </div>
-                  <h3 className="text-lg font-bold text-[#0A192F] font-serif group-hover:text-[#8C6A2B] transition-colors">
-                    {language === "bn" ? "১. নিয়োগকারী-প্রদত্ত শূন্য ফি নীতি" : "1. Employer-Pays Principle"}
-                  </h3>
-                  <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
-                    {language === "bn"
-                      ? "আন্তর্জাতিক শ্রম সংস্থা (ILO) নির্দেশিকা অনুসারে প্রার্থীদের কাছ থেকে কোনো প্রকার রিক্রুটমেন্ট ফি নেওয়া হয় না। সম্পূর্ণ খরচ নিয়োগকারী প্রতিষ্ঠান বহন করে।"
-                      : "Strict adherence to ILO Fair Recruitment Guidelines where all recruitment and mobilization fees are borne by the employer, never the jobseeker."}
-                  </p>
                 </div>
 
                 {/* Pillar 2 */}
-                <div className="p-7 rounded-3xl bg-white border border-slate-200 shadow-md space-y-3.5 hover:border-[#C5A059] transition-all group">
-                  <div className="w-12 h-12 rounded-2xl bg-[#0A192F] text-[#C5A059] flex items-center justify-center shadow-md">
-                    <Icon name="verified_user" size={24} />
+                <div className="p-4 sm:p-5 rounded-3xl bg-white border border-slate-200 shadow-md hover:border-[#C5A059] hover:shadow-xl transition-all duration-300 group hover:-translate-y-1 flex flex-col justify-between">
+                  <div>
+                    <div className="relative w-full h-44 rounded-2xl overflow-hidden mb-4 border border-slate-200/80 shadow-xs">
+                      <Image
+                        src="/images/compliance/pillar2_bmet_license.webp"
+                        alt="Government License 1173 & BMET"
+                        fill
+                        sizes="(max-width: 1024px) 100vw, 33vw"
+                        className="object-cover object-center group-hover:scale-105 transition-transform duration-500"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-black/30" />
+                      <div className="absolute top-2.5 left-2.5 w-9 h-9 rounded-xl bg-black/60 backdrop-blur-md border border-white/20 text-[#E2CB8F] flex items-center justify-center shadow-sm">
+                        <Icon name="verified_user" size={20} />
+                      </div>
+                      <div className="absolute bottom-2.5 left-3 right-3">
+                        <span className="text-[10px] font-bold uppercase tracking-wider text-white drop-shadow-md">
+                          Ministry License RL-1173
+                        </span>
+                      </div>
+                    </div>
+                    <h3 className="text-base sm:text-lg font-bold text-[#0A192F] font-serif group-hover:text-[#8C6A2B] transition-colors mb-2">
+                      {language === "bn" ? "২. সরকারি লাইসেন্স ১১৭৩ ও বিএমইটি" : "2. Government License 1173 & BMET"}
+                    </h3>
+                    <p className="text-xs text-slate-600 leading-relaxed">
+                      {language === "bn"
+                        ? "গণপ্রজাতন্ত্রী বাংলাদেশ সরকারের প্রবাসী কল্যাণ ও বৈদেশিক কর্মসংস্থান মন্ত্রণালয় এবং বিএমইটি অনুমোদিত শতভাগ বৈধ ও সরকারি চ্যানেলে ভিসা অনুমোদন।"
+                        : "Operating with unblemished standing under Recruiting License 1173, approved by the Ministry of Expatriates' Welfare & Overseas Employment."}
+                    </p>
                   </div>
-                  <h3 className="text-lg font-bold text-[#0A192F] font-serif group-hover:text-[#8C6A2B] transition-colors">
-                    {language === "bn" ? "২. সরকারি লাইসেন্স ১১৭৩ ও বিএমইটি" : "2. Government License 1173 & BMET"}
-                  </h3>
-                  <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
-                    {language === "bn"
-                      ? "গণপ্রজাতন্ত্রী বাংলাদেশ সরকারের প্রবাসী কল্যাণ ও বৈদেশিক কর্মসংস্থান মন্ত্রণালয় এবং বিএমইটি অনুমোদিত শতভাগ বৈধ ও সরকারি চ্যানেলে ভিসা অনুমোদন।"
-                      : "Operating with unblemished standing under Recruiting License 1173, approved by the Ministry of Expatriates' Welfare & Overseas Employment."}
-                  </p>
                 </div>
 
                 {/* Pillar 3 */}
-                <div className="p-7 rounded-3xl bg-white border border-slate-200 shadow-md space-y-3.5 hover:border-[#C5A059] transition-all group">
-                  <div className="w-12 h-12 rounded-2xl bg-[#0A192F] text-[#C5A059] flex items-center justify-center shadow-md">
-                    <Icon name="description" size={24} />
+                <div className="p-4 sm:p-5 rounded-3xl bg-white border border-slate-200 shadow-md hover:border-[#C5A059] hover:shadow-xl transition-all duration-300 group hover:-translate-y-1 flex flex-col justify-between">
+                  <div>
+                    <div className="relative w-full h-44 rounded-2xl overflow-hidden mb-4 border border-slate-200/80 shadow-xs">
+                      <Image
+                        src="/images/compliance/pillar3_contract.webp"
+                        alt="Transparent Bilingual Contracts"
+                        fill
+                        sizes="(max-width: 1024px) 100vw, 33vw"
+                        className="object-cover object-center group-hover:scale-105 transition-transform duration-500"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-black/30" />
+                      <div className="absolute top-2.5 left-2.5 w-9 h-9 rounded-xl bg-black/60 backdrop-blur-md border border-white/20 text-[#E2CB8F] flex items-center justify-center shadow-sm">
+                        <Icon name="description" size={20} />
+                      </div>
+                      <div className="absolute bottom-2.5 left-3 right-3">
+                        <span className="text-[10px] font-bold uppercase tracking-wider text-white drop-shadow-md">
+                          Bilingual English & বাংলা
+                        </span>
+                      </div>
+                    </div>
+                    <h3 className="text-base sm:text-lg font-bold text-[#0A192F] font-serif group-hover:text-[#8C6A2B] transition-colors mb-2">
+                      {language === "bn" ? "৩. স্বচ্ছ দ্বিভাষিক নিয়োগ চুক্তি" : "3. Transparent Bilingual Contracts"}
+                    </h3>
+                    <p className="text-xs text-slate-600 leading-relaxed">
+                      {language === "bn"
+                        ? "ফ্লাইটের পূর্বেই বেতন, কাজের কর্মঘণ্টা, ফ্রি আবাসন ও চিকিৎসা সুবিধা স্পষ্ট বাংলায় ও ইংরেজিতে লিখিত চুক্তিনামা প্রার্থীর হাতে তুলে দেওয়া হয়।"
+                        : "Legally binding employment contracts in both English and Bengali detailing wages, work hours, overtime, medical care, and free boarding."}
+                    </p>
                   </div>
-                  <h3 className="text-lg font-bold text-[#0A192F] font-serif group-hover:text-[#8C6A2B] transition-colors">
-                    {language === "bn" ? "৩. স্বচ্ছ দ্বিভাষিক নিয়োগ চুক্তি" : "3. Transparent Bilingual Contracts"}
-                  </h3>
-                  <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
-                    {language === "bn"
-                      ? "ফ্লাইটের পূর্বেই বেতন, কাজের কর্মঘণ্টা, ফ্রি আবাসন ও চিকিৎসা সুবিধা স্পষ্ট বাংলায় ও ইংরেজিতে লিখিত চুক্তিনামা প্রার্থীর হাতে তুলে দেওয়া হয়।"
-                      : "Legally binding employment contracts in both English and Bengali detailing wages, work hours, overtime, medical care, and free boarding."}
-                  </p>
                 </div>
 
                 {/* Pillar 4 */}
-                <div className="p-7 rounded-3xl bg-white border border-slate-200 shadow-md space-y-3.5 hover:border-[#C5A059] transition-all group">
-                  <div className="w-12 h-12 rounded-2xl bg-[#0A192F] text-[#C5A059] flex items-center justify-center shadow-md">
-                    <Icon name="health_and_safety" size={24} />
+                <div className="p-4 sm:p-5 rounded-3xl bg-white border border-slate-200 shadow-md hover:border-[#C5A059] hover:shadow-xl transition-all duration-300 group hover:-translate-y-1 flex flex-col justify-between">
+                  <div>
+                    <div className="relative w-full h-44 rounded-2xl overflow-hidden mb-4 border border-slate-200/80 shadow-xs">
+                      <Image
+                        src="/images/compliance/pillar4_gamca_medical.webp"
+                        alt="GAMCA Medical & Biometric Audit"
+                        fill
+                        sizes="(max-width: 1024px) 100vw, 33vw"
+                        className="object-cover object-center group-hover:scale-105 transition-transform duration-500"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-black/30" />
+                      <div className="absolute top-2.5 left-2.5 w-9 h-9 rounded-xl bg-black/60 backdrop-blur-md border border-white/20 text-[#E2CB8F] flex items-center justify-center shadow-sm">
+                        <Icon name="health_and_safety" size={20} />
+                      </div>
+                      <div className="absolute bottom-2.5 left-3 right-3">
+                        <span className="text-[10px] font-bold uppercase tracking-wider text-white drop-shadow-md">
+                          GCC GAMCA Approved
+                        </span>
+                      </div>
+                    </div>
+                    <h3 className="text-base sm:text-lg font-bold text-[#0A192F] font-serif group-hover:text-[#8C6A2B] transition-colors mb-2">
+                      {language === "bn" ? "৪. গামকা ও বায়োমেট্রিক অডিট" : "4. GAMCA Medical & Biometric Audit"}
+                    </h3>
+                    <p className="text-xs text-slate-600 leading-relaxed">
+                      {language === "bn"
+                        ? "অনুমোদিত মেডিকেল সেন্টারে পুঙ্খানুপুঙ্খ স্বাস্থ্য পরীক্ষা ও স্বরাষ্ট্র মন্ত্রণালয়ের এনআইডি/পাসপোর্ট বায়োমেট্রিক ভেরিফিকেশন।"
+                        : "100% pre-departure health screening via authorized GCC GAMCA centers with biometric identity verification to prevent fraud."}
+                    </p>
                   </div>
-                  <h3 className="text-lg font-bold text-[#0A192F] font-serif group-hover:text-[#8C6A2B] transition-colors">
-                    {language === "bn" ? "৪. গামকা ও বায়োমেট্রিক অডিট" : "4. GAMCA Medical & Biometric Audit"}
-                  </h3>
-                  <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
-                    {language === "bn"
-                      ? "অনুমোদিত মেডিকেল সেন্টারে পুঙ্খানুপুঙ্খ স্বাস্থ্য পরীক্ষা ও স্বরাষ্ট্র মন্ত্রণালয়ের এনআইডি/পাসপোর্ট বায়োমেট্রিক ভেরিফিকেশন।"
-                      : "100% pre-departure health screening via authorized GCC GAMCA centers with biometric identity verification to prevent fraud."}
-                  </p>
                 </div>
 
                 {/* Pillar 5 */}
-                <div className="p-7 rounded-3xl bg-white border border-slate-200 shadow-md space-y-3.5 hover:border-[#C5A059] transition-all group">
-                  <div className="w-12 h-12 rounded-2xl bg-[#0A192F] text-[#C5A059] flex items-center justify-center shadow-md">
-                    <Icon name="school" size={24} />
+                <div className="p-4 sm:p-5 rounded-3xl bg-white border border-slate-200 shadow-md hover:border-[#C5A059] hover:shadow-xl transition-all duration-300 group hover:-translate-y-1 flex flex-col justify-between">
+                  <div>
+                    <div className="relative w-full h-44 rounded-2xl overflow-hidden mb-4 border border-slate-200/80 shadow-xs">
+                      <Image
+                        src="/images/compliance/pillar5_orientation.webp"
+                        alt="Pre-Departure Legal Orientation"
+                        fill
+                        sizes="(max-width: 1024px) 100vw, 33vw"
+                        className="object-cover object-center group-hover:scale-105 transition-transform duration-500"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-black/30" />
+                      <div className="absolute top-2.5 left-2.5 w-9 h-9 rounded-xl bg-black/60 backdrop-blur-md border border-white/20 text-[#E2CB8F] flex items-center justify-center shadow-sm">
+                        <Icon name="school" size={20} />
+                      </div>
+                      <div className="absolute bottom-2.5 left-3 right-3">
+                        <span className="text-[10px] font-bold uppercase tracking-wider text-white drop-shadow-md">
+                          Pre-Flight Labor Briefing
+                        </span>
+                      </div>
+                    </div>
+                    <h3 className="text-base sm:text-lg font-bold text-[#0A192F] font-serif group-hover:text-[#8C6A2B] transition-colors mb-2">
+                      {language === "bn" ? "৫. প্রি-ডিপার্চার ওরিয়েন্টেশন" : "5. Pre-Departure Legal Orientation"}
+                    </h3>
+                    <p className="text-xs text-slate-600 leading-relaxed">
+                      {language === "bn"
+                        ? "গন্তব্য দেশের শ্রম আইন, ভাষা, সংস্কৃতির প্রশিক্ষণ এবং যেকোনো আইনি প্রয়োজনে দূতাবাস সহায়তা সংক্রান্ত বিস্তারিত ব্রিফিং।"
+                        : "Mandatory pre-flight workshops covering host-nation labor laws, cultural etiquette, workplace safety, and consular emergency channels."}
+                    </p>
                   </div>
-                  <h3 className="text-lg font-bold text-[#0A192F] font-serif group-hover:text-[#8C6A2B] transition-colors">
-                    {language === "bn" ? "৫. প্রি-ডিপার্চার ওরিয়েন্টেশন" : "5. Pre-Departure Legal Orientation"}
-                  </h3>
-                  <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
-                    {language === "bn"
-                      ? "গন্তব্য দেশের শ্রম আইন, ভাষা, সংস্কৃতির প্রশিক্ষণ এবং যেকোনো আইনি প্রয়োজনে দূতাবাস সহায়তা সংক্রান্ত বিস্তারিত ব্রিফিং।"
-                      : "Mandatory pre-flight workshops covering host-nation labor laws, cultural etiquette, workplace safety, and consular emergency channels."}
-                  </p>
                 </div>
 
                 {/* Pillar 6 */}
-                <div className="p-7 rounded-3xl bg-white border border-slate-200 shadow-md space-y-3.5 hover:border-[#C5A059] transition-all group">
-                  <div className="w-12 h-12 rounded-2xl bg-[#0A192F] text-[#C5A059] flex items-center justify-center shadow-md">
-                    <Icon name="support_agent" size={24} />
+                <div className="p-4 sm:p-5 rounded-3xl bg-white border border-slate-200 shadow-md hover:border-[#C5A059] hover:shadow-xl transition-all duration-300 group hover:-translate-y-1 flex flex-col justify-between">
+                  <div>
+                    <div className="relative w-full h-44 rounded-2xl overflow-hidden mb-4 border border-slate-200/80 shadow-xs">
+                      <Image
+                        src="/images/compliance/pillar6_welfare.webp"
+                        alt="Post-Arrival Welfare & Escrow"
+                        fill
+                        sizes="(max-width: 1024px) 100vw, 33vw"
+                        className="object-cover object-center group-hover:scale-105 transition-transform duration-500"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-black/30" />
+                      <div className="absolute top-2.5 left-2.5 w-9 h-9 rounded-xl bg-black/60 backdrop-blur-md border border-white/20 text-[#E2CB8F] flex items-center justify-center shadow-sm">
+                        <Icon name="support_agent" size={20} />
+                      </div>
+                      <div className="absolute bottom-2.5 left-3 right-3">
+                        <span className="text-[10px] font-bold uppercase tracking-wider text-white drop-shadow-md">
+                          24/7 GCC On-Ground Helpdesk
+                        </span>
+                      </div>
+                    </div>
+                    <h3 className="text-base sm:text-lg font-bold text-[#0A192F] font-serif group-hover:text-[#8C6A2B] transition-colors mb-2">
+                      {language === "bn" ? "৬. সার্বক্ষণিক প্রবাসী সুরক্ষা ও ওয়েলফেয়ার" : "6. Post-Arrival Welfare & Escrow"}
+                    </h3>
+                    <p className="text-xs text-slate-600 leading-relaxed">
+                      {language === "bn"
+                        ? "রিয়াদ, দুবাই ও দোহার স্থানীয় গ্রাউন্ড টিমের মাধ্যমে কর্মীদের সার্বক্ষণিক খোঁজখবর ও যেকোনো অভিযোগ নিষ্পত্তির তাৎক্ষণিক ব্যবস্থা।"
+                        : "Permanent liaison desks across Riyadh, Dubai, and Doha offering continuous worker welfare support, grievance resolution, and repatriation safety."}
+                    </p>
                   </div>
-                  <h3 className="text-lg font-bold text-[#0A192F] font-serif group-hover:text-[#8C6A2B] transition-colors">
-                    {language === "bn" ? "৬. সার্বক্ষণিক প্রবাসী সুরক্ষা ও ওয়েলফেয়ার" : "6. Post-Arrival Welfare & Escrow"}
-                  </h3>
-                  <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
-                    {language === "bn"
-                      ? "রিয়াদ, দুবাই ও দোহার স্থানীয় গ্রাউন্ড টিমের মাধ্যমে কর্মীদের সার্বক্ষণিক খোঁজখবর ও যেকোনো অভিযোগ নিষ্পত্তির তাৎক্ষণিক ব্যবস্থা।"
-                      : "Permanent liaison desks across Riyadh, Dubai, and Doha offering continuous worker welfare support, grievance resolution, and repatriation safety."}
-                  </p>
                 </div>
               </div>
             </section>

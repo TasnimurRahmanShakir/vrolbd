@@ -8,6 +8,7 @@ export interface StepItem {
   badgeEn: string;
   badgeBn: string;
   icon: string;
+  image: string;
   highlightEn: string;
   highlightBn: string;
 }
@@ -23,6 +24,7 @@ export const EMPLOYER_PIPELINE_STEPS: StepItem[] = [
     badgeEn: "Project Scoping",
     badgeBn: "রিকয়ারমেন্ট অডিট",
     icon: "assignment",
+    image: "/images/pipeline/step1_audit.webp",
     highlightEn: "Customized Job Matrix",
     highlightBn: "কাস্টমাইজড জব ম্যাট্রিক্স",
   },
@@ -36,6 +38,7 @@ export const EMPLOYER_PIPELINE_STEPS: StepItem[] = [
     badgeEn: "Talent Pool",
     badgeBn: "ট্যালেন্ট পুল",
     icon: "groups",
+    image: "/images/pipeline/step2_sourcing.webp",
     highlightEn: "Pre-Vetted Database",
     highlightBn: "যাচাইকৃত ডাটাবেজ",
   },
@@ -49,6 +52,7 @@ export const EMPLOYER_PIPELINE_STEPS: StepItem[] = [
     badgeEn: "Skill Verification",
     badgeBn: "দক্ষতা যাচাই",
     icon: "verified",
+    image: "/images/pipeline/step3_tradetest.webp",
     highlightEn: "100% Practical Grading",
     highlightBn: "১০০% প্র্যাকটিক্যাল গ্রেডিং",
   },
@@ -62,6 +66,7 @@ export const EMPLOYER_PIPELINE_STEPS: StepItem[] = [
     badgeEn: "Rapid Mobilization",
     badgeBn: "দ্রুত মোবিলাইজেশন",
     icon: "flight_takeoff",
+    image: "/images/pipeline/step4_airport.webp",
     highlightEn: "14-21 Day Turnaround",
     highlightBn: "১৪-২১ দিনে ফ্লাইট",
   },
@@ -78,6 +83,7 @@ export const CANDIDATE_PIPELINE_STEPS: StepItem[] = [
     badgeEn: "Profile Logging",
     badgeBn: "প্রোফাইল নিবন্ধন",
     icon: "app_registration",
+    image: "/images/pipeline/step1_audit.webp",
     highlightEn: "Free Documentation Check",
     highlightBn: "বিনামূল্যে ফাইল যাচাই",
   },
@@ -91,6 +97,7 @@ export const CANDIDATE_PIPELINE_STEPS: StepItem[] = [
     badgeEn: "Practical Test",
     badgeBn: "ব্যবহারিক পরীক্ষা",
     icon: "construction",
+    image: "/images/pipeline/step3_tradetest.webp",
     highlightEn: "Zero Assessment Fees",
     highlightBn: "কোনো পরীক্ষার ফি নেই",
   },
@@ -104,6 +111,7 @@ export const CANDIDATE_PIPELINE_STEPS: StepItem[] = [
     badgeEn: "Legal Visa",
     badgeBn: "আইনি সুরক্ষা",
     icon: "badge",
+    image: "/images/pipeline/step2_sourcing.webp",
     highlightEn: "BMET Smart Protected",
     highlightBn: "সরকারি বিএমইটি সুরক্ষা",
   },
@@ -117,6 +125,7 @@ export const CANDIDATE_PIPELINE_STEPS: StepItem[] = [
     badgeEn: "Airport Escort",
     badgeBn: "ফ্লাইট ও অভ্যর্থনা",
     icon: "connecting_airports",
+    image: "/images/pipeline/step4_airport.webp",
     highlightEn: "Guaranteed Contract Terms",
     highlightBn: "নিরাপদ কর্মচুক্তি গ্যারান্টি",
   },

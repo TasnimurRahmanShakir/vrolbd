@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+import Image from "next/image";
 import { Header, Footer, LanguageWrapper } from "@/components/layout";
 import { Icon } from "@/components/ui/icon";
 import { SectionHeader } from "@/components/common/section-header";
@@ -21,9 +22,24 @@ export default function JobsPage() {
         {/* Global Navigation */}
         <Header />
 
+        {/* 👷 Global Career Opportunities & Professional Engineering Background */}
+        <div className="absolute top-0 right-0 w-full sm:w-[70%] lg:w-[55%] h-[560px] sm:h-[620px] pointer-events-none overflow-hidden select-none z-0">
+          <Image
+            src="/images/jobs-career-hero.webp"
+            alt="International Career Opportunities & Workforce Recruitment"
+            fill
+            unoptimized
+            priority
+            className="object-cover object-center opacity-70 sm:opacity-85 [mask-image:linear-gradient(to_left,rgba(0,0,0,1)_0%,rgba(0,0,0,0.85)_40%,transparent_100%)]"
+          />
+          {/* Protective Left & Bottom Gradient */}
+          <div className="absolute inset-0 bg-gradient-to-r from-[#0A192F] via-[#0A192F]/40 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#0A192F] via-transparent to-[#0A192F]/50" />
+        </div>
+
         {/* 🏛️ 1. Hero Header Section */}
         <section className="py-12 sm:py-16 px-4 sm:px-6 max-w-[1440px] mx-auto relative z-10">
-          <div className="max-w-3xl space-y-4">
+          <div className="max-w-3xl space-y-4 relative z-10">
             <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#0F243B] border border-[#C5A059]/40 shadow-sm">
               <Icon name="travel_explore" size={16} className="text-[#C5A059]" />
               <span className="text-xs uppercase tracking-[0.2em] font-bold text-[#E2CB8F]">

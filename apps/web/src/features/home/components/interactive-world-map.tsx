@@ -195,7 +195,7 @@ export function InteractiveWorldMap() {
             </g>
 
             {/* Curved Flight Trajectory Arcs */}
-            {destinationPoints.map((dest) => {
+            {destinationPoints.map((dest, idx) => {
               const isHighlighted = activeTarget?.id === dest.id;
 
               return (
@@ -211,25 +211,35 @@ export function InteractiveWorldMap() {
                     className="transition-all duration-300"
                   />
 
-                  {/* Animated Particle Beam traversing the flight arc */}
-                  <motion.circle
-                    r={isHighlighted ? 3.5 / zoom : 2.2 / zoom}
-                    fill={isHighlighted ? "#FFF9E6" : "#C5A059"}
+                  {/* ✈️ Animated Aeroplane traversing the flight arc */}
+                  <motion.g
                     filter="url(#goldGlow)"
                     initial={{ offsetDistance: "0%" }}
                     animate={{
                       offsetDistance: ["0%", "100%"],
                     }}
                     transition={{
-                      duration: isHighlighted ? 2.0 : 3.5,
+                      duration: isHighlighted ? 2.8 : 4.5,
                       repeat: Infinity,
-                      ease: "easeInOut",
-                      delay: Math.random() * 1.5,
+                      ease: "linear",
+                      delay: (idx * 0.6) % 2.5,
                     }}
                     style={{
                       offsetPath: `path("${dest.pathData}")`,
+                      offsetRotate: "auto",
                     }}
-                  />
+                  >
+                    <g transform={`scale(${isHighlighted ? 1.05 / zoom : 0.78 / zoom}) translate(-12, -12)`}>
+                      <path
+                        d="M21 16v-2l-8-5V3.5c0-.83-.67-1.5-1.5-1.5S10 2.67 10 3.5V9l-8 5v2l8-2.5V19l-2 1.5V22l3.5-1 3.5 1v-1.5L13 19v-5.5l8 2.5z"
+                        fill={isHighlighted ? "#FFF8E7" : "#E2CB8F"}
+                        stroke="#0A192F"
+                        strokeWidth="0.8"
+                        transform="rotate(90 12 12)"
+                        className="drop-shadow-md"
+                      />
+                    </g>
+                  </motion.g>
                 </g>
               );
             })}

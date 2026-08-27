@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { Icon } from "@/components/ui/icon";
 import { SectionHeader } from "@/components/common/section-header";
@@ -148,9 +149,8 @@ export function DeploymentPipelineSection() {
                   onMouseEnter={() => setHoveredStep(step.id)}
                   onMouseLeave={() => setHoveredStep(null)}
                   animate={{
-                    flex: isHovered ? 1.4 : isDimmed ? 0.88 : 1,
-                    opacity: isDimmed ? 0.5 : 1,
-                    filter: isDimmed ? "blur(0.3px)" : "blur(0px)",
+                    flex: isHovered ? 1.35 : isDimmed ? 0.88 : 1,
+                    opacity: isDimmed ? 0.65 : 1,
                     scale: isHovered ? 1.01 : 1,
                   }}
                   transition={{
@@ -159,43 +159,45 @@ export function DeploymentPipelineSection() {
                     damping: 22,
                     mass: 0.85,
                   }}
-                  className={`p-6 sm:p-7 rounded-2xl bg-white border transition-shadow duration-300 flex flex-col justify-between cursor-pointer group shadow-sm ${
+                  className={`p-4 sm:p-5 rounded-2xl bg-white border transition-all duration-300 flex flex-col justify-between cursor-pointer group shadow-sm ${
                     isHovered
-                      ? "border-[#C5A059] shadow-xl bg-gradient-to-b from-white via-[#FCFBF8] to-[#F8F5EE]"
+                      ? "border-[#C5A059] shadow-xl"
                       : "border-slate-200/90 hover:border-[#C5A059]/60"
                   }`}
                 >
                   <div>
-                    {/* Top Odometer Number & Thin Accent Rule */}
-                    <div className="flex items-center justify-between mb-4">
-                      {/* 🔢 4. Kinetic Odometer Roll-Up Number */}
-                      <div className="h-10 overflow-hidden flex items-center">
-                        <motion.span
-                          initial={{ y: 36, opacity: 0 }}
-                          whileInView={{ y: 0, opacity: 1 }}
-                          viewport={{ once: true }}
-                          transition={{
-                            type: "spring",
-                            stiffness: 180,
-                            damping: 18,
-                            delay: idx * 0.12,
-                          }}
-                          className="block text-2xl sm:text-3xl font-extrabold text-[#C5A059] font-mono tracking-wider"
-                        >
-                          {step.stepNumber}
-                        </motion.span>
+                    {/* 🖼️ High-Visibility Step Thumbnail with Floating Overlays */}
+                    <div className="relative w-full h-36 sm:h-40 rounded-xl overflow-hidden mb-4 border border-slate-200/80 shadow-xs">
+                      <Image
+                        src={step.image}
+                        alt={step.titleEn}
+                        fill
+                        sizes="(max-width: 1024px) 100vw, 25vw"
+                        className="object-cover object-center group-hover:scale-105 transition-transform duration-500 brightness-[0.96]"
+                      />
+                      {/* Subtle Dark Gradient for Floating Badge Contrast */}
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-black/30" />
+
+                      {/* Top Left: Step Number Badge */}
+                      <div className="absolute top-2.5 left-2.5 px-2.5 py-1 rounded-lg bg-black/60 backdrop-blur-md border border-white/20 text-[#E2CB8F] text-xs font-bold font-mono tracking-wider shadow-sm">
+                        {step.stepNumber}
                       </div>
 
-                      <div className="w-10 h-10 rounded-xl bg-slate-50 border border-slate-200 group-hover:bg-[#0A192F] group-hover:text-[#C5A059] text-[#8C6A2B] flex items-center justify-center transition-all duration-300 shadow-xs group-hover:scale-105">
-                        <Icon name={step.icon} size={20} />
+                      {/* Top Right: Step Icon */}
+                      <div className="absolute top-2.5 right-2.5 w-8 h-8 rounded-lg bg-black/60 backdrop-blur-md border border-white/20 text-[#E2CB8F] flex items-center justify-center shadow-sm">
+                        <Icon name={step.icon} size={16} />
+                      </div>
+
+                      {/* Bottom Floating Step Tag on Image */}
+                      <div className="absolute bottom-2.5 left-3 right-3">
+                        <span className="text-[10px] sm:text-[11px] font-bold text-white uppercase tracking-wider block drop-shadow-md">
+                          {language === "bn" ? step.badgeBn : step.badgeEn}
+                        </span>
                       </div>
                     </div>
 
-                    {/* Step Divider Rule */}
-                    <div className="w-full h-px bg-slate-200 group-hover:bg-[#C5A059] transition-colors duration-300 mb-5" />
-
                     {/* Step Title */}
-                    <h3 className="text-xl sm:text-2xl font-bold text-[#0A192F] group-hover:text-[#8C6A2B] transition-colors duration-200 font-serif mb-2">
+                    <h3 className="text-lg sm:text-xl font-bold text-[#0A192F] group-hover:text-[#8C6A2B] transition-colors duration-200 font-serif mb-2 leading-snug">
                       {language === "bn" ? step.titleBn : step.titleEn}
                     </h3>
 
@@ -206,17 +208,12 @@ export function DeploymentPipelineSection() {
                   </div>
 
                   {/* Bottom Highlight Tag */}
-                  <div className="pt-4 border-t border-slate-100 flex items-center justify-between text-xs">
+                  <div className="pt-3 border-t border-slate-100 flex items-center justify-between text-xs">
                     <span className="text-[11px] font-bold text-[#8C6A2B] flex items-center gap-1.5">
                       <Icon name="check_circle" size={14} />
                       <span>{language === "bn" ? step.highlightBn : step.highlightEn}</span>
                     </span>
-
-                    <span className="text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-md bg-[#0A192F]/5 text-slate-600">
-                      {language === "bn" ? step.badgeBn : step.badgeEn}
-                    </span>
                   </div>
-
                 </motion.div>
               );
             })}

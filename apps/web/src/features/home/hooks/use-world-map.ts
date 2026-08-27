@@ -46,7 +46,7 @@ export function useWorldMap(): UseWorldMapReturn {
   const [tooltipPos, setTooltipPos] = useState<{ x: number; y: number }>({ x: 0, y: 0 });
 
   // Pan & Zoom Navigation States (Slightly zoomed and centered on Bangladesh by default)
-  const [zoom, setZoom] = useState(1.4);
+  const [zoom, setZoom] = useState(2.2);
   const [pan, setPan] = useState({ x: 0, y: 0 });
   const [isDragging, setIsDragging] = useState(false);
   const [dragStart, setDragStart] = useState({ x: 0, y: 0 });
@@ -133,7 +133,7 @@ export function useWorldMap(): UseWorldMapReturn {
   }, []);
 
   const handleReset = useCallback(() => {
-    setZoom(1.4);
+    setZoom(2.2);
     setPan({ x: 0, y: 0 });
     setActiveCorridor(null);
     setHoveredInfo(null);

@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+import Image from "next/image";
 import { motion, Variants } from "framer-motion";
 import { Icon } from "@/components/ui/icon";
 import { useLanguageStore, translations } from "@/stores/language.store";
@@ -64,37 +65,39 @@ export function IndustryBentoSection() {
           </motion.div>
         ))}
 
-        {/* 🏛️ Institutional Compliance Glass Banner */}
+        {/* 🏛️ Institutional Compliance Glass Banner with Fading Right Realistic Image */}
         <motion.div
           variants={itemVariants}
-          className="p-6 sm:p-8 rounded-2xl bg-gradient-to-r from-[#0A192F] via-[#112240] to-[#173B61] text-white border border-[#C5A059]/40 shadow-2xl flex flex-col justify-between lg:col-span-3 relative overflow-hidden group"
+          className="p-6 sm:p-8 md:p-10 rounded-2xl bg-[#0A192F] text-white border border-[#C5A059]/40 shadow-2xl flex flex-col justify-center lg:col-span-3 relative overflow-hidden group min-h-[230px]"
         >
-          {/* Ambient Glow */}
-          <div className="absolute top-0 right-0 w-96 h-96 bg-[#C5A059]/15 rounded-full blur-3xl pointer-events-none" />
+          {/* 🖼️ Right Side Image: VROLBD Corporate Office with BMET Wall Emblem & Recruits (Left-only Fade) */}
+          <div className="absolute right-0 top-0 bottom-0 w-full sm:w-3/5 lg:w-1/2 h-full pointer-events-none overflow-hidden [mask-image:linear-gradient(to_left,rgba(0,0,0,1)_0%,rgba(0,0,0,1)_60%,transparent_100%)]">
+            <Image
+              src="/images/vrolbd-bmet-office.webp"
+              alt="VROLBD Corporate Office with Official BMET Emblem Accreditation Wall"
+              fill
+              priority
+              sizes="(max-width: 1024px) 100vw, 50vw"
+              className="object-cover object-center lg:object-right brightness-[0.95] contrast-[1.05] group-hover:scale-105 transition-all duration-700 ease-out"
+            />
+            {/* Soft navy blend from left */}
+            <div className="absolute inset-0 bg-gradient-to-r from-[#0A192F] via-[#0A192F]/30 to-transparent" />
+          </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-center relative z-10">
-            <div className="lg:col-span-8 space-y-2.5">
-              <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#C5A059]/15 text-[#C5A059] text-[11px] font-bold uppercase tracking-widest border border-[#C5A059]/30">
-                <Icon name="verified_user" size={15} />
-                <span>{t.complianceTitle}</span>
-              </div>
-              <h3 className="text-xl sm:text-2xl font-bold font-serif text-white">
-                BMET License 1173 • ISO 9001:2015 Accredited Architecture
-              </h3>
-              <p className="text-xs sm:text-sm text-slate-300 leading-relaxed max-w-2xl">
-                {t.complianceDesc} Every candidate undergoes direct consular registration, wage protection escrow confirmation, and government smart clearance before boarding.
-              </p>
+          {/* Left Side Content */}
+          <div className="relative z-10 max-w-2xl lg:max-w-3xl space-y-3">
+            <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#C5A059]/15 text-[#C5A059] text-[11px] font-bold uppercase tracking-widest border border-[#C5A059]/30 backdrop-blur-sm">
+              <Icon name="verified_user" size={15} />
+              <span>{t.complianceTitle}</span>
             </div>
 
-            <div className="lg:col-span-4 flex flex-col sm:flex-row lg:flex-col gap-3 justify-end">
-              <a
-                href="#compliance"
-                className="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl bg-gradient-to-r from-[#E2CB8F] via-[#C5A059] to-[#AA853C] hover:opacity-95 text-[#0A192F] text-xs font-bold uppercase tracking-wider shadow-xl transition-transform hover:scale-[1.02] cursor-pointer"
-              >
-                <Icon name="assignment_turned_in" size={16} />
-                <span>Inspect Compliance Charter</span>
-              </a>
-            </div>
+            <h3 className="text-xl sm:text-2xl lg:text-3xl font-bold font-serif text-white leading-tight drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]">
+              BMET License 1173 <br /> ISO 9001:2015 Accredited Architecture
+            </h3>
+
+            <p className="text-xs sm:text-sm text-slate-300 leading-relaxed max-w-xl sm:max-w-2xl drop-shadow-[0_1px_3px_rgba(0,0,0,0.8)]">
+              {t.complianceDesc} Every candidate undergoes direct consular registration, wage protection escrow confirmation, and government smart clearance before boarding.
+            </p>
           </div>
         </motion.div>
       </motion.div>

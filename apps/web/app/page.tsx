@@ -1,6 +1,6 @@
 import React from "react";
 import { Header, Footer, LanguageWrapper } from "@/components/layout";
-import { HeroSection } from "@/features/home/components/hero-section";
+import { HeroSection } from "@/features/home/components/hero-section-copy";
 import { HeroFloatingSearch } from "@/features/home/components/hero-floating-search";
 import { DeploymentPipelineSection } from "@/features/home/components/deployment-pipeline-section";
 import { IndustryBentoSection } from "@/features/home/components/industry-bento-section";
@@ -31,7 +31,7 @@ export default function HomePage() {
         <div className="w-full bg-[#F4F6F9] text-slate-800 relative pt-0 pb-8 transition-colors border-t border-slate-200/80">
           
           {/* Floating Quick Search Bar at the Middle Junction */}
-          <div className="relative -top-7 sm:-top-8 lg:-top-9 z-20">
+          <div className="relative -top-7 sm:-top-8 lg:-top-9 z-30">
             <HeroFloatingSearch />
           </div>
 

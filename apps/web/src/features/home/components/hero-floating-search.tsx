@@ -3,6 +3,8 @@
 import React from "react";
 import { Icon } from "@/components/ui/icon";
 import { Combobox } from "@/components/ui/combobox";
+import { AnimatedStat } from "./animated-stat";
+import { translations } from "@/stores/language.store";
 import { useFloatingSearch } from "../hooks/use-floating-search";
 
 export function HeroFloatingSearch() {
@@ -20,70 +22,116 @@ export function HeroFloatingSearch() {
     handleSearch,
   } = useFloatingSearch();
 
+  const t = translations[language as "en" | "bn"].hero;
+
   return (
     <div className="w-full max-w-5xl mx-auto px-4 sm:px-6">
-      <form
-        onSubmit={handleSearch}
-        className="w-full bg-[#0A192F] border border-[#C5A059]/40 rounded-2xl p-2.5 sm:p-3.5 shadow-[0_20px_50px_rgba(10,25,47,0.45)] hover:border-[#C5A059] transition-all duration-300 relative z-30"
-      >
-        <div className="grid grid-cols-1 lg:grid-cols-12 items-center gap-3 lg:gap-0">
-          
-          {/* Segment 1: Country Combobox */}
-          <div className="lg:col-span-4 px-3 sm:px-4 py-1 lg:border-r lg:border-white/10">
-            <Combobox
-              options={countryOptions}
-              value={country}
-              onChange={setCountry}
-              label={language === "bn" ? "গন্তব্য করিডোর" : "Destination"}
-              icon="public"
-              placeholder={language === "bn" ? "দেশ নির্বাচন করুন" : "Select Country"}
-              variant="dark"
-            />
-          </div>
+      {/* 🚀 Unified Master Executive Console: Quick Search + Live Deployment Telemetry */}
+      <div className="w-full bg-[#0A192F] border border-[#C5A059]/40 rounded-2xl shadow-[0_20px_50px_rgba(10,25,47,0.5)] hover:border-[#C5A059] transition-all duration-300 relative z-40">
+        
+        {/* Top Section: Search Controls */}
+        <form onSubmit={handleSearch} className="p-2.5 sm:p-3.5">
+          <div className="grid grid-cols-1 lg:grid-cols-12 items-center gap-3 lg:gap-0">
+            
+            {/* Segment 1: Country Combobox */}
+            <div className="lg:col-span-4 px-3 sm:px-4 py-1 lg:border-r lg:border-white/10">
+              <Combobox
+                options={countryOptions}
+                value={country}
+                onChange={setCountry}
+                label={language === "bn" ? "গন্তব্য করিডোর" : "Destination"}
+                icon="public"
+                placeholder={language === "bn" ? "দেশ নির্বাচন করুন" : "Select Country"}
+                variant="dark"
+              />
+            </div>
 
-          {/* Segment 2: Industry Combobox */}
-          <div className="lg:col-span-4 px-3 sm:px-4 py-1 lg:border-r lg:border-white/10">
-            <Combobox
-              options={industryOptions}
-              value={industry}
-              onChange={setIndustry}
-              label={language === "bn" ? "কাজের ক্ষেত্র / খাত" : "Industry"}
-              icon="business_center"
-              placeholder={language === "bn" ? "খাত নির্বাচন করুন" : "Select Industry"}
-              variant="dark"
-            />
-          </div>
+            {/* Segment 2: Industry Combobox */}
+            <div className="lg:col-span-4 px-3 sm:px-4 py-1 lg:border-r lg:border-white/10">
+              <Combobox
+                options={industryOptions}
+                value={industry}
+                onChange={setIndustry}
+                label={language === "bn" ? "কাজের ক্ষেত্র / খাত" : "Industry"}
+                icon="business_center"
+                placeholder={language === "bn" ? "খাত নির্বাচন করুন" : "Select Industry"}
+                variant="dark"
+              />
+            </div>
 
-          {/* Segment 3: Skill Level Combobox */}
-          <div className="lg:col-span-3 px-3 sm:px-4 py-1">
-            <Combobox
-              options={skillOptions}
-              value={skillLevel}
-              onChange={setSkillLevel}
-              label={language === "bn" ? "দক্ষতার স্তর" : "Skill Level"}
-              icon="psychology"
-              placeholder={language === "bn" ? "দক্ষতা নির্বাচন করুন" : "Select Level"}
-              variant="dark"
-            />
-          </div>
+            {/* Segment 3: Skill Level Combobox */}
+            <div className="lg:col-span-3 px-3 sm:px-4 py-1">
+              <Combobox
+                options={skillOptions}
+                value={skillLevel}
+                onChange={setSkillLevel}
+                label={language === "bn" ? "দক্ষতার স্তর" : "Skill Level"}
+                icon="psychology"
+                placeholder={language === "bn" ? "দক্ষতা নির্বাচন করুন" : "Select Level"}
+                variant="dark"
+              />
+            </div>
 
-          {/* Segment 4: Search CTA Button */}
-          <div className="lg:col-span-1 flex items-center justify-end px-2 py-1">
-            <button
-              type="submit"
-              className="w-full lg:w-12 h-12 rounded-xl bg-[#C5A059] hover:bg-[#D4AF37] text-[#0A192F] flex items-center justify-center shadow-lg transition-all duration-200 hover:scale-105 cursor-pointer font-bold gap-2"
-              title={language === "bn" ? "চাকরি খুঁজুন" : "Search Opportunities"}
-              aria-label="Search"
-            >
-              <Icon name="search" size={22} />
-              <span className="lg:hidden text-xs uppercase tracking-wider font-bold">
-                {language === "bn" ? "খুঁজুন" : "Search"}
-              </span>
-            </button>
-          </div>
+            {/* Segment 4: Search CTA Button */}
+            <div className="lg:col-span-1 flex items-center justify-end px-2 py-1">
+              <button
+                type="submit"
+                className="w-full lg:w-12 h-12 rounded-xl bg-[#C5A059] hover:bg-[#D4AF37] text-[#0A192F] flex items-center justify-center shadow-lg transition-all duration-200 hover:scale-105 cursor-pointer font-bold gap-2"
+                title={language === "bn" ? "চাকরি খুঁজুন" : "Search Opportunities"}
+                aria-label="Search"
+              >
+                <Icon name="search" size={22} />
+                <span className="lg:hidden text-xs uppercase tracking-wider font-bold">
+                  {language === "bn" ? "খুঁজুন" : "Search"}
+                </span>
+              </button>
+            </div>
 
+          </div>
+        </form>
+
+        {/* Bottom Integrated Telemetry Bar */}
+        <div className="border-t border-white/10 bg-[#071322]/85 backdrop-blur-md px-4 sm:px-8 py-3 rounded-b-2xl">
+          <div className="grid grid-cols-3 divide-x divide-white/10 items-center text-center">
+            
+            {/* Stat 1: Deployed */}
+            <div className="px-2 sm:px-4">
+              <AnimatedStat
+                value={48.5}
+                suffix="K+"
+                decimals={1}
+                theme="dark"
+                label={t.statDeployedLabel}
+              />
+            </div>
+
+            {/* Stat 2: Visa Speed */}
+            <div className="px-2 sm:px-4">
+              <AnimatedStat
+                value={14}
+                suffix={t.statVisaSuffix}
+                decimals={0}
+                theme="dark"
+                label={t.statVisaLabel}
+                highlight
+              />
+            </div>
+
+            {/* Stat 3: Retention */}
+            <div className="px-2 sm:px-4">
+              <AnimatedStat
+                value={99.4}
+                suffix="%"
+                decimals={1}
+                theme="dark"
+                label={t.statRetentionLabel}
+              />
+            </div>
+
+          </div>
         </div>
-      </form>
+
+      </div>
     </div>
   );
 }

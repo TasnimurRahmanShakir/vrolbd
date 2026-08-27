@@ -30,7 +30,7 @@ export function SectionHeader({
         isDark ? "border-white/10" : "border-slate-200/80"
       } ${className}`}
     >
-      <div className="space-y-2.5 max-w-2xl text-left">
+      <div className="space-y-2.5 max-w-4xl lg:max-w-full text-left">
         {/* Tag line with extended gradient accent line */}
         <div className="flex items-center gap-3">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#C5A059]/10 border border-[#C5A059]/30 text-[11px] font-bold uppercase tracking-widest text-[#8C6A2B] shrink-0">
@@ -52,7 +52,7 @@ export function SectionHeader({
         {/* Subheading */}
         {subheading && (
           <p
-            className={`text-xs sm:text-sm leading-relaxed ${
+            className={`text-xs sm:text-sm leading-relaxed max-w-4xl lg:max-w-full ${
               isDark ? "text-slate-300" : "text-slate-600"
             }`}
           >

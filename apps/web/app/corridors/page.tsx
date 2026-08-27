@@ -2,6 +2,7 @@
 
 import React, { useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { motion } from "framer-motion";
 import { Header, Footer, LanguageWrapper } from "@/components/layout";
 import { Icon } from "@/components/ui/icon";
@@ -184,9 +185,24 @@ export default function CorridorsPage() {
         {/* Global Header */}
         <Header />
 
+        {/* 🏙️ Full-Width Diagonal Sliced Landmarks Composition Background */}
+        <div className="absolute top-0 left-0 right-0 h-[620px] sm:h-[720px] lg:h-[780px] pointer-events-none overflow-hidden select-none z-0">
+          <Image
+            src="/images/corridors_landmarks_banner_v1.webp"
+            alt="Global Destination Skylines Composition"
+            fill
+            unoptimized
+            priority
+            className="object-cover object-center opacity-85"
+          />
+          {/* Bottom Fade & Left Text Protection */}
+          <div className="absolute inset-0 bg-gradient-to-t from-[#0A192F] via-transparent to-[#0A192F]/40" />
+          <div className="absolute inset-0 bg-gradient-to-r from-[#0A192F]/85 via-[#0A192F]/40 to-transparent" />
+        </div>
+
         {/* 🏛️ 1. Hero Section */}
         <section className="py-14 sm:py-20 px-4 sm:px-6 max-w-[1440px] mx-auto relative z-10">
-          <div className="max-w-4xl space-y-6">
+          <div className="max-w-4xl space-y-6 relative z-10">
             <motion.div
               initial={{ opacity: 0, y: -10 }}
               animate={{ opacity: 1, y: 0 }}
@@ -263,7 +279,7 @@ export default function CorridorsPage() {
         */}
         <div className="w-full bg-[#F4F6F9] text-slate-800 relative pt-12 pb-16 transition-colors border-t border-slate-200/80">
           <div className="max-w-[1440px] mx-auto px-4 sm:px-6 space-y-16">
-            
+
             {/* 🌐 2. Interactive Global Corridors Showcase */}
             <section className="space-y-8">
               <SectionHeader
@@ -282,18 +298,16 @@ export default function CorridorsPage() {
                       key={c.id}
                       type="button"
                       onClick={() => setSelectedCorridor(c.id)}
-                      className={`inline-flex items-center gap-2 px-4 py-2.5 rounded-xl text-xs font-bold transition-all cursor-pointer ${
-                        isSelected
+                      className={`inline-flex items-center gap-2 px-4 py-2.5 rounded-xl text-xs font-bold transition-all cursor-pointer ${isSelected
                           ? "bg-[#0A192F] text-[#C5A059] shadow-md"
                           : "text-slate-600 hover:text-slate-900 hover:bg-slate-100"
-                      }`}
+                        }`}
                     >
                       <Icon name={c.flagIcon} size={16} />
                       <span>{language === "bn" ? c.countryBn : c.countryEn}</span>
                       <span
-                        className={`text-[10px] font-mono px-1.5 py-0.5 rounded-full ${
-                          isSelected ? "bg-[#C5A059]/20 text-[#C5A059]" : "bg-slate-200 text-slate-700"
-                        }`}
+                        className={`text-[10px] font-mono px-1.5 py-0.5 rounded-full ${isSelected ? "bg-[#C5A059]/20 text-[#C5A059]" : "bg-slate-200 text-slate-700"
+                          }`}
                       >
                         {c.activeOpenings}
                       </span>

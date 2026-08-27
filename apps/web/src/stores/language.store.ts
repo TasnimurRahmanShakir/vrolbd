@@ -49,8 +49,8 @@ export const translations = {
     },
     hero: {
       licenseBadge: "Govt. Approved Agency • License 1173",
-      headlineLead: "Global Talent.",
-      headlineAccent: "Precision Deployment.",
+      headlineLead: "Leading Manpower",
+      headlineAccent: "Recruitment Company in Bangladesh",
       description:
         "Connecting accredited technical, engineering, and healthcare talent to GCC and global enterprise corridors with zero-friction consular processing.",
       exploreRequisitions: "Apply for Overseas Jobs",
@@ -282,8 +282,8 @@ export const translations = {
     },
     hero: {
       licenseBadge: "সরকারি অনুমোদিত রিক্রুটিং এজেন্সি • লাইসেন্স ১১৭৩",
-      headlineLead: "বিশ্বমানের জনশক্তি।",
-      headlineAccent: "নিখুঁত কর্মসংস্থান।",
+      headlineLead: "বাংলাদেশের শীর্ষস্থানীয়",
+      headlineAccent: "ম্যানপাওয়ার রিক্রুটিং কোম্পানি",
       description:
         "আন্তর্জাতিক মানের কারিগরি, প্রকৌশল ও স্বাস্থ্যসেবা জনশক্তিকে মধ্যপ্রাচ্য ও বিশ্ববাজারের মেগাপ্রজেক্টে দ্রুততম সরকারি ভিসায় পৌঁছে দেওয়ার বিশ্বস্ত প্ল্যাটফর্ম।",
       exploreRequisitions: "বিদেশে চাকরির আবেদন",
