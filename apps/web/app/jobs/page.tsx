@@ -2,7 +2,6 @@
 
 import React from "react";
 import Image from "next/image";
-import { Header, Footer, LanguageWrapper } from "@/components/layout";
 import { Icon } from "@/components/ui/icon";
 import { SectionHeader } from "@/components/common/section-header";
 import { JobsInteractiveSection } from "@/features/jobs/components/jobs-interactive-section";
@@ -13,14 +12,10 @@ export default function JobsPage() {
   const { language } = useLanguageStore();
 
   return (
-    <LanguageWrapper>
-      <main className="min-h-screen bg-[#0A192F] text-slate-100 relative overflow-x-clip pt-20">
-        {/* Ambient Radial Atmospheric Glow */}
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[1200px] h-[550px] bg-radial from-[#173B61]/40 via-[#0A192F]/80 to-[#0A192F] blur-[140px] pointer-events-none" />
-        <div className="absolute top-[350px] right-[-120px] w-[550px] h-[550px] bg-[#C5A059]/5 rounded-full blur-[170px] pointer-events-none" />
-
-        {/* Global Navigation */}
-        <Header />
+    <main className="min-h-screen bg-[#0A192F] text-slate-100 relative overflow-x-clip pt-20">
+      {/* Ambient Radial Atmospheric Glow */}
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[1200px] h-[550px] bg-radial from-[#173B61]/40 via-[#0A192F]/80 to-[#0A192F] blur-[140px] pointer-events-none" />
+      <div className="absolute top-[350px] right-[-120px] w-[550px] h-[550px] bg-[#C5A059]/5 rounded-full blur-[170px] pointer-events-none" />
 
         {/* 👷 Global Career Opportunities & Professional Engineering Background */}
         <div className="absolute top-0 right-0 w-full sm:w-[70%] lg:w-[55%] h-[560px] sm:h-[620px] pointer-events-none overflow-hidden select-none z-0">
@@ -107,11 +102,7 @@ export default function JobsPage() {
             </div>
 
           </div>
-        </div>
-
-        {/* Enterprise Footer with Jolforing tag */}
-        <Footer />
-      </main>
-    </LanguageWrapper>
+      </div>
+    </main>
   );
 }

@@ -99,7 +99,7 @@ export function B2BEnterpriseCTASection() {
   };
 
   return (
-    <section id="b2b-gateway" className="py-10 md:py-16 px-4 sm:px-6 max-w-[1440px] mx-auto">
+    <section id="contact" className="scroll-mt-24 py-10 md:py-16 px-4 sm:px-6 max-w-[1440px] mx-auto">
       <div className="relative rounded-3xl bg-gradient-to-br from-[#0A192F] via-[#0F243B] to-[#173B61] text-white p-6 sm:p-10 md:p-14 border border-[#C5A059]/40 shadow-2xl overflow-hidden">
         
         {/* Glow Ambient Lights */}
@@ -128,20 +128,36 @@ export function B2BEnterpriseCTASection() {
               <span className="text-[11px] font-bold uppercase tracking-wider text-[#C5A059] block">
                 {language === "bn" ? "জরুরি এক্সিকিউটিভ যোগাযোগ" : "Direct Corporate Hotline"}
               </span>
-              <div className="flex flex-col sm:flex-row gap-3 text-xs text-slate-200">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs text-slate-200">
                 <a
-                  href="tel:+88028839910"
+                  href="tel:+8802226639178"
                   className="flex items-center gap-2 hover:text-[#C5A059] transition-colors"
                 >
-                  <Icon name="call" size={16} className="text-[#C5A059]" />
-                  <span>+880 (02) 883-9910</span>
+                  <Icon name="call" size={15} className="text-[#C5A059] shrink-0" />
+                  <span>02-226639178-79 (Off.)</span>
+                </a>
+                <a
+                  href="tel:+8801916600239"
+                  className="flex items-center gap-2 hover:text-[#C5A059] transition-colors"
+                >
+                  <Icon name="smartphone" size={15} className="text-[#C5A059] shrink-0" />
+                  <span>01916600239 (Mob.)</span>
                 </a>
                 <a
                   href="mailto:info@vrolbd.com"
                   className="flex items-center gap-2 hover:text-[#C5A059] transition-colors"
                 >
-                  <Icon name="mail" size={16} className="text-[#C5A059]" />
+                  <Icon name="mail" size={15} className="text-[#C5A059] shrink-0" />
                   <span>info@vrolbd.com</span>
+                </a>
+                <a
+                  href="https://www.vrolbd.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-2 hover:text-[#C5A059] transition-colors text-[#E2CB8F]"
+                >
+                  <Icon name="language" size={15} className="text-[#C5A059] shrink-0" />
+                  <span>www.vrolbd.com</span>
                 </a>
               </div>
             </div>

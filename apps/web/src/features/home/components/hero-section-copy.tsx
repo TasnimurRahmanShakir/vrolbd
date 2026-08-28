@@ -35,9 +35,9 @@ export function HeroSection() {
                   </span>
                 </div>
               </div>
-              <div className="relative rounded-2xl overflow-hidden border border-[#C5A059]/35 shadow-2xl bg-black/40 p-2 backdrop-blur-md group-hover:border-[#C5A059]/70 transition-all duration-300 max-w-[280px] sm:max-w-[320px]">
+              <div className="relative rounded-2xl overflow-hidden border border-[#C5A059]/35 shadow-2xl bg-transparent p-2 group-hover:border-[#C5A059]/70 transition-all duration-300 max-w-[280px] sm:max-w-[320px]">
                 <Image
-                  src="/footer-logo.jpeg"
+                  src="/VROLBD Logo.png"
                   alt="Vision Recruiting & Overseas Ltd. (RL-1173)"
                   width={180}
                   height={120}

@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Noto_Serif, Noto_Serif_Bengali, Outfit, Plus_Jakarta_Sans } from "next/font/google";
 import { QueryProvider } from "@/providers/query-provider";
+import { Header, Footer, LanguageWrapper } from "@/components/layout";
 import "./globals.css";
 
 const notoSerif = Noto_Serif({
@@ -63,7 +64,11 @@ export default function RootLayout({
       </head>
       <body className="antialiased bg-[#0A192F] text-slate-100 min-h-screen selection:bg-[#C5A059] selection:text-[#0A192F]">
         <QueryProvider>
-          {children}
+          <LanguageWrapper>
+            <Header />
+            {children}
+            <Footer />
+          </LanguageWrapper>
         </QueryProvider>
       </body>
     </html>

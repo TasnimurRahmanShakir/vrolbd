@@ -1,6 +1,7 @@
 "use client";
 
-import React, { useRef } from "react";
+import React, { useRef, useState, useEffect } from "react";
+import { createPortal } from "react-dom";
 import { motion } from "framer-motion";
 import { Icon } from "@/components/ui/icon";
 import { useLanguageStore, translations } from "@/stores/language.store";
@@ -15,6 +16,17 @@ export function ApplicationModal(props: ApplicationModalProps) {
     initialMode = "details",
     onClose,
   } = props;
+
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+    const originalOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    return () => {
+      document.body.style.overflow = originalOverflow;
+    };
+  }, []);
 
   const { language } = useLanguageStore();
   const t = translations[language].jobModal;
@@ -43,14 +55,16 @@ export function ApplicationModal(props: ApplicationModalProps) {
     onClose,
   });
 
-  return (
+  if (!mounted) return null;
+
+  const modalContent = (
     <div
       onClick={(e) => {
         if (e.target === e.currentTarget && !isPending) {
           onClose();
         }
       }}
-      className="fixed inset-0 z-[100] flex items-center justify-center p-3 sm:p-4 md:p-6 bg-[#050B14]/85 backdrop-blur-md"
+      className="fixed inset-0 z-[99999] flex items-center justify-center p-3 sm:p-4 md:p-6 bg-[#050B14]/90 backdrop-blur-md overflow-y-auto"
     >
       <motion.div
         onClick={(e) => e.stopPropagation()}
@@ -58,7 +72,7 @@ export function ApplicationModal(props: ApplicationModalProps) {
         animate={{ opacity: 1, scale: 1, y: 0 }}
         exit={{ opacity: 0, scale: 0.96, y: 12 }}
         transition={{ duration: 0.22, ease: [0.16, 1, 0.3, 1] }}
-        className="relative w-full max-w-2xl bg-[#0A192F] text-white rounded-3xl border border-[#C5A059]/35 shadow-[0_25px_60px_-15px_rgba(0,0,0,0.85)] overflow-hidden max-h-[88vh] flex flex-col"
+        className="relative w-full max-w-2xl bg-[#0A192F] text-white rounded-2xl sm:rounded-3xl border border-[#C5A059]/40 shadow-[0_25px_60px_-15px_rgba(0,0,0,0.85)] overflow-hidden max-h-[86vh] sm:max-h-[88vh] flex flex-col my-auto"
       >
         {/* 📌 Pinned Header Navigation Bar */}
         <div className="px-6 py-3.5 bg-[#0F243B] border-b border-white/10 flex items-center justify-between gap-4 shrink-0">
@@ -556,4 +570,6 @@ export function ApplicationModal(props: ApplicationModalProps) {
       </motion.div>
     </div>
   );
+
+  return createPortal(modalContent, document.body);
 }

@@ -1,6 +1,10 @@
 @import "tailwindcss";
 
 @layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
   :root {
     --navy-bg: #0A192F;
     --navy-surface: #0F2B48;

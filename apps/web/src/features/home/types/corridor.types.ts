@@ -1,6 +1,8 @@
 export interface DestinationCorridor {
   id: string;
   name: string;
+  shortName?: string;
+  shortNameBn?: string;
   countryCode: string;
   isoId: string;
   city: string;

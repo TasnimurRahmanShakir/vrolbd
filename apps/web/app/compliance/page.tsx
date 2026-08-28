@@ -4,7 +4,6 @@ import React from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { motion } from "framer-motion";
-import { Header, Footer, LanguageWrapper } from "@/components/layout";
 import { Icon } from "@/components/ui/icon";
 import { SectionHeader } from "@/components/common/section-header";
 import { KineticOdometer } from "@/components/common/kinetic-odometer";
@@ -16,28 +15,24 @@ export default function CompliancePage() {
   const t = translations[language].compliancePage;
 
   return (
-    <LanguageWrapper>
-      <main className="min-h-screen bg-[#0A192F] text-slate-100 relative overflow-x-clip pt-20">
-        {/* Ambient Glow */}
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[1200px] h-[550px] bg-radial from-[#173B61]/40 via-[#0A192F]/80 to-[#0A192F] blur-[140px] pointer-events-none" />
-        <div className="absolute top-[380px] right-[-120px] w-[550px] h-[550px] bg-[#C5A059]/5 rounded-full blur-[170px] pointer-events-none" />
+    <main className="min-h-screen bg-[#0A192F] text-slate-100 relative overflow-x-clip pt-20">
+      {/* Ambient Glow */}
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[1200px] h-[550px] bg-radial from-[#173B61]/40 via-[#0A192F]/80 to-[#0A192F] blur-[140px] pointer-events-none" />
+      <div className="absolute top-[380px] right-[-120px] w-[550px] h-[550px] bg-[#C5A059]/5 rounded-full blur-[170px] pointer-events-none" />
 
-        {/* Global Navigation */}
-        <Header />
-
-        {/* 📜 Government BMET & ISO Compliance Accreditation Composition (Centered Symmetrically) */}
-        <div className="absolute top-0 left-0 right-0 h-[640px] sm:h-[740px] lg:h-[800px] pointer-events-none overflow-hidden select-none z-0">
+        {/* 📜 Government BMET & ISO Compliance Accreditation Composition (100% Seamless Full-Width Gradient Blend) */}
+        <div className="absolute top-0 left-0 right-0 w-full h-[620px] sm:h-[700px] lg:h-[760px] pointer-events-none overflow-hidden select-none z-0">
           <Image
             src="/images/bmet-realistic-composition.webp"
             alt="BMET Government License & ISO 9001:2015 Accreditation"
             fill
             unoptimized
             priority
-            className="object-cover object-center opacity-70 sm:opacity-80 [mask-image:radial-gradient(ellipse_at_center,rgba(0,0,0,1)_0%,rgba(0,0,0,0.85)_55%,transparent_95%)]"
+            className="object-cover object-right opacity-35 sm:opacity-50 [mask-image:linear-gradient(to_right,transparent_0%,transparent_30%,rgba(0,0,0,0.4)_60%,rgba(0,0,0,1)_100%)]"
           />
-          {/* Symmetrical Left, Right, & Bottom Ambient Protective Gradients */}
+          {/* Seamless Deep Navy Multi-Layer Gradient Overlays */}
+          <div className="absolute inset-0 bg-gradient-to-r from-[#0A192F] via-[#0A192F] via-35% to-transparent" />
           <div className="absolute inset-0 bg-gradient-to-t from-[#0A192F] via-transparent to-[#0A192F]/40" />
-          <div className="absolute inset-0 bg-gradient-to-r from-[#0A192F]/70 via-transparent to-[#0A192F]/70" />
         </div>
 
         {/* 🏛️ 1. Hero Section */}
@@ -381,12 +376,8 @@ export default function CompliancePage() {
               <B2BEnterpriseCTASection />
             </div>
 
-          </div>
         </div>
-
-        {/* Global Footer with Jolforing tag */}
-        <Footer />
-      </main>
-    </LanguageWrapper>
+      </div>
+    </main>
   );
 }

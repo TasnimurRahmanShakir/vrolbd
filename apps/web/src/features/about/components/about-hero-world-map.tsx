@@ -89,15 +89,15 @@ export function AboutHeroWorldMap() {
           </filter>
         </defs>
 
-        {/* Global Country Landmasses */}
+        {/* Global Country Landmasses with Royal Gold Borders */}
         <g>
           {paths.map((item: { key: string; path: string }) => (
             <path
               key={item.key}
               d={item.path}
-              fill="#10253E"
-              stroke="#1C416B"
-              strokeWidth="0.65"
+              fill="#0E243D"
+              stroke="#C5A059"
+              strokeWidth="0.8"
               opacity="0.85"
             />
           ))}

@@ -4,7 +4,6 @@ import React, { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { motion } from "framer-motion";
-import { Header, Footer, LanguageWrapper } from "@/components/layout";
 import { Icon } from "@/components/ui/icon";
 import { SectionHeader } from "@/components/common/section-header";
 import { KineticOdometer } from "@/components/common/kinetic-odometer";
@@ -176,14 +175,10 @@ export default function CorridorsPage() {
     CORRIDORS_DATA.find((c) => c.id === selectedCorridor) ?? CORRIDORS_DATA[0]!;
 
   return (
-    <LanguageWrapper>
-      <main className="min-h-screen bg-[#0A192F] text-slate-100 relative overflow-x-clip pt-20">
-        {/* Ambient Atmospheric Glow */}
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[1200px] h-[550px] bg-radial from-[#173B61]/40 via-[#0A192F]/80 to-[#0A192F] blur-[140px] pointer-events-none" />
-        <div className="absolute top-[380px] right-[-120px] w-[550px] h-[550px] bg-[#C5A059]/5 rounded-full blur-[170px] pointer-events-none" />
-
-        {/* Global Header */}
-        <Header />
+    <main className="min-h-screen bg-[#0A192F] text-slate-100 relative overflow-x-clip pt-20">
+      {/* Ambient Atmospheric Glow */}
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[1200px] h-[550px] bg-radial from-[#173B61]/40 via-[#0A192F]/80 to-[#0A192F] blur-[140px] pointer-events-none" />
+      <div className="absolute top-[380px] right-[-120px] w-[550px] h-[550px] bg-[#C5A059]/5 rounded-full blur-[170px] pointer-events-none" />
 
         {/* 🏙️ Full-Width Diagonal Sliced Landmarks Composition Background */}
         <div className="absolute top-0 left-0 right-0 h-[620px] sm:h-[720px] lg:h-[780px] pointer-events-none overflow-hidden select-none z-0">
@@ -496,12 +491,8 @@ export default function CorridorsPage() {
               <B2BEnterpriseCTASection />
             </div>
 
-          </div>
         </div>
-
-        {/* Global Footer with Jolforing tag */}
-        <Footer />
-      </main>
-    </LanguageWrapper>
+      </div>
+    </main>
   );
 }

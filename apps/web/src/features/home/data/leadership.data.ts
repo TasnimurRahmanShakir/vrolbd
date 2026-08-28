@@ -28,7 +28,7 @@ export const LEADERSHIP_PROFILES: VisionaryLeader[] = [
       "Leading the Board of Directors in strategic policy formulation, bilateral diplomacy, and sovereign ethical governance standards.",
     statementBn:
       "পরিচালনা পর্ষদের প্রধান এবং নীতিনির্ধারণে নেতৃত্বদানকারী। দেশের জনশক্তিকে বৈশ্বিক মানদণ্ডে পৌঁছে দিতে আমাদের নীতিনির্ধারণ সর্বদা স্বচ্ছ ও অটল।",
-    image: "/images/leaders/leader-1.jpg",
+    image: "/Syed Miraj Hossain.jpeg",
     badgeEn: "Board Leadership",
     badgeBn: "বোর্ড নেতৃত্ব",
     pillarsEn: ["Strategic Policy Governance", "Diplomatic Bilateral Treaties", "Ethical Charter Oversight"],
@@ -46,7 +46,7 @@ export const LEADERSHIP_PROFILES: VisionaryLeader[] = [
       "Directing daily administrative governance, fiscal stability, and turnkey multi-corridor mobilization operations.",
     statementBn:
       "কোম্পানির দৈনন্দিন প্রশাসনিক কার্যক্রম, আর্থিক ব্যবস্থাপনা ও অপারেশন তত্ত্বাবধান। প্রতিটি প্রার্থীর যাত্রা যেন নিরাপদ ও স্বচ্ছ হয় তা নিশ্চিত করাই মূল লক্ষ্য।",
-    image: "/images/leaders/leader-2.jpg",
+    image: "/Md. Mukul Hossain.jpeg",
     badgeEn: "Operations & Fiscal",
     badgeBn: "অপারেশন ও অর্থ",
     pillarsEn: ["Executive Administration", "Fiscal Stability Management", "Consular Corridor Oversight"],
@@ -64,7 +64,7 @@ export const LEADERSHIP_PROFILES: VisionaryLeader[] = [
       "Spearheading global recruitment strategy, embassy consular relations, and corporate enterprise expansion across GCC and European corridors.",
     statementBn:
       "নিয়োগ, কৌশল, আন্তর্জাতিক সম্পর্ক ও ভবিষ্যৎ পরিকল্পনার প্রধান নির্বাহী। মধ্যপ্রাচ্য ও ইউরোপের মেগাপ্রজেক্টে মানসম্পন্ন টেকনিক্যাল রিক্রুটমেন্টের পথপ্রদর্শক।",
-    image: "/images/leaders/leader-3.jpg",
+    image: "/Md. Saidur Rahman.jpeg",
     badgeEn: "Strategy & Expansion",
     badgeBn: "কৌশল ও বিস্তার",
     pillarsEn: ["Global Recruitment Strategy", "Embassy & Consular Relations", "Mega-Project Manpower Intake"],
@@ -82,7 +82,7 @@ export const LEADERSHIP_PROFILES: VisionaryLeader[] = [
       "Executing strategic board oversight, multinational consortium agreements, and multi-departmental executive coordination.",
     statementBn:
       "চেয়ারম্যানের অনুপস্থিতিতে সকল দায়িত্ব পালন, বোর্ড মিটিং, চুক্তি ও প্রশাসনে সক্রিয় ভূমিকা পালন এবং কোম্পানির বিভিন্ন কার্যক্রমে সমন্বয় ও সহায়তা প্রদান।",
-    image: "/images/leaders/leader-4.jpg",
+    image: "/Md. Shahbul Islam.jpeg",
     badgeEn: "Board Coordination",
     badgeBn: "বোর্ড সমন্বয়",
     pillarsEn: ["Consortium Treaty Execution", "Active Board Representation", "Inter-Departmental Governance"],
@@ -100,7 +100,7 @@ export const LEADERSHIP_PROFILES: VisionaryLeader[] = [
       "Architect of Vision Recruiting's global expansion, institutional prestige, and sovereign bilateral mobilization network.",
     statementBn:
       "আন্তর্জাতিক সম্প্রসারণ, কৌশল নির্ধারণ ও নেতৃত্বের প্রধান। কোম্পানির ভবিষ্যৎ রূপরেখা ও বিশ্বমঞ্চে প্রাতিষ্ঠানিক মর্যাদা বহনকারী।",
-    image: "/images/leaders/leader-5.jpg",
+    image: "/SIRAJUL ISLAM LIPON.jpeg",
     badgeEn: "Founding Vision",
     badgeBn: "প্রতিষ্ঠাতা ভিশন",
     pillarsEn: ["Global Footprint Expansion", "Institutional Prestige Charter", "Sovereign Manpower Legacy"],

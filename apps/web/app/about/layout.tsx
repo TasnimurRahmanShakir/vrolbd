@@ -42,16 +42,16 @@ export default function AboutLayout({
     logo: "https://vrolbd.com/images/logo.png",
     address: {
       "@type": "PostalAddress",
-      streetAddress: "Banani Commercial Area",
+      streetAddress: "Pritom Zaman Tower, Level-3, 37/2, Purana Paltan, Culvert Road",
       addressLocality: "Dhaka",
-      postalCode: "1213",
+      postalCode: "1000",
       addressCountry: "BD",
     },
     contactPoint: {
       "@type": "ContactPoint",
-      telephone: "+880-02-883-9910",
+      telephone: "+880-2-226639178",
       contactType: "customer service",
-      areaServed: ["BD", "SA", "AE", "QA", "KW", "OM", "BH"],
+      areaServed: ["BD", "SA", "AE", "QA", "KW", "OM", "BH", "RO", "MY", "JP"],
       availableLanguage: ["English", "Bengali", "Arabic"],
     },
   };

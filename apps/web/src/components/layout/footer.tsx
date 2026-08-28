@@ -28,9 +28,9 @@ export function Footer() {
           <div className="lg:col-span-2 space-y-4">
             {/* Custom Brand Logo */}
             <Link href="/" className="inline-block group max-w-[260px] sm:max-w-[290px] w-full">
-              <div className="rounded-2xl overflow-hidden border border-[#C5A059]/25 shadow-lg bg-black/30 p-1.5 backdrop-blur-sm group-hover:border-[#C5A059]/60 transition-all duration-300">
+              <div className="rounded-2xl overflow-hidden border border-[#C5A059]/25 shadow-lg bg-transparent p-1.5 group-hover:border-[#C5A059]/60 transition-all duration-300">
                 <Image
-                  src="/footer-logo.jpeg"
+                  src="/VROLBD Logo.png"
                   alt="Vision Recruiting & Overseas Ltd. (License 1173)"
                   width={320}
                   height={180}
@@ -135,36 +135,91 @@ export function Footer() {
             </ul>
           </div>
 
-          {/* Column 4: Contact & Global Network */}
+          {/* Column 4: Official Contact & Headquarters */}
           <div className="space-y-4">
             <h4 className="text-xs font-bold uppercase tracking-wider text-white font-['Outfit'] flex items-center gap-2">
               <span className="w-1.5 h-1.5 rounded-full bg-[#C5A059]" />
               {t.contact}
             </h4>
-            <div className="space-y-3 text-xs text-slate-300">
+            <div className="space-y-2.5 text-xs text-slate-300">
+              {/* Official Registered Address */}
               <div className="flex items-start gap-2">
                 <Icon name="location_on" size={16} className="text-[#C5A059] shrink-0 mt-0.5" />
-                <span>{t.dhakaOffice}</span>
+                <span className="leading-relaxed">{t.dhakaOffice}</span>
               </div>
-              <div className="flex items-start gap-2">
-                <Icon name="public" size={16} className="text-[#C5A059] shrink-0 mt-0.5" />
-                <span>{t.uaeOffice} • {t.saudiOffice}</span>
+
+              {/* Telephone & Mobile */}
+              <div className="flex flex-col gap-1.5 pt-1">
+                <div className="flex items-center gap-2">
+                  <Icon name="call" size={15} className="text-[#C5A059] shrink-0" />
+                  <span className="text-slate-400 text-[11px]">Tel:</span>
+                  <a href="tel:+8802226639178" className="hover:text-[#C5A059] font-medium text-white transition-colors">
+                    02-226639178-79 (Off.)
+                  </a>
+                </div>
+                <div className="flex items-center gap-2">
+                  <Icon name="smartphone" size={15} className="text-[#C5A059] shrink-0" />
+                  <span className="text-slate-400 text-[11px]">Mobile:</span>
+                  <a href="tel:+8801916600239" className="hover:text-[#C5A059] font-medium text-white transition-colors">
+                    01916600239
+                  </a>
+                </div>
               </div>
-              <div className="flex items-center gap-2">
-                <Icon name="call" size={16} className="text-[#C5A059] shrink-0" />
-                <a href="tel:+8801700000000" className="hover:text-[#C5A059] font-medium text-white transition-colors">
-                  +880 (02) 883-9910
-                </a>
+
+              {/* Official Emails */}
+              <div className="flex flex-col gap-1 pt-1">
+                <div className="flex items-center gap-2">
+                  <Icon name="mail" size={15} className="text-[#C5A059] shrink-0" />
+                  <a href="mailto:info@vrolbd.com" className="hover:text-[#C5A059] text-white transition-colors">
+                    info@vrolbd.com
+                  </a>
+                </div>
+                <div className="flex items-center gap-2 pl-6">
+                  <a href="mailto:visionrecruitingltd22@gmail.com" className="hover:text-[#C5A059] text-slate-300 transition-colors text-[11px]">
+                    visionrecruitingltd22@gmail.com
+                  </a>
+                </div>
               </div>
-              <div className="flex items-center gap-2">
-                <Icon name="mail" size={16} className="text-[#C5A059] shrink-0" />
-                <a href="mailto:info@vrolbd.com" className="hover:text-[#C5A059] text-white transition-colors">
-                  info@vrolbd.com
-                </a>
-              </div>
+
             </div>
           </div>
 
+        </div>
+
+        {/* 🌐 Option 1: Full-Width Highlighted Central Corporate Web Banner */}
+        <div className="pt-2 border-t border-white/10">
+          <a
+            href="https://www.vrolbd.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group relative flex flex-col sm:flex-row items-center justify-between gap-4 p-4 sm:p-5 rounded-2xl bg-gradient-to-r from-[#0E243D] via-[#153456] to-[#0E243D] border border-[#C5A059]/40 hover:border-[#C5A059] shadow-xl hover:shadow-[#C5A059]/20 transition-all duration-300 overflow-hidden"
+          >
+            {/* Ambient Gold Glow on Hover */}
+            <div className="absolute inset-0 bg-radial from-[#C5A059]/15 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
+
+            {/* Left/Center: Large Highlighted Domain & Credentials */}
+            <div className="flex items-center gap-3.5 relative z-10 text-center sm:text-left">
+              <div className="w-11 h-11 sm:w-12 sm:h-12 rounded-xl bg-[#C5A059]/20 border border-[#C5A059]/50 flex items-center justify-center text-[#C5A059] group-hover:scale-110 group-hover:bg-[#C5A059] group-hover:text-[#0A192F] transition-all duration-300 shrink-0 shadow-md">
+                <Icon name="language" size={24} />
+              </div>
+              <div>
+                <div className="text-xl sm:text-2xl lg:text-3xl font-extrabold font-['Outfit'] text-transparent bg-clip-text bg-gradient-to-r from-[#F5E6C8] via-[#C5A059] to-[#E2CB8F] tracking-wider group-hover:brightness-110 transition-all">
+                  www.vrolbd.com
+                </div>
+                <div className="text-[11px] sm:text-xs text-slate-300 font-medium">
+                  {language === "bn"
+                    ? "গণপ্রজাতন্ত্রী বাংলাদেশ সরকার অনুমোদিত রিক্রুটিং এজেন্সি • লাইসেন্স RL-1173"
+                    : "Govt. Approved Overseas Manpower Recruitment Agency • License RL-1173"}
+                </div>
+              </div>
+            </div>
+
+            {/* Right: Interactive Visit CTA Button */}
+            <div className="relative z-10 inline-flex items-center gap-2 px-4 sm:px-5 py-2.5 rounded-xl bg-[#C5A059] text-[#0A192F] font-bold text-xs uppercase tracking-wider shadow-lg group-hover:scale-105 group-hover:bg-[#E2CB8F] transition-all shrink-0">
+              <span>{language === "bn" ? "ওয়েবসাইট ভিজিট করুন" : "Visit Official Website"}</span>
+              <Icon name="arrow_outward" size={16} />
+            </div>
+          </a>
         </div>
 
         {/* Bottom Bar */}

@@ -40,7 +40,6 @@ export function HeroFloatingSearch() {
                 value={country}
                 onChange={setCountry}
                 label={language === "bn" ? "গন্তব্য করিডোর" : "Destination"}
-                icon="public"
                 placeholder={language === "bn" ? "দেশ নির্বাচন করুন" : "Select Country"}
                 variant="dark"
               />
@@ -53,7 +52,6 @@ export function HeroFloatingSearch() {
                 value={industry}
                 onChange={setIndustry}
                 label={language === "bn" ? "কাজের ক্ষেত্র / খাত" : "Industry"}
-                icon="business_center"
                 placeholder={language === "bn" ? "খাত নির্বাচন করুন" : "Select Industry"}
                 variant="dark"
               />
@@ -66,7 +64,6 @@ export function HeroFloatingSearch() {
                 value={skillLevel}
                 onChange={setSkillLevel}
                 label={language === "bn" ? "দক্ষতার স্তর" : "Skill Level"}
-                icon="psychology"
                 placeholder={language === "bn" ? "দক্ষতা নির্বাচন করুন" : "Select Level"}
                 variant="dark"
               />

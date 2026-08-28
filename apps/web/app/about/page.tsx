@@ -4,7 +4,6 @@ import React from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { motion } from "framer-motion";
-import { Header, Footer, LanguageWrapper } from "@/components/layout";
 import { Icon } from "@/components/ui/icon";
 import { SectionHeader } from "@/components/common/section-header";
 import { KineticOdometer } from "@/components/common/kinetic-odometer";
@@ -18,14 +17,10 @@ export default function AboutPage() {
   const t = translations[language].aboutPage;
 
   return (
-    <LanguageWrapper>
-      <main className="min-h-screen bg-[#0A192F] text-slate-100 relative overflow-x-clip pt-20">
-        {/* Ambient Radial Atmospheric Glow */}
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[1200px] h-[550px] bg-radial from-[#173B61]/40 via-[#0A192F]/80 to-[#0A192F] blur-[140px] pointer-events-none" />
-        <div className="absolute top-[400px] right-[-120px] w-[550px] h-[550px] bg-[#C5A059]/5 rounded-full blur-[170px] pointer-events-none" />
-
-        {/* Global Navigation */}
-        <Header />
+    <main className="min-h-screen bg-[#0A192F] text-slate-100 relative overflow-x-clip pt-20">
+      {/* Ambient Radial Atmospheric Glow */}
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[1200px] h-[550px] bg-radial from-[#173B61]/40 via-[#0A192F]/80 to-[#0A192F] blur-[140px] pointer-events-none" />
+      <div className="absolute top-[400px] right-[-120px] w-[550px] h-[550px] bg-[#C5A059]/5 rounded-full blur-[170px] pointer-events-none" />
 
         {/* 🗺️ Full-Page Connecting World Map Background (Anchored to Right Edge) */}
         <AboutHeroWorldMap />
@@ -412,9 +407,9 @@ export default function AboutPage() {
                   <span className="px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider bg-[#C5A059]/15 text-[#8C6A2B] border border-[#C5A059]/30 inline-block mb-1">
                     Dhaka Headquarters
                   </span>
-                  <h4 className="text-base font-bold text-[#0A192F]">Vision Recruiting Corporate Tower</h4>
+                  <h4 className="text-base font-bold text-[#0A192F]">Pritom Zaman Tower</h4>
                   <p className="text-xs text-slate-600 leading-relaxed">
-                    Banani Commercial Area, Dhaka 1213, Bangladesh. Comprehensive candidate biometric screening, central trade testing, and ministry consular hub.
+                    Level-3, 37/2, Purana Paltan, Culvert Road, Dhaka-1000, Bangladesh. Comprehensive candidate biometric screening, central trade testing, and ministry consular hub.
                   </p>
                 </div>
 
@@ -445,12 +440,8 @@ export default function AboutPage() {
               <B2BEnterpriseCTASection />
             </div>
 
-          </div>
         </div>
-
-        {/* Global Footer with Developed by Jolforing */}
-        <Footer />
-      </main>
-    </LanguageWrapper>
+      </div>
+    </main>
   );
 }

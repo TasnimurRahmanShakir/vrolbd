@@ -188,89 +188,101 @@ export function VisionariesSection() {
                 delay: idx * 0.08,
               }}
               whileHover={{ y: -4 }}
-              className={`p-6 sm:p-8 rounded-3xl bg-[#0F243B] text-white border transition-all duration-300 relative group overflow-hidden ${
+              className={`p-5 sm:p-7 rounded-3xl bg-[#0F243B] text-white border transition-all duration-300 relative group overflow-hidden ${
                 activeLeaderIndex === idx
                   ? "border-[#C5A059] shadow-[0_25px_60px_rgba(197,160,89,0.28)]"
                   : "border-[#C5A059]/30 shadow-[0_20px_50px_rgba(0,0,0,0.4)] hover:border-[#C5A059]/70"
               }`}
             >
               {/* Top Accent Gold Trim Line */}
-              <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-[#E2CB8F] via-[#C5A059] to-[#AA853C]" />
+              <div className="absolute top-0 left-0 right-0 h-1.5 bg-gradient-to-r from-[#E2CB8F] via-[#C5A059] to-[#AA853C]" />
 
-              <div className="flex flex-col sm:flex-row gap-5 sm:gap-6 items-start">
+              <div className="flex flex-col sm:flex-row items-center sm:items-stretch gap-5 sm:gap-7">
                 
-                {/* 🎭 Cinematic Portrait: Grayscale by default ➔ Color + Scale 1.05x on Hover or Active */}
-                <div
-                  className={`w-24 h-24 sm:w-28 sm:h-28 rounded-2xl overflow-hidden border-2 relative shrink-0 shadow-lg bg-[#0A192F] transition-all duration-500 ${
-                    activeLeaderIndex === idx
-                      ? "border-[#C5A059] shadow-[0_0_20px_rgba(197,160,89,0.3)]"
-                      : "border-[#C5A059]/40 group-hover:border-[#C5A059]"
-                  }`}
-                >
-                  <Image
-                    src={leader.image}
-                    alt={language === "bn" ? leader.nameBn : leader.nameEn}
-                    width={160}
-                    height={160}
-                    className={`w-full h-full object-cover transition-all duration-500 ease-out ${
+                {/* 🎭 High-Impact Executive Portrait (3x Larger) */}
+                <div className="w-full max-w-[260px] sm:w-48 sm:max-w-none md:w-52 lg:w-56 shrink-0">
+                  <div
+                    className={`relative rounded-2xl overflow-hidden border-2 aspect-[3.8/4.8] w-full shadow-xl bg-[#0A192F] transition-all duration-500 group-hover:border-[#C5A059] ${
                       activeLeaderIndex === idx
-                        ? "grayscale-0 contrast-100 brightness-100 scale-105"
-                        : "grayscale contrast-125 brightness-95 group-hover:grayscale-0 group-hover:contrast-100 group-hover:brightness-100 group-hover:scale-105"
+                        ? "border-[#C5A059] shadow-[0_0_25px_rgba(197,160,89,0.35)]"
+                        : "border-[#C5A059]/40"
                     }`}
-                  />
-                  {/* Subtle rim highlight inside portrait */}
-                  <div className="absolute inset-0 rounded-2xl ring-1 ring-inset ring-white/10 pointer-events-none" />
+                  >
+                    <Image
+                      src={leader.image}
+                      alt={language === "bn" ? leader.nameBn : leader.nameEn}
+                      width={320}
+                      height={400}
+                      className="w-full h-full object-cover object-top transition-all duration-700 ease-out group-hover:scale-105"
+                      priority={idx === 0}
+                    />
+
+                    {/* Ambient Vignette Overlay */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#071324]/95 via-transparent to-transparent pointer-events-none" />
+
+                    {/* Centered Plaque on the Portrait */}
+                    <div className="absolute bottom-2.5 left-2.5 right-2.5 text-center">
+                      <div className="px-2 py-1.5 rounded-lg bg-[#071324]/85 backdrop-blur-md border border-[#C5A059]/30 shadow-md">
+                        <span className="text-[9.5px] uppercase font-bold tracking-widest text-[#E2CB8F] block truncate">
+                          {language === "bn" ? leader.roleBn : leader.roleEn}
+                        </span>
+                      </div>
+                    </div>
+                  </div>
                 </div>
 
-                {/* Profile Header Info */}
-                <div className="space-y-1.5 flex-1">
-                  <div className="flex flex-wrap items-center justify-between gap-2">
-                    <span className="px-2.5 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wider bg-[#C5A059]/15 text-[#C5A059] border border-[#C5A059]/30">
-                      {language === "bn" ? leader.badgeBn : leader.badgeEn}
-                    </span>
+                {/* Profile Header Info & Details */}
+                <div className="flex-1 min-w-0 flex flex-col justify-between space-y-3.5">
+                  <div className="space-y-1.5">
+                    <div className="flex flex-wrap items-center justify-between gap-2">
+                      <span className="px-2.5 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wider bg-[#C5A059]/15 text-[#C5A059] border border-[#C5A059]/30">
+                        {language === "bn" ? leader.badgeBn : leader.badgeEn}
+                      </span>
+                    </div>
+
+                    <h3 className="text-xl sm:text-2xl font-bold font-serif text-white group-hover:text-[#E2CB8F] transition-colors leading-tight">
+                      {language === "bn" ? leader.nameBn : leader.nameEn}
+                    </h3>
+
+                    <p className="text-xs sm:text-sm font-bold text-[#C5A059] uppercase tracking-wider">
+                      {language === "bn" ? leader.roleBn : leader.roleEn}
+                    </p>
+
+                    <p className="text-[11px] text-slate-300">
+                      {language === "bn" ? leader.titleBn : leader.titleEn}
+                    </p>
                   </div>
 
-                  <h3 className="text-xl sm:text-2xl font-bold font-serif text-white group-hover:text-[#E2CB8F] transition-colors">
-                    {language === "bn" ? leader.nameBn : leader.nameEn}
-                  </h3>
+                  {/* 💬 Statement Quote with Metallic Shimmer Sweep */}
+                  <div className="p-3.5 sm:p-4 rounded-xl bg-[#0A192F]/80 border border-white/10 relative overflow-hidden group/quote">
+                    {/* Metallic Shimmer Sweep on Card Hover */}
+                    <div className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-in-out bg-gradient-to-r from-transparent via-[#C5A059]/20 to-transparent pointer-events-none" />
 
-                  <p className="text-xs sm:text-sm font-bold text-[#C5A059] uppercase tracking-wider">
-                    {language === "bn" ? leader.roleBn : leader.roleEn}
-                  </p>
+                    <Icon
+                      name="format_quote"
+                      size={24}
+                      className="text-[#C5A059] opacity-30 absolute top-2 right-2 pointer-events-none"
+                    />
 
-                  <p className="text-[11px] text-slate-400">
-                    {language === "bn" ? leader.titleBn : leader.titleEn}
-                  </p>
+                    <p className="text-xs sm:text-[13px] text-slate-200 italic leading-relaxed relative z-10 pr-5">
+                      &ldquo;{language === "bn" ? leader.statementBn : leader.statementEn}&rdquo;
+                    </p>
+                  </div>
+
+                  {/* Governance Pillars / Key Focus Areas */}
+                  <div className="flex flex-wrap gap-2 pt-0.5">
+                    {(language === "bn" ? leader.pillarsBn : leader.pillarsEn).map((pillar) => (
+                      <span
+                        key={pillar}
+                        className="inline-flex items-center gap-1.5 px-2.5 py-1 text-[10.5px] font-medium rounded-full bg-white/5 border border-white/10 text-slate-300 group-hover:border-[#C5A059]/30 transition-colors"
+                      >
+                        <span className="w-1.5 h-1.5 rounded-full bg-[#C5A059]" />
+                        <span>{pillar}</span>
+                      </span>
+                    ))}
+                  </div>
                 </div>
-              </div>
 
-              {/* 💬 Statement Quote with Metallic Signature Sweep Micro-Interaction */}
-              <div className="mt-5 p-4 sm:p-5 rounded-2xl bg-[#0A192F]/80 border border-white/10 relative overflow-hidden group/quote">
-                {/* Metallic Shimmer Sweep on Card Hover */}
-                <div className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-in-out bg-gradient-to-r from-transparent via-[#C5A059]/20 to-transparent pointer-events-none" />
-
-                <Icon
-                  name="format_quote"
-                  size={26}
-                  className="text-[#C5A059] opacity-30 absolute top-2 right-3 pointer-events-none"
-                />
-
-                <p className="text-xs sm:text-sm text-slate-200 italic leading-relaxed relative z-10">
-                  &ldquo;{language === "bn" ? leader.statementBn : leader.statementEn}&rdquo;
-                </p>
-              </div>
-
-              {/* Governance Pillars / Key Focus Areas */}
-              <div className="mt-4 flex flex-wrap gap-2">
-                {(language === "bn" ? leader.pillarsBn : leader.pillarsEn).map((pillar) => (
-                  <span
-                    key={pillar}
-                    className="inline-flex items-center gap-1.5 px-3 py-1 text-[11px] font-medium rounded-full bg-white/5 border border-white/10 text-slate-300 group-hover:border-[#C5A059]/30 transition-colors"
-                  >
-                    <span className="w-1.5 h-1.5 rounded-full bg-[#C5A059]" />
-                    <span>{pillar}</span>
-                  </span>
-                ))}
               </div>
             </motion.div>
           ))}

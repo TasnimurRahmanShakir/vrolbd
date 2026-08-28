@@ -8,7 +8,7 @@ export default function FloatingContactButtons() {
   const { language } = useLanguageStore();
   const [showScrollTop, setShowScrollTop] = useState(false);
 
-  const whatsappNumber = "8801700000000"; // Replace with company WhatsApp number
+  const whatsappNumber = "8801916600239"; // Official Corporate WhatsApp Number
   const message = encodeURIComponent(
     language === "bn"
       ? "হ্যালো, আমি ভিশন রিক্রুটিং (Vision Recruiting) সার্ভিস সম্পর্কে জানতে আগ্রহী।"

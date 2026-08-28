@@ -62,8 +62,8 @@ export function useWorldMap(): UseWorldMapReturn {
   const { countriesPaths, originPoint, destinationPoints } = useMemo(() => {
     const projection = geoNaturalEarth1()
       .rotate([-90.4125, 0, 0])
-      .center([0, 22])
-      .scale(245)
+      .center([0, 20])
+      .scale(165)
       .translate([480, 240]);
 
     const pathGenerator = geoPath().projection(projection);

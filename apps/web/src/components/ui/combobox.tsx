@@ -67,49 +67,35 @@ export function Combobox({
           disabled ? "opacity-50 cursor-not-allowed" : ""
         }`}
       >
-        <div className="flex items-center gap-2.5 min-w-0 flex-1">
-          {icon && (
-            <div
-              className={`w-8 h-8 rounded-xl flex items-center justify-center shrink-0 transition-colors ${
-                isDark
-                  ? "bg-[#C5A059]/15 text-[#C5A059]"
-                  : "bg-[#0A192F]/5 text-[#8C6A2B]"
+        <div className="min-w-0 flex-1">
+          {label && (
+            <span
+              className={`block text-[10px] uppercase font-bold tracking-wider leading-none mb-1 ${
+                isDark ? "text-[#C5A059]" : "text-[#8C6A2B]"
               }`}
             >
-              <Icon name={icon} size={18} />
-            </div>
+              {label}
+            </span>
           )}
-
-          <div className="flex-1 min-w-0">
-            {label && (
-              <span
-                className={`block text-[10px] uppercase font-bold tracking-wider leading-none mb-1 ${
-                  isDark ? "text-[#C5A059]" : "text-[#8C6A2B]"
-                }`}
-              >
-                {label}
-              </span>
+          <div className="flex items-center gap-1.5 truncate">
+            {selectedOption?.icon && (
+              <Icon
+                name={selectedOption.icon}
+                size={15}
+                className={`shrink-0 ${isDark ? "text-[#C5A059]" : "text-[#8C6A2B]"}`}
+              />
             )}
-            <div className="flex items-center gap-1.5 truncate">
-              {selectedOption?.icon && (
-                <Icon
-                  name={selectedOption.icon}
-                  size={16}
-                  className={isDark ? "text-[#C5A059]" : "text-[#8C6A2B]"}
-                />
-              )}
-              <span
-                className={`text-xs sm:text-sm font-semibold truncate ${
-                  selectedOption
-                    ? isDark
-                      ? "text-white"
-                      : "text-slate-900"
-                    : "text-slate-400 font-normal"
-                }`}
-              >
-                {selectedOption ? selectedOption.label : placeholder}
-              </span>
-            </div>
+            <span
+              className={`text-xs sm:text-sm font-semibold truncate ${
+                selectedOption
+                  ? isDark
+                    ? "text-white"
+                    : "text-slate-900"
+                  : "text-slate-400 font-normal"
+              }`}
+            >
+              {selectedOption ? selectedOption.label : placeholder}
+            </span>
           </div>
         </div>
 

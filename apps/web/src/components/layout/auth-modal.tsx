@@ -1,11 +1,28 @@
 "use client";
 
-import React from "react";
+import React, { useState, useEffect } from "react";
+import { createPortal } from "react-dom";
 import { Icon } from "@/components/ui/icon";
 import { useAuthModal, UseAuthModalProps } from "./hooks/use-auth-modal";
 
 export function AuthModal(props: UseAuthModalProps) {
   const { isOpen, onClose } = props;
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  useEffect(() => {
+    if (isOpen) {
+      const originalOverflow = document.body.style.overflow;
+      document.body.style.overflow = "hidden";
+      return () => {
+        document.body.style.overflow = originalOverflow;
+      };
+    }
+  }, [isOpen]);
+
   const {
     mode,
     setMode,
@@ -22,13 +39,13 @@ export function AuthModal(props: UseAuthModalProps) {
     handleSubmit,
   } = useAuthModal(props);
 
-  if (!isOpen) return null;
+  if (!isOpen || !mounted) return null;
 
-  return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
+  const modal = (
+    <div className="fixed inset-0 z-[99999] flex items-center justify-center p-4">
       {/* Backdrop */}
       <div 
-        className="absolute inset-0 bg-[#0A192F]/80 backdrop-blur-md transition-opacity"
+        className="absolute inset-0 bg-[#050B14]/85 backdrop-blur-md transition-opacity"
         onClick={onClose}
       />
 
@@ -162,4 +179,6 @@ export function AuthModal(props: UseAuthModalProps) {
       </div>
     </div>
   );
+
+  return createPortal(modal, document.body);
 }
