@@ -57,7 +57,7 @@ export function Header() {
 
   return (
     <>
-      <header className="fixed top-0 left-0 right-0 z-50 w-full bg-[#0A192F]/95 backdrop-blur-md border-b border-white/10 shadow-xl transition-all">
+      <header className="fixed top-0 left-0 right-0 z-50 w-full bg-[#080C14]/95 backdrop-blur-md border-b border-white/10 shadow-xl transition-all">
         <div className="max-w-[1440px] mx-auto px-3.5 sm:px-6 h-16 sm:h-20 flex items-center justify-between gap-2 sm:gap-4">
           {/* Logo & Brand Identity */}
           <Link href="/" className="flex items-center gap-2 sm:gap-3 group shrink-0">
@@ -160,7 +160,7 @@ export function Header() {
 
         {/* Mobile Navigation Drawer with Active State */}
         {mobileMenuOpen && (
-          <div className="lg:hidden border-t border-white/10 bg-[#0A192F]/98 backdrop-blur-xl shadow-2xl px-5 py-4 space-y-4 animate-in fade-in slide-in-from-top-4 duration-200 max-h-[calc(100vh-4rem)] sm:max-h-[calc(100vh-5rem)] overflow-y-auto">
+          <div className="lg:hidden border-t border-white/10 bg-[#080C14]/98 backdrop-blur-xl shadow-2xl px-5 py-4 space-y-4 animate-in fade-in slide-in-from-top-4 duration-200 max-h-[calc(100vh-4rem)] sm:max-h-[calc(100vh-5rem)] overflow-y-auto">
             <nav className="flex flex-col gap-1.5 text-xs font-medium uppercase tracking-wider text-slate-200">
               {navItems.map((item) => {
                 const active = isLinkActive(item.href);

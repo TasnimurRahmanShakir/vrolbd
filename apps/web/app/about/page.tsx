@@ -1,14 +1,13 @@
 "use client";
 
 import React from "react";
-import Link from "next/link";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { Icon } from "@/components/ui/icon";
 import { SectionHeader } from "@/components/common/section-header";
 import { KineticOdometer } from "@/components/common/kinetic-odometer";
 import { AboutHeroWorldMap } from "@/features/about/components/about-hero-world-map";
-import { VisionariesSection } from "@/features/home/components/visionaries-section";
+import { PresidentMessageSection } from "@/features/home/components/president-message-section";
 import { B2BEnterpriseCTASection } from "@/features/home/components/b2b-enterprise-cta-section";
 import { useLanguageStore, translations } from "@/stores/language.store";
 
@@ -388,9 +387,12 @@ export default function AboutPage() {
               </div>
             </section>
 
-            {/* 👥 4. Board of Directors (The Visionaries Section) */}
-            <div className="border-t border-slate-200/80 pt-10">
-              <VisionariesSection />
+            {/* 🏛️ 4. Official Leadership Dispatch (Message from the Chairman) */}
+            <div className="border-t border-slate-200/80">
+              <PresidentMessageSection
+                ctaHref="/contact"
+                ctaLabel={language === "bn" ? "যোগাযোগ ও কর্পোরেট পরামর্শ" : "Contact Leadership"}
+              />
             </div>
 
             {/* 🌐 5. Global Diplomatic Footprint & Offices */}

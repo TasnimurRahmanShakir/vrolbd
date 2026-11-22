@@ -67,8 +67,8 @@ export const EMPLOYER_PIPELINE_STEPS: StepItem[] = [
     badgeBn: "দ্রুত মোবিলাইজেশন",
     icon: "flight_takeoff",
     image: "/images/pipeline/step4_airport.webp",
-    highlightEn: "14-21 Day Turnaround",
-    highlightBn: "১৪-২১ দিনে ফ্লাইট",
+    highlightEn: "On-Site Mobilization",
+    highlightBn: "কর্মস্থলে নিরাপদ যোগদান",
   },
 ];
 
@@ -126,7 +126,7 @@ export const CANDIDATE_PIPELINE_STEPS: StepItem[] = [
     badgeBn: "ফ্লাইট ও অভ্যর্থনা",
     icon: "connecting_airports",
     image: "/images/pipeline/step4_airport.webp",
-    highlightEn: "Guaranteed Contract Terms",
-    highlightBn: "নিরাপদ কর্মচুক্তি গ্যারান্টি",
+    highlightEn: "Verified Contract & Flight Support",
+    highlightBn: "যাচাইকৃত চুক্তি ও ফ্লাইট সাপোর্ট",
   },
 ];

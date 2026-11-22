@@ -3,6 +3,7 @@
 import React from "react";
 import Link from "next/link";
 import Image from "next/image";
+import { motion } from "framer-motion";
 import { Icon } from "@/components/ui/icon";
 import { useLanguageStore, translations } from "@/stores/language.store";
 import FloatingContactButtons from '@/components/layout/FloatingContactButtons';
@@ -11,12 +12,16 @@ export function Footer() {
   const { language } = useLanguageStore();
   const t = translations[language].footer;
 
-
-
   return (
     <>
       <FloatingContactButtons />
-      <footer className="w-full glass-panel border-t border-white/10 bg-[#071324]/90 backdrop-blur-xl relative overflow-hidden">
+      <motion.footer
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, amount: 0.15 }}
+        transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+        className="w-full border-t border-white/10 bg-[#060910]/95 backdrop-blur-xl relative overflow-hidden"
+      >
       {/* Subtle top atmospheric accent */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-3/4 h-[1px] bg-gradient-to-r from-transparent via-[#C5A059]/40 to-transparent pointer-events-none" />
 
@@ -192,7 +197,7 @@ export function Footer() {
             href="https://www.vrolbd.com"
             target="_blank"
             rel="noopener noreferrer"
-            className="group relative flex flex-col sm:flex-row items-center justify-between gap-4 p-4 sm:p-5 rounded-2xl bg-gradient-to-r from-[#0E243D] via-[#153456] to-[#0E243D] border border-[#C5A059]/40 hover:border-[#C5A059] shadow-xl hover:shadow-[#C5A059]/20 transition-all duration-300 overflow-hidden"
+            className="group relative flex flex-col sm:flex-row items-center justify-between gap-4 p-4 sm:p-5 rounded-2xl bg-gradient-to-r from-[#0A0E17] via-[#101726] to-[#0A0E17] border border-[#C5A059]/40 hover:border-[#C5A059] shadow-xl hover:shadow-[#C5A059]/20 transition-all duration-300 overflow-hidden"
           >
             {/* Ambient Gold Glow on Hover */}
             <div className="absolute inset-0 bg-radial from-[#C5A059]/15 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
@@ -243,7 +248,7 @@ export function Footer() {
           </div>
         </div>
       </div>
-    </footer>
-      </>
+    </motion.footer>
+  </>
   );
 }

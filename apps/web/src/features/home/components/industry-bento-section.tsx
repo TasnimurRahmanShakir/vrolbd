@@ -2,104 +2,223 @@
 
 import React from "react";
 import Image from "next/image";
-import { motion, Variants } from "framer-motion";
+import { motion } from "framer-motion";
 import { Icon } from "@/components/ui/icon";
 import { useLanguageStore, translations } from "@/stores/language.store";
 import { SectionHeader } from "@/components/common/section-header";
-import { GlassBentoCard } from "./glass-bento-card";
-import { INDUSTRY_SECTORS } from "../data/industry-sectors.data";
+import { INDUSTRY_SECTORS, IndustrySector } from "../data/industry-sectors.data";
+import {
+  editorialGridVariants,
+  featuredPanelVariants,
+  supportingCardVariants,
+  VIEWPORT_CONFIG,
+} from "@/lib/motion";
 
 export function IndustryBentoSection() {
   const { language } = useLanguageStore();
   const t = translations[language].bento;
 
-  const containerVariants: Variants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.1,
-      },
-    },
-  };
-
-  const itemVariants: Variants = {
-    hidden: { opacity: 0, y: 24, scale: 0.96 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      scale: 1,
-      transition: {
-        type: "spring",
-        stiffness: 180,
-        damping: 20,
-      },
-    },
-  };
+  const featuredSector: IndustrySector = INDUSTRY_SECTORS[0]!;
+  const supportingSectors: IndustrySector[] = INDUSTRY_SECTORS.slice(1);
 
   return (
-    <section id="sectors" className="py-10 md:py-14 px-4 sm:px-6 max-w-[1440px] mx-auto">
-      {/* 🏛️ Reusable Left-Aligned Section Header with Extended Accent Line */}
-      <SectionHeader
-        tag={t.tag}
-        tagIcon="domain"
-        heading={t.heading}
-        subheading={t.subheading}
-      />
+    <section id="sectors" className="py-12 sm:py-16 lg:py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+      {/* 🏷️ Section Header: Left-Aligned for Consistent Brand Identity */}
+      <div className="text-left max-w-2xl mb-8 sm:mb-12">
+        <SectionHeader
+          tag={t.tag}
+          tagIcon="domain"
+          heading={t.heading}
+          subheading={t.subheading}
+        />
+      </div>
 
-      {/* 🔮 1. Glass-Bento Asymmetric Grid with 2. Staggered Entry */}
       <motion.div
-        variants={containerVariants}
+        variants={editorialGridVariants}
         initial="hidden"
         whileInView="visible"
-        viewport={{ once: true, margin: "-60px" }}
-        className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
+        viewport={VIEWPORT_CONFIG}
+        className="space-y-6 sm:space-y-8"
       >
-        {INDUSTRY_SECTORS.map((sector) => (
-          <motion.div
-            key={sector.id}
-            variants={itemVariants}
-            className={sector.colSpan === "col-span-2" ? "lg:col-span-2" : "lg:col-span-1"}
-          >
-            <GlassBentoCard sector={sector} language={language} />
-          </motion.div>
-        ))}
-
-        {/* 🏛️ Institutional Compliance Glass Banner with Fading Right Realistic Image */}
+        {/* 🏛️ 1. Large Featured Specialization Hero Panel (01: Construction & Heavy Infrastructure) */}
         <motion.div
-          variants={itemVariants}
-          className="p-6 sm:p-8 md:p-10 rounded-2xl bg-[#0A192F] text-white border border-[#C5A059]/40 shadow-2xl flex flex-col justify-center lg:col-span-3 relative overflow-hidden group min-h-[230px]"
+          variants={featuredPanelVariants}
+          className="rounded-3xl bg-white border border-slate-200/90 shadow-sm hover:shadow-md hover:border-slate-300 transition-all duration-300 overflow-hidden group"
         >
-          {/* 🖼️ Right Side Image: VROLBD Corporate Office with BMET Wall Emblem & Recruits (Left-only Fade) */}
-          <div className="absolute right-0 top-0 bottom-0 w-full sm:w-3/5 lg:w-1/2 h-full pointer-events-none overflow-hidden [mask-image:linear-gradient(to_left,rgba(0,0,0,1)_0%,rgba(0,0,0,1)_60%,transparent_100%)]">
-            <Image
-              src="/images/vrolbd-bmet-office.webp"
-              alt="VROLBD Corporate Office with Official BMET Emblem Accreditation Wall"
-              fill
-              priority
-              sizes="(max-width: 1024px) 100vw, 50vw"
-              className="object-cover object-center lg:object-right brightness-[0.95] contrast-[1.05] group-hover:scale-105 transition-all duration-700 ease-out"
-            />
-            {/* Soft navy blend from left */}
-            <div className="absolute inset-0 bg-gradient-to-r from-[#0A192F] via-[#0A192F]/30 to-transparent" />
-          </div>
+          <div className="grid grid-cols-1 lg:grid-cols-12 items-stretch min-h-[380px]">
+            {/* Left Image Column (Large Architectural Photography) */}
+            <div className="lg:col-span-7 relative h-64 sm:h-80 lg:h-auto overflow-hidden bg-slate-900">
+              <Image
+                src={featuredSector.image}
+                alt={language === "bn" ? featuredSector.titleBn : featuredSector.titleEn}
+                fill
+                sizes="(max-width: 1024px) 100vw, 60vw"
+                className="object-cover object-center group-hover:scale-105 transition-transform duration-700 brightness-[0.92]"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent lg:bg-gradient-to-r lg:from-transparent lg:via-black/20 lg:to-black/60" />
+              
+              {/* Category 01 Badge */}
+              <div className="absolute top-4 left-4 z-10 flex items-center gap-2">
+                <span className="px-3 py-1 rounded-full bg-black/75 backdrop-blur-md border border-[#C5A059]/40 text-[#E2CB8F] text-[11px] font-mono font-bold">
+                  {"// 01 FEATURED"}
+                </span>
+                <span className="px-3 py-1 rounded-full bg-black/70 border border-white/20 backdrop-blur-md text-white text-[11px] font-bold flex items-center gap-1.5 shadow-xs">
+                  <Icon name={featuredSector.icon} size={14} className="text-[#C5A059]" />
+                  <span>{language === "bn" ? "আন্তর্জাতিক চাহিদা" : "High Demand"}</span>
+                </span>
+              </div>
 
-          {/* Left Side Content */}
-          <div className="relative z-10 max-w-2xl lg:max-w-3xl space-y-3">
-            <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#C5A059]/15 text-[#C5A059] text-[11px] font-bold uppercase tracking-widest border border-[#C5A059]/30 backdrop-blur-sm">
-              <Icon name="verified_user" size={15} />
-              <span>{t.complianceTitle}</span>
+              {/* Bottom Image Stat Overlay */}
+              <div className="absolute bottom-4 left-4 z-10 text-white">
+                <span className="text-2xl sm:text-3xl font-extrabold font-mono text-white block drop-shadow-md">
+                  {featuredSector.metricNumber}
+                </span>
+                <span className="text-xs text-slate-200 font-medium">
+                  {language === "bn" ? featuredSector.metricLabelBn : featuredSector.metricLabelEn}
+                </span>
+              </div>
             </div>
 
-            <h3 className="text-xl sm:text-2xl lg:text-3xl font-bold font-serif text-white leading-tight drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]">
-              BMET License 1173 <br /> ISO 9001:2015 Accredited Architecture
-            </h3>
+            {/* Right Content Column */}
+            <div className="lg:col-span-5 p-6 sm:p-8 lg:p-10 flex flex-col justify-between bg-white text-slate-800">
+              <div className="space-y-4">
+                <div className="flex items-center gap-2 text-[11px] font-bold uppercase tracking-wider text-[#8C6A2B]">
+                  <span className="w-2 h-2 rounded-full bg-[#C5A059]" />
+                  <span>{language === "bn" ? "প্রধান কর্মসংস্থান ক্যাটাগরি" : "Primary Accredited Discipline"}</span>
+                </div>
 
-            <p className="text-xs sm:text-sm text-slate-300 leading-relaxed max-w-xl sm:max-w-2xl drop-shadow-[0_1px_3px_rgba(0,0,0,0.8)]">
-              {t.complianceDesc} Every candidate undergoes direct consular registration, wage protection escrow confirmation, and government smart clearance before boarding.
-            </p>
+                <h3 className="text-2xl sm:text-3xl font-bold font-serif text-[#080C14] leading-tight">
+                  {language === "bn" ? featuredSector.titleBn : featuredSector.titleEn}
+                </h3>
+
+                <p className="text-sm text-slate-600 leading-relaxed">
+                  {language === "bn" ? featuredSector.descBn : featuredSector.descEn}
+                </p>
+
+                {/* Verified Roles Tags */}
+                <div className="pt-2">
+                  <span className="text-[11px] font-semibold text-slate-500 block mb-2">
+                    {language === "bn" ? "প্রস্তুতকৃত দক্ষ কর্মী তালিকা:" : "Accredited Technical Cadres:"}
+                  </span>
+                  <div className="flex flex-wrap gap-2">
+                    {(language === "bn" ? featuredSector.rolesBn : featuredSector.rolesEn).map((role) => (
+                      <span
+                        key={role}
+                        className="px-2.5 py-1 rounded-lg text-xs font-medium bg-slate-100 text-slate-700 border border-slate-200/60"
+                      >
+                        {role}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              </div>
+
+              {/* Action Button Link */}
+              <div className="pt-6 mt-6 border-t border-slate-100 flex items-center justify-between">
+                <a
+                  href="#b2b-gateway"
+                  className="inline-flex items-center gap-2 text-xs sm:text-sm font-bold text-[#080C14] hover:text-[#8C6A2B] transition-colors uppercase tracking-wider"
+                >
+                  <span>{language === "bn" ? "জনশক্তি রিকুইজিশন পাঠান" : "Request Workforce Supply"}</span>
+                  <Icon name="arrow_forward" size={16} className="group-hover:translate-x-1.5 transition-transform text-[#C5A059]" />
+                </a>
+
+                <span className="text-xs font-mono font-semibold text-slate-400">
+                  RL-1173
+                </span>
+              </div>
+            </div>
           </div>
         </motion.div>
+
+        {/* 🏛️ 2. Supporting Specializations (02 to 06): Editorial Asymmetrical Layout */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+          {supportingSectors.map((sector, index) => {
+            const indexNumber = String(index + 2).padStart(2, "0");
+            const isWide = index === 3; // Card 05 spans wider on lg if needed or standard balanced
+
+            return (
+              <motion.div
+                key={sector.id}
+                variants={supportingCardVariants}
+                className={`rounded-2xl sm:rounded-3xl bg-white border border-slate-200/90 shadow-sm hover:shadow-md hover:border-slate-300 transition-all duration-300 overflow-hidden group flex flex-col justify-between ${
+                  isWide ? "lg:col-span-2" : "col-span-1"
+                }`}
+              >
+                <div>
+                  {/* Card Image Header with Numbering Badge */}
+                  <div className="relative h-48 sm:h-52 w-full overflow-hidden bg-slate-900">
+                    <Image
+                      src={sector.image}
+                      alt={language === "bn" ? sector.titleBn : sector.titleEn}
+                      fill
+                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                      className="object-cover object-center group-hover:scale-105 transition-transform duration-500 brightness-[0.92]"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
+
+                    {/* Category Number Badge */}
+                    <div className="absolute top-3 left-3 z-10 flex items-center gap-2">
+                      <span className="px-2.5 py-0.5 rounded-full bg-black/75 backdrop-blur-md border border-white/20 text-[#E2CB8F] text-[10px] font-mono font-bold">
+                        {"//"} {indexNumber}
+                      </span>
+                    </div>
+
+                    {/* Metric overlay */}
+                    <div className="absolute bottom-3 left-3 right-3 z-10 flex items-center justify-between text-white">
+                      <div>
+                        <span className="text-lg font-bold font-mono block leading-tight text-white drop-shadow-xs">
+                          {sector.metricNumber}
+                        </span>
+                        <span className="text-[10.5px] text-slate-300 font-medium">
+                          {language === "bn" ? sector.metricLabelBn : sector.metricLabelEn}
+                        </span>
+                      </div>
+                      <div className="w-8 h-8 rounded-full bg-white/10 border border-white/15 backdrop-blur-md flex items-center justify-center text-[#E2CB8F]">
+                        <Icon name={sector.icon} size={16} />
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Card Content */}
+                  <div className="p-5 sm:p-6 space-y-3 bg-white text-slate-800">
+                    <h4 className="text-lg font-bold font-serif text-[#080C14] leading-snug">
+                      {language === "bn" ? sector.titleBn : sector.titleEn}
+                    </h4>
+
+                    <p className="text-xs text-slate-600 leading-relaxed line-clamp-2">
+                      {language === "bn" ? sector.descBn : sector.descEn}
+                    </p>
+
+                    {/* Role Tags */}
+                    <div className="flex flex-wrap gap-1.5 pt-1">
+                      {(language === "bn" ? sector.rolesBn : sector.rolesEn).slice(0, 3).map((role) => (
+                        <span
+                          key={role}
+                          className="px-2 py-0.5 rounded-md text-[11px] font-medium bg-slate-100 border border-slate-200/60 text-slate-700"
+                        >
+                          {role}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+
+                {/* Bottom Action Footer */}
+                <div className="px-5 sm:px-6 pb-5 pt-3 border-t border-slate-100 flex items-center justify-between">
+                  <a
+                    href="#b2b-gateway"
+                    className="text-xs font-bold text-[#080C14] hover:text-[#8C6A2B] transition-colors flex items-center gap-1.5"
+                  >
+                    <span>{language === "bn" ? "ক্যাডার তালিকা দেখুন" : "View Roles"}</span>
+                    <Icon name="arrow_forward" size={14} className="text-[#C5A059] group-hover:translate-x-1 transition-transform" />
+                  </a>
+                  <span className="text-[11px] text-slate-400 font-mono">BMET Certified</span>
+                </div>
+              </motion.div>
+            );
+          })}
+        </div>
       </motion.div>
     </section>
   );

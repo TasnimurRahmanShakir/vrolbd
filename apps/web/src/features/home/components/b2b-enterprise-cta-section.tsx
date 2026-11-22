@@ -1,8 +1,11 @@
 "use client";
 
 import React, { useState, useRef, useEffect } from "react";
+import { motion } from "framer-motion";
 import { Icon } from "@/components/ui/icon";
+import { CountryFlag } from "@/components/ui/country-flag";
 import { useLanguageStore, translations } from "@/stores/language.store";
+import { ctaLeftVariants, ctaFormVariants, VIEWPORT_CONFIG } from "@/lib/motion";
 
 interface CountryOption {
   value: string;
@@ -99,23 +102,29 @@ export function B2BEnterpriseCTASection() {
   };
 
   return (
-    <section id="contact" className="scroll-mt-24 py-10 md:py-16 px-4 sm:px-6 max-w-[1440px] mx-auto">
-      <div className="relative rounded-3xl bg-gradient-to-br from-[#0A192F] via-[#0F243B] to-[#173B61] text-white p-6 sm:p-10 md:p-14 border border-[#C5A059]/40 shadow-2xl overflow-hidden">
+    <motion.section
+      id="contact"
+      initial="hidden"
+      whileInView="visible"
+      viewport={VIEWPORT_CONFIG}
+      className="scroll-mt-28 py-16 sm:py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto"
+    >
+      <div className="relative rounded-3xl bg-gradient-to-br from-[#080C14] via-[#0D131F] to-[#121A2B] text-white p-6 sm:p-10 md:p-12 border border-[#C5A059]/40 shadow-2xl overflow-hidden">
         
         {/* Glow Ambient Lights */}
         <div className="absolute top-0 right-0 w-96 h-96 bg-[#C5A059]/15 rounded-full blur-3xl pointer-events-none" />
-        <div className="absolute bottom-0 left-0 w-96 h-96 bg-[#173B61]/40 rounded-full blur-3xl pointer-events-none" />
+        <div className="absolute bottom-0 left-0 w-96 h-96 bg-[#0E1626]/60 rounded-full blur-3xl pointer-events-none" />
 
         <div className="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start">
           
           {/* Left Column: Enterprise Invitation & Quick Contacts */}
-          <div className="lg:col-span-5 space-y-5 text-left">
+          <motion.div variants={ctaLeftVariants} className="lg:col-span-5 space-y-5 text-left">
             <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/10 text-[#C5A059] text-xs font-bold uppercase tracking-widest border border-white/15">
               <Icon name="corporate_fare" size={16} />
               <span>{t.tag}</span>
             </div>
 
-            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold font-['Outfit'] text-white leading-tight">
+            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold font-serif text-white leading-tight">
               {t.heading}
             </h2>
 
@@ -173,11 +182,11 @@ export function B2BEnterpriseCTASection() {
                 <span className="text-xs font-semibold text-slate-200">ISO 9001:2015</span>
               </div>
             </div>
-          </div>
+          </motion.div>
 
           {/* Right Column: Direct Demand Intake Form with Combobox */}
-          <div className="lg:col-span-7">
-            <div className="p-6 sm:p-8 rounded-2xl bg-[#06101E]/95 border border-white/15 backdrop-blur-xl shadow-2xl">
+          <motion.div variants={ctaFormVariants} className="lg:col-span-7">
+            <div className="p-6 sm:p-8 rounded-2xl bg-[#090D17]/95 border border-white/15 backdrop-blur-xl shadow-2xl">
               {submitted ? (
                 <div className="py-12 text-center space-y-4">
                   <div className="w-16 h-16 bg-emerald-500/20 text-emerald-400 rounded-full flex items-center justify-center mx-auto border border-emerald-500/40 shadow-lg shadow-emerald-500/10 animate-bounce">
@@ -207,7 +216,7 @@ export function B2BEnterpriseCTASection() {
                         value={formData.contactPerson}
                         onChange={handleChange}
                         placeholder={language === "bn" ? "উদা: ইঞ্জিনিয়ার রফিক আহমেদ (এইচআর)" : "e.g. Eng. Tariq Al-Mansoor (HR Director)"}
-                        className="w-full bg-[#0A192F] border border-white/15 rounded-xl px-3.5 py-2.5 text-xs text-white placeholder:text-slate-500 focus:outline-none focus:border-[#C5A059] transition-colors"
+                        className="w-full bg-[#080C14] border border-white/15 rounded-xl px-3.5 py-2.5 text-xs text-white placeholder:text-slate-500 focus:outline-none focus:border-[#C5A059] transition-colors"
                       />
                     </div>
 
@@ -222,7 +231,7 @@ export function B2BEnterpriseCTASection() {
                         value={formData.companyName}
                         onChange={handleChange}
                         placeholder="e.g. Al-Futtaim Construction / Binladin Group"
-                        className="w-full bg-[#0A192F] border border-white/15 rounded-xl px-3.5 py-2.5 text-xs text-white placeholder:text-slate-500 focus:outline-none focus:border-[#C5A059] transition-colors"
+                        className="w-full bg-[#080C14] border border-white/15 rounded-xl px-3.5 py-2.5 text-xs text-white placeholder:text-slate-500 focus:outline-none focus:border-[#C5A059] transition-colors"
                       />
                     </div>
                   </div>
@@ -240,7 +249,7 @@ export function B2BEnterpriseCTASection() {
                         value={formData.workEmail}
                         onChange={handleChange}
                         placeholder="procurement@company.com"
-                        className="w-full bg-[#0A192F] border border-white/15 rounded-xl px-3.5 py-2.5 text-xs text-white placeholder:text-slate-500 focus:outline-none focus:border-[#C5A059] transition-colors"
+                        className="w-full bg-[#080C14] border border-white/15 rounded-xl px-3.5 py-2.5 text-xs text-white placeholder:text-slate-500 focus:outline-none focus:border-[#C5A059] transition-colors"
                       />
                     </div>
 
@@ -255,7 +264,7 @@ export function B2BEnterpriseCTASection() {
                         value={formData.phone}
                         onChange={handleChange}
                         placeholder="+966 50 123 4567 / +880 17..."
-                        className="w-full bg-[#0A192F] border border-white/15 rounded-xl px-3.5 py-2.5 text-xs text-white placeholder:text-slate-500 focus:outline-none focus:border-[#C5A059] transition-colors"
+                        className="w-full bg-[#080C14] border border-white/15 rounded-xl px-3.5 py-2.5 text-xs text-white placeholder:text-slate-500 focus:outline-none focus:border-[#C5A059] transition-colors"
                       />
                     </div>
                   </div>
@@ -272,12 +281,12 @@ export function B2BEnterpriseCTASection() {
                       <button
                         type="button"
                         onClick={() => setIsComboboxOpen(!isComboboxOpen)}
-                        className={`w-full bg-[#0A192F] border ${
+                        className={`w-full bg-[#080C14] border ${
                           isComboboxOpen ? "border-[#C5A059] ring-1 ring-[#C5A059]/40" : "border-white/15"
                         } rounded-xl px-3.5 py-2.5 text-xs text-white flex items-center justify-between gap-2 text-left focus:outline-none transition-all cursor-pointer shadow-inner`}
                       >
                         <span className="flex items-center gap-2 truncate">
-                          <span className="text-base">{selectedCountryObj.flag}</span>
+                          <CountryFlag country={selectedCountryObj.value} className="w-5 h-3.5" />
                           <span className="truncate">
                             {language === "bn" ? selectedCountryObj.labelBn : selectedCountryObj.labelEn}
                           </span>
@@ -293,9 +302,9 @@ export function B2BEnterpriseCTASection() {
 
                       {/* Dropdown Menu */}
                       {isComboboxOpen && (
-                        <div className="absolute z-50 mt-1.5 w-full bg-[#06101E] border border-[#C5A059]/40 rounded-xl shadow-2xl backdrop-blur-2xl overflow-hidden animate-in fade-in slide-in-from-top-2 duration-150">
+                        <div className="absolute z-50 mt-1.5 w-full bg-[#0B0F19] border border-[#C5A059]/40 rounded-xl shadow-2xl backdrop-blur-2xl overflow-hidden animate-in fade-in slide-in-from-top-2 duration-150">
                           {/* Search Filter Bar */}
-                          <div className="p-2 border-b border-white/10 bg-[#0A192F]/80 flex items-center gap-2">
+                          <div className="p-2 border-b border-white/10 bg-[#080C14]/90 flex items-center gap-2">
                             <Icon name="search" size={16} className="text-[#C5A059]" />
                             <input
                               type="text"
@@ -342,7 +351,7 @@ export function B2BEnterpriseCTASection() {
                                     }`}
                                   >
                                     <span className="flex items-center gap-2.5 truncate">
-                                      <span className="text-base">{country.flag}</span>
+                                      <CountryFlag country={country.value} className="w-5 h-3.5" />
                                       <span className="truncate">
                                         {language === "bn" ? country.labelBn : country.labelEn}
                                       </span>
@@ -374,7 +383,7 @@ export function B2BEnterpriseCTASection() {
                         value={formData.headcountNeed}
                         onChange={handleChange}
                         placeholder={language === "bn" ? "উদা: ১৫০ ওয়েল্ডার ও ইলেক্ট্রিশিয়ান" : "e.g. 150 Welders, Pipefitters & Electricians"}
-                        className="w-full bg-[#0A192F] border border-white/15 rounded-xl px-3.5 py-2.5 text-xs text-white placeholder:text-slate-500 focus:outline-none focus:border-[#C5A059] transition-colors"
+                        className="w-full bg-[#080C14] border border-white/15 rounded-xl px-3.5 py-2.5 text-xs text-white placeholder:text-slate-500 focus:outline-none focus:border-[#C5A059] transition-colors"
                       />
                     </div>
                   </div>
@@ -394,14 +403,14 @@ export function B2BEnterpriseCTASection() {
                           ? "ট্রেড টেস্টের প্রত্যাশা, ভিসার ধরণ, ফ্লাইট ডেডলাইন বা বেতন সংক্রান্ত তথ্য উল্লেখ করতে পারেন..."
                           : "Describe specific trade certifications, mobilization deadline, visa category, or food/accommodation provisions..."
                       }
-                      className="w-full bg-[#0A192F] border border-white/15 rounded-xl px-3.5 py-2 text-xs text-white placeholder:text-slate-500 focus:outline-none focus:border-[#C5A059] transition-colors resize-none"
+                      className="w-full bg-[#080C14] border border-white/15 rounded-xl px-3.5 py-2 text-xs text-white placeholder:text-slate-500 focus:outline-none focus:border-[#C5A059] transition-colors resize-none"
                     />
                   </div>
 
                   {/* Submit Button */}
                   <button
                     type="submit"
-                    className="w-full py-3.5 mt-2 rounded-xl bg-gradient-to-r from-[#E2CB8F] via-[#C5A059] to-[#AA853C] text-[#0A192F] text-xs font-bold uppercase tracking-wider flex items-center justify-center gap-2 shadow-lg hover:opacity-95 transition-all hover:scale-[1.01] cursor-pointer"
+                    className="w-full py-3.5 mt-2 rounded-xl bg-gradient-to-r from-[#E2CB8F] via-[#C5A059] to-[#AA853C] text-[#080C14] text-xs font-bold uppercase tracking-wider flex items-center justify-center gap-2 shadow-lg hover:opacity-95 transition-all hover:scale-[1.01] cursor-pointer"
                   >
                     <Icon name="send" size={16} />
                     <span>{t.btnRequest}</span>
@@ -409,10 +418,10 @@ export function B2BEnterpriseCTASection() {
                 </form>
               )}
             </div>
-          </div>
+          </motion.div>
 
         </div>
       </div>
-    </section>
+    </motion.section>
   );
 }

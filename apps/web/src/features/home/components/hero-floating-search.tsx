@@ -3,8 +3,6 @@
 import React from "react";
 import { Icon } from "@/components/ui/icon";
 import { Combobox } from "@/components/ui/combobox";
-import { AnimatedStat } from "./animated-stat";
-import { translations } from "@/stores/language.store";
 import { useFloatingSearch } from "../hooks/use-floating-search";
 
 export function HeroFloatingSearch() {
@@ -22,15 +20,13 @@ export function HeroFloatingSearch() {
     handleSearch,
   } = useFloatingSearch();
 
-  const t = translations[language as "en" | "bn"].hero;
-
   return (
-    <div className="w-full max-w-5xl mx-auto px-4 sm:px-6">
-      {/* 🚀 Unified Master Executive Console: Quick Search + Live Deployment Telemetry */}
+    <div className="w-full max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+      {/* 🚀 Master Executive Search Console */}
       <div className="w-full bg-[#0A192F] border border-[#C5A059]/40 rounded-2xl shadow-[0_20px_50px_rgba(10,25,47,0.5)] hover:border-[#C5A059] transition-all duration-300 relative z-40">
         
         {/* Top Section: Search Controls */}
-        <form onSubmit={handleSearch} className="p-2.5 sm:p-3.5">
+        <form onSubmit={handleSearch} className="p-2 sm:p-3">
           <div className="grid grid-cols-1 lg:grid-cols-12 items-center gap-3 lg:gap-0">
             
             {/* Segment 1: Country Combobox */}
@@ -87,44 +83,27 @@ export function HeroFloatingSearch() {
           </div>
         </form>
 
-        {/* Bottom Integrated Telemetry Bar */}
-        <div className="border-t border-white/10 bg-[#071322]/85 backdrop-blur-md px-4 sm:px-8 py-3 rounded-b-2xl">
-          <div className="grid grid-cols-3 divide-x divide-white/10 items-center text-center">
-            
-            {/* Stat 1: Deployed */}
-            <div className="px-2 sm:px-4">
-              <AnimatedStat
-                value={48.5}
-                suffix="K+"
-                decimals={1}
-                theme="dark"
-                label={t.statDeployedLabel}
-              />
+        {/* Bottom Verified Institutional Signals */}
+        <div className="border-t border-white/10 bg-[#071322]/85 backdrop-blur-md px-4 sm:px-8 py-2.5 rounded-b-2xl">
+          <div className="flex flex-wrap items-center justify-between gap-3 text-xs text-slate-300">
+            <div className="flex items-center gap-2">
+              <Icon name="verified" size={15} className="text-[#C5A059]" />
+              <span className="text-slate-200 font-medium">
+                {language === "bn" ? "সরকারি অনুমোদিত ভিসা রিক্রুটমেন্ট" : "Government-Approved Vacancies"}
+              </span>
             </div>
-
-            {/* Stat 2: Visa Speed */}
-            <div className="px-2 sm:px-4">
-              <AnimatedStat
-                value={14}
-                suffix={t.statVisaSuffix}
-                decimals={0}
-                theme="dark"
-                label={t.statVisaLabel}
-                highlight
-              />
+            <div className="flex items-center gap-2">
+              <Icon name="shield" size={15} className="text-[#C5A059]" />
+              <span className="text-slate-200 font-medium">
+                {language === "bn" ? "বিএমইটি স্মার্ট অভিবাসন কার্ড" : "BMET Smart Immigration Protection"}
+              </span>
             </div>
-
-            {/* Stat 3: Retention */}
-            <div className="px-2 sm:px-4">
-              <AnimatedStat
-                value={99.4}
-                suffix="%"
-                decimals={1}
-                theme="dark"
-                label={t.statRetentionLabel}
-              />
+            <div className="flex items-center gap-2">
+              <Icon name="flight_takeoff" size={15} className="text-[#C5A059]" />
+              <span className="text-slate-200 font-medium">
+                {language === "bn" ? "সরাসরি দূতাবাস সত্যায়ন" : "Direct Embassy Attested Corridors"}
+              </span>
             </div>
-
           </div>
         </div>
 

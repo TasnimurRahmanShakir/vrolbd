@@ -3,17 +3,28 @@
 @layer base {
   html {
     scroll-behavior: smooth;
+    scroll-padding-top: 5.5rem;
   }
 
   :root {
-    --navy-bg: #0A192F;
-    --navy-surface: #0F2B48;
-    --navy-elevated: #173B61;
+    /* Brand Foundation: Deep Obsidian/Dark Charcoal matching the official VROLBD logo badge */
+    --navy-bg: #080C14;
+    --navy-surface: #0E1422;
+    --navy-elevated: #151D2F;
     --gold-primary: #C5A059;
     --gold-light: #E2CB8F;
     --gold-dark: #8C6A2B;
-    --foreground: #F1F5F9;
+    --foreground: #F8FAFC;
     --muted-foreground: #94A3B8;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
   }
 
   body {

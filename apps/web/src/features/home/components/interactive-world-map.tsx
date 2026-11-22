@@ -5,9 +5,13 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Icon } from "@/components/ui/icon";
 import { useWorldMap } from "../hooks/use-world-map";
 import { useLanguageStore, translations } from "@/stores/language.store";
-import { DestinationCorridor } from "../types/corridor.types";
 
-export function InteractiveWorldMap() {
+export interface InteractiveWorldMapProps {
+  variant?: "default" | "hero";
+  className?: string;
+}
+
+export function InteractiveWorldMap({ variant = "default", className = "" }: InteractiveWorldMapProps) {
   const { language } = useLanguageStore();
   const t = translations[language].hero;
 
@@ -20,8 +24,6 @@ export function InteractiveWorldMap() {
     destinations,
     hoveredInfo,
     activeCorridor,
-    activeTarget,
-    tooltipPos,
     zoom,
     pan,
     isDragging,
@@ -35,6 +37,10 @@ export function InteractiveWorldMap() {
     setHoveredInfo,
     setActiveCorridor,
   } = useWorldMap();
+
+  // In hero mode, target is strictly hover-driven so clicking never locks/fixes the card.
+  // In default mode, hovered country takes immediate priority; if mouse leaves, activeCorridor is cleared on map click.
+  const activeTarget = variant === "hero" ? hoveredInfo?.corridor : (hoveredInfo?.corridor || activeCorridor);
 
   const [selectedRegion, setSelectedRegion] = useState<"gcc" | "europe" | "asia" | "americas">("gcc");
   const [searchQuery, setSearchQuery] = useState<string>("");
@@ -86,15 +92,17 @@ export function InteractiveWorldMap() {
       onMouseDown={handleMouseDown}
       onMouseUp={handleMouseUp}
       onWheel={handleWheel}
-      className={`relative w-full overflow-hidden select-none ${
+      className={`relative w-full overflow-hidden select-none ${className} ${
         isDragging ? "cursor-grabbing" : "cursor-grab"
       }`}
     >
       {/* Subtle Backlit Ambient Radial Underlay */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[380px] bg-radial from-[#173B61]/25 via-transparent to-transparent blur-[120px] pointer-events-none" />
+      {variant !== "hero" && (
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[380px] bg-radial from-[#173B61]/25 via-transparent to-transparent blur-[120px] pointer-events-none" />
+      )}
 
       {/* Minimal Top Control HUD */}
-      <div className="relative z-20 flex items-center justify-between gap-3 pb-2 mb-1 border-b border-white/5">
+      <div className={`relative z-20 flex items-center justify-between gap-3 pb-2 mb-1 ${variant === "hero" ? "border-0" : "border-b border-white/5"}`}>
         <div className="flex items-center gap-2">
           <span className="relative flex h-2 w-2">
             <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#C5A059] opacity-75" />
@@ -138,11 +146,19 @@ export function InteractiveWorldMap() {
       </div>
 
       {/* Main SVG Interactive Map Canvas */}
-      <div className="relative w-full h-[320px] sm:h-[360px] lg:h-[390px] my-2 select-none overflow-hidden rounded-2xl bg-[#071324]/60 border border-white/5 flex items-center justify-center">
+      <div
+        className={`relative w-full ${
+          variant === "hero"
+            ? "h-[280px] sm:h-[340px] lg:h-[370px] xl:h-[390px] my-0 bg-transparent border-0"
+            : "h-[320px] sm:h-[360px] lg:h-[390px] my-2 select-none overflow-hidden rounded-2xl bg-[#071324]/60 border border-white/5"
+        } select-none overflow-hidden flex items-center justify-center`}
+      >
         <svg
           ref={svgRef}
           viewBox="0 0 960 480"
+          preserveAspectRatio="xMidYMid meet"
           className="w-full h-full select-none"
+          onClick={() => setActiveCorridor(null)}
         >
           <defs>
             <linearGradient id="activeBeamGrad" x1="0%" y1="0%" x2="100%" y2="0%">
@@ -181,10 +197,6 @@ export function InteractiveWorldMap() {
                     className="cursor-pointer transition-colors duration-150"
                     onMouseEnter={() => setHoveredInfo({ name: item.name, isoId: item.id, corridor: item.corridor })}
                     onMouseLeave={() => setHoveredInfo(null)}
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      if (item.corridor) setActiveCorridor(activeCorridor?.id === item.corridor.id ? null : item.corridor);
-                    }}
                   />
                 );
               })}
@@ -260,7 +272,12 @@ export function InteractiveWorldMap() {
             {destinationPoints.map((dest) => {
               const isHighlighted = activeTarget?.id === dest.id;
               return (
-                <g key={`node-${dest.id}`} className="cursor-pointer" onClick={(e) => { e.stopPropagation(); setActiveCorridor(activeCorridor?.id === dest.id ? null : dest); }}>
+                <g
+                  key={`node-${dest.id}`}
+                  className="cursor-pointer"
+                  onMouseEnter={() => setHoveredInfo({ name: dest.name, isoId: dest.isoId, corridor: dest })}
+                  onMouseLeave={() => setHoveredInfo(null)}
+                >
                   <circle cx={dest.px} cy={dest.py} r={isHighlighted ? 12 / zoom : 7 / zoom} fill={dest.region.includes("GCC") ? "#10B981" : dest.region.includes("Asia") ? "#FBBF24" : "#38BDF8"} opacity={0.3} />
                   <circle cx={dest.px} cy={dest.py} r={5 / zoom} fill={isHighlighted ? "#FFE599" : "#C5A059"} stroke="#0A192F" strokeWidth={1.5 / zoom} />
                   <circle cx={dest.px} cy={dest.py} r={1.8 / zoom} fill="#FFF" />
@@ -320,113 +337,115 @@ export function InteractiveWorldMap() {
                 <span className="text-xs font-bold text-white">{hoveredInfo.name}</span>
               </div>
               {hoveredInfo.corridor ? (
-                <span className="text-[10px] text-[#E2CB8F] block mt-0.5">Bilateral Corridor • {hoveredInfo.corridor.region}</span>
+                <span className="text-[10px] text-[#E2CB8F] block mt-0.5">{language === "bn" ? "অনুমোদিত কর্মক্ষেত্র" : "Approved Destination"} • {hoveredInfo.corridor.region}</span>
               ) : (
-                <span className="text-[10px] text-slate-400 block mt-0.5">Diplomatic Consular Territory</span>
+                <span className="text-[10px] text-slate-400 block mt-0.5">{language === "bn" ? "আন্তর্জাতিক অঞ্চল" : "International Consular Territory"}</span>
               )}
             </motion.div>
           )}
         </AnimatePresence>
       </div>
 
-      {/* 🚀 Scalable Corridor Exploration Hub for 110+ Countries */}
-      <div className="relative z-20 pt-2.5 border-t border-white/10 mt-1 space-y-2">
-        {/* Tier 1: Search Input & Regional Segmented Tabs */}
-        <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-2">
-          {/* Quick Search Input */}
-          <div className="relative flex-1 min-w-[200px]">
-            <Icon name="search" size={14} className="absolute left-2.5 top-1/2 -translate-y-1/2 text-[#C5A059] pointer-events-none" />
-            <input
-              type="text"
-              value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
-              placeholder={language === "bn" ? "১১০+ দেশের করিডোর খুঁজুন (যেমন: সৌদি, সুইডেন, জাপান)..." : "Search 110+ corridors (e.g. Sweden, Japan, Saudi, UK)..."}
-              className="w-full pl-8 pr-7 py-1.5 rounded-xl bg-[#071324]/90 border border-white/15 text-white placeholder:text-slate-400 text-xs focus:outline-none focus:border-[#C5A059] focus:ring-1 focus:ring-[#C5A059]/40 transition-all"
-            />
-            {searchQuery && (
-              <button
-                type="button"
-                onClick={() => setSearchQuery("")}
-                className="absolute right-2 top-1/2 -translate-y-1/2 text-slate-400 hover:text-white p-0.5"
-                title="Clear Search"
-              >
-                <Icon name="close" size={13} />
-              </button>
-            )}
-          </div>
-
-          {/* Regional Quick Tabs */}
-          <div className="flex items-center gap-1 p-0.5 rounded-xl bg-[#071324]/80 border border-white/10 overflow-x-auto no-scrollbar shrink-0">
-            {regionTabs.map((tab) => {
-              const isActive = selectedRegion === tab.id;
-              return (
+      {/* 🚀 Scalable Destination Hub for 110+ Countries (Excluded in Hero mode) */}
+      {variant !== "hero" && (
+        <div className="relative z-20 pt-2.5 border-t border-white/10 mt-1 space-y-2">
+          {/* Tier 1: Search Input & Regional Segmented Tabs */}
+          <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-2">
+            {/* Quick Search Input */}
+            <div className="relative flex-1 min-w-[200px]">
+              <Icon name="search" size={14} className="absolute left-2.5 top-1/2 -translate-y-1/2 text-[#C5A059] pointer-events-none" />
+              <input
+                type="text"
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                placeholder={language === "bn" ? "১১০+ দেশের তালিকা খুঁজুন (যেমন: সৌদি, জাপান, সুইডেন)..." : "Search 110+ destination countries (e.g. Saudi, Japan, UK)..."}
+                className="w-full pl-8 pr-7 py-1.5 rounded-xl bg-[#071324]/90 border border-white/15 text-white placeholder:text-slate-400 text-xs focus:outline-none focus:border-[#C5A059] focus:ring-1 focus:ring-[#C5A059]/40 transition-all"
+              />
+              {searchQuery && (
                 <button
-                  key={tab.id}
                   type="button"
-                  onClick={() => {
-                    setSelectedRegion(tab.id as any);
-                    setSearchQuery("");
-                  }}
-                  className={`px-2 py-1 rounded-lg text-[11px] font-bold transition-all duration-150 flex items-center gap-1 cursor-pointer whitespace-nowrap ${
-                    isActive
-                      ? "bg-[#C5A059] text-[#0A192F] shadow-sm font-bold"
-                      : "text-slate-300 hover:text-white hover:bg-white/5"
-                  }`}
+                  onClick={() => setSearchQuery("")}
+                  className="absolute right-2 top-1/2 -translate-y-1/2 text-slate-400 hover:text-white p-0.5"
+                  title="Clear Search"
                 >
-                  <Icon name={tab.icon} size={13} className={isActive ? "text-[#0A192F]" : "text-[#C5A059]"} />
-                  <span>{language === "bn" ? tab.labelBn : tab.labelEn}</span>
+                  <Icon name="close" size={13} />
                 </button>
-              );
-            })}
-          </div>
-        </div>
+              )}
+            </div>
 
-        {/* Tier 2: Top 4 Sovereign Corridors (Single Row Grid) or Search Results */}
-        <div>
-          {displayedDestinations.length > 0 ? (
-            <div className={searchQuery.trim() ? "flex flex-wrap gap-1.5 max-h-[88px] overflow-y-auto pr-1" : "grid grid-cols-2 sm:grid-cols-4 gap-2"}>
-              {displayedDestinations.map((dest) => {
-                const isSelected = activeTarget?.id === dest.id;
-                const displayName = language === "bn" ? (dest.shortNameBn || dest.name) : (dest.shortName || dest.name);
+            {/* Regional Quick Tabs */}
+            <div className="flex items-center gap-1 p-0.5 rounded-xl bg-[#071324]/80 border border-white/10 overflow-x-auto no-scrollbar shrink-0">
+              {regionTabs.map((tab) => {
+                const isActive = selectedRegion === tab.id;
                 return (
                   <button
-                    key={`dest-btn-${dest.id}`}
-                    onMouseEnter={() => setHoveredInfo({ name: dest.name, isoId: dest.isoId, corridor: dest })}
-                    onMouseLeave={() => setHoveredInfo(null)}
-                    onClick={() => setActiveCorridor(activeCorridor?.id === dest.id ? null : dest)}
+                    key={tab.id}
                     type="button"
-                    className={`px-3 py-1.5 rounded-xl text-xs font-semibold transition-all duration-150 flex items-center justify-between gap-1.5 cursor-pointer border ${
-                      isSelected
-                        ? "bg-[#C5A059] text-[#0A192F] font-bold border-[#C5A059] shadow-md shadow-[#C5A059]/20"
-                        : "bg-[#0F243B]/90 hover:bg-[#153456] text-slate-200 border-white/10 hover:border-[#C5A059]/40"
+                    onClick={() => {
+                      setSelectedRegion(tab.id as "gcc" | "europe" | "asia" | "americas");
+                      setSearchQuery("");
+                    }}
+                    className={`px-2 py-1 rounded-lg text-[11px] font-bold transition-all duration-150 flex items-center gap-1 cursor-pointer whitespace-nowrap ${
+                      isActive
+                        ? "bg-[#C5A059] text-[#0A192F] shadow-sm font-bold"
+                        : "text-slate-300 hover:text-white hover:bg-white/5"
                     }`}
                   >
-                    <span className="truncate">{displayName}</span>
-                    <span className={`text-[10px] font-mono shrink-0 ${isSelected ? "text-[#0A192F]" : "text-[#C5A059]"}`}>
-                      ({(dest.deployedCount / 1000).toFixed(1)}k)
-                    </span>
+                    <Icon name={tab.icon} size={13} className={isActive ? "text-[#0A192F]" : "text-[#C5A059]"} />
+                    <span>{language === "bn" ? tab.labelBn : tab.labelEn}</span>
                   </button>
                 );
               })}
             </div>
-          ) : (
-            <div className="w-full py-2.5 px-3 text-center text-xs text-slate-400 flex items-center justify-center gap-2 bg-[#071324]/50 rounded-xl border border-white/5">
-              <Icon name="search_off" size={15} className="text-[#C5A059]" />
-              <span>{language === "bn" ? "কোনো দেশ পাওয়া যায়নি" : "No corridors matched your search"}</span>
-              <button
-                type="button"
-                onClick={() => {
-                  setSearchQuery("");
-                  setSelectedRegion("gcc");
-                }}
-                className="text-[#C5A059] underline hover:text-[#E2CB8F] ml-1 cursor-pointer"
-              >
-                {language === "bn" ? "রিসেট করুন" : "Reset search"}
-              </button>
-            </div>
-          )}
+          </div>
+
+          {/* Tier 2: Top 4 Sovereign Corridors (Single Row Grid) or Search Results */}
+          <div>
+            {displayedDestinations.length > 0 ? (
+              <div className={searchQuery.trim() ? "flex flex-wrap gap-1.5 max-h-[88px] overflow-y-auto pr-1" : "grid grid-cols-2 sm:grid-cols-4 gap-2"}>
+                {displayedDestinations.map((dest) => {
+                  const isSelected = activeTarget?.id === dest.id;
+                  const displayName = language === "bn" ? (dest.shortNameBn || dest.name) : (dest.shortName || dest.name);
+                  return (
+                    <button
+                      key={`dest-btn-${dest.id}`}
+                      onMouseEnter={() => setHoveredInfo({ name: dest.name, isoId: dest.isoId, corridor: dest })}
+                      onMouseLeave={() => setHoveredInfo(null)}
+                      onClick={() => setActiveCorridor(activeCorridor?.id === dest.id ? null : dest)}
+                      type="button"
+                      className={`px-3 py-1.5 rounded-xl text-xs font-semibold transition-all duration-150 flex items-center justify-between gap-1.5 cursor-pointer border ${
+                        isSelected
+                          ? "bg-[#C5A059] text-[#0A192F] font-bold border-[#C5A059] shadow-md shadow-[#C5A059]/20"
+                          : "bg-[#0F243B]/90 hover:bg-[#153456] text-slate-200 border-white/10 hover:border-[#C5A059]/40"
+                      }`}
+                    >
+                      <span className="truncate">{displayName}</span>
+                      <span className={`text-[10px] font-mono shrink-0 ${isSelected ? "text-[#0A192F]" : "text-[#C5A059]"}`}>
+                        ({(dest.deployedCount / 1000).toFixed(1)}k)
+                      </span>
+                    </button>
+                  );
+                })}
+              </div>
+            ) : (
+              <div className="w-full py-2.5 px-3 text-center text-xs text-slate-400 flex items-center justify-center gap-2 bg-[#071324]/50 rounded-xl border border-white/5">
+                <Icon name="search_off" size={15} className="text-[#C5A059]" />
+                <span>{language === "bn" ? "কোনো দেশ পাওয়া যায়নি" : "No corridors matched your search"}</span>
+                <button
+                  type="button"
+                  onClick={() => {
+                    setSearchQuery("");
+                    setSelectedRegion("gcc");
+                  }}
+                  className="text-[#C5A059] underline hover:text-[#E2CB8F] ml-1 cursor-pointer"
+                >
+                  {language === "bn" ? "রিসেট করুন" : "Reset search"}
+                </button>
+              </div>
+            )}
+          </div>
         </div>
-      </div>
+      )}
     </div>
   );
 }

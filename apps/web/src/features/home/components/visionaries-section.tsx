@@ -53,8 +53,8 @@ export function VisionariesSection() {
 
   return (
     <section
-      id="about"
-      className="py-10 md:py-16 px-4 sm:px-6 max-w-[1440px] mx-auto relative"
+      id="leadership"
+      className="py-12 md:py-20 px-4 sm:px-6 max-w-[1440px] mx-auto relative"
     >
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-start relative">
         
@@ -155,14 +155,14 @@ export function VisionariesSection() {
 
             <div className="flex items-center gap-3 p-3 rounded-2xl bg-white/80 border border-slate-200 shadow-xs">
               <span className="w-8 h-8 rounded-xl bg-[#C5A059]/20 text-[#8C6A2B] flex items-center justify-center shrink-0">
-                <Icon name="bolt" size={18} />
+                <Icon name="verified_user" size={18} />
               </span>
               <div>
                 <span className="block text-xs font-bold text-[#0A192F]">
-                  {language === "bn" ? "১৪ দিনে দ্রুত মোবিলাইজেশন" : "14-Day Rapid Turnkey Mobilization"}
+                  {language === "bn" ? "যাচাইকৃত ট্রেড টেস্টিং ও ট্রেনিং" : "Verified Trade Testing & Accreditation"}
                 </span>
                 <span className="block text-[10px] text-slate-500">
-                  {language === "bn" ? "আধুনিক ট্রেড সেন্টার ও সার্বক্ষণিক সাপোর্ট" : "Turnkey Trade Testing & Airport Logistics"}
+                  {language === "bn" ? "আধুনিক ট্রেড সেন্টার ও নিরাপদ লজিস্টিক সাপোর্ট" : "Rigorous Technical Screening & Consular Attestation"}
                 </span>
               </div>
             </div>
