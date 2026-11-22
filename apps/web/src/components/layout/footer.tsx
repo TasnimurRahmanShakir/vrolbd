@@ -88,7 +88,7 @@ export function Footer() {
               <li>
                 <Link href="/corridors" className="hover:text-[#C5A059] transition-colors flex items-center gap-1.5">
                   <Icon name="chevron_right" size={14} className="text-[#C5A059]" />
-                  {language === "bn" ? "আন্তর্জাতিক করিডোর" : "Global Corridors"}
+                  {language === "bn" ? "যেসব দেশে কাজ করি" : "Countries We Serve"}
                 </Link>
               </li>
               <li>

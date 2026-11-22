@@ -26,7 +26,6 @@ export function Header() {
     { href: "/about", label: t.about, icon: "info" },
     { href: "/jobs", label: t.jobSearch, icon: "travel_explore" },
     { href: "/corridors", label: t.corridors, icon: "public" },
-    { href: "/compliance", label: t.compliance, icon: "verified_user" },
   ];
 
   const isLinkActive = (href: string) => {

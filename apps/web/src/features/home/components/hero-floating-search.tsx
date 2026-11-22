@@ -35,7 +35,7 @@ export function HeroFloatingSearch() {
                 options={countryOptions}
                 value={country}
                 onChange={setCountry}
-                label={language === "bn" ? "গন্তব্য করিডোর" : "Destination"}
+                label={language === "bn" ? "গন্তব্য দেশ" : "Destination"}
                 placeholder={language === "bn" ? "দেশ নির্বাচন করুন" : "Select Country"}
                 variant="dark"
               />

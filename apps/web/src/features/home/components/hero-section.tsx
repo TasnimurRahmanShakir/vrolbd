@@ -169,7 +169,7 @@ export function HeroSection() {
               <Icon name="flight_takeoff" size={20} className="text-[#E2CB8F]" />
             </div>
             <span className="font-bold text-white text-xs sm:text-sm lg:text-[15px] tracking-tight">
-              {language === "bn" ? "দূতাবাস সত্যায়িত করিডোর" : "100% Embassy Attested Corridors"}
+              {language === "bn" ? "দূতাবাস সত্যায়িত ভিসা" : "100% Embassy Attested Visas"}
             </span>
           </motion.div>
         </div>

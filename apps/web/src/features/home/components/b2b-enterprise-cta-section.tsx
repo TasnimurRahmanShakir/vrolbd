@@ -24,7 +24,7 @@ const DESTINATION_COUNTRIES: CountryOption[] = [
   { value: "Malaysia", labelEn: "Malaysia", labelBn: "মালয়েশিয়া", flag: "🇲🇾" },
   { value: "Romania & Europe", labelEn: "Romania & Eastern Europe", labelBn: "রোমানিয়া ও পূর্ব ইউরোপ", flag: "🇷🇴" },
   { value: "Japan & East Asia", labelEn: "Japan & East Asia", labelBn: "জাপান ও পূর্ব এশিয়া", flag: "🇯🇵" },
-  { value: "Other Country", labelEn: "Other Global Corridor", labelBn: "অন্যান্য আন্তর্জাতিক করিডোর", flag: "🌐" },
+  { value: "Other Country", labelEn: "Other Global Destination", labelBn: "অন্যান্য দেশ", flag: "🌐" },
 ];
 
 export function B2BEnterpriseCTASection() {
@@ -274,7 +274,7 @@ export function B2BEnterpriseCTASection() {
                     {/* Custom Styled Combobox */}
                     <div className="relative" ref={comboboxRef}>
                       <label className="block text-xs font-semibold text-slate-300 mb-1.5">
-                        {language === "bn" ? "গন্তব্য দেশ / করিডোর *" : "Destination Country / Corridor *"}
+                        {language === "bn" ? "গন্তব্য দেশ *" : "Destination Country *"}
                       </label>
 
                       {/* Trigger Button */}
@@ -311,7 +311,7 @@ export function B2BEnterpriseCTASection() {
                               value={searchQuery}
                               onChange={(e) => setSearchQuery(e.target.value)}
                               placeholder={
-                                language === "bn" ? "করিডোর খুঁজুন..." : "Filter corridor..."
+                                language === "bn" ? "দেশ খুঁজুন..." : "Filter country..."
                               }
                               className="w-full bg-transparent text-xs text-white placeholder:text-slate-500 focus:outline-none"
                               autoFocus
@@ -364,7 +364,7 @@ export function B2BEnterpriseCTASection() {
                               })
                             ) : (
                               <div className="py-4 text-center text-xs text-slate-400">
-                                {language === "bn" ? "কোন করিডোর পাওয়া যায়নি" : "No corridor found"}
+                                {language === "bn" ? "কোনো দেশ পাওয়া যায়নি" : "No country found"}
                               </div>
                             )}
                           </div>
