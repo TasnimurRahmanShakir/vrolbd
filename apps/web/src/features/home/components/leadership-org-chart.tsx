@@ -142,6 +142,14 @@ export function LeadershipOrgChart() {
             <Icon name="arrow_downward" size={14} />
           </a>
           <a
+            href="#infrastructure"
+            className="inline-flex items-center gap-1.5 px-3 sm:px-3.5 py-2 rounded-xl bg-white hover:bg-slate-50 text-[#080708] border border-slate-300 text-xs font-bold shadow-2xs transition-all hover:scale-[1.02] cursor-pointer"
+          >
+            <Icon name="precision_manufacturing" size={15} className="text-[#B8860B]" />
+            <span>{language === "bn" ? "টেস্টিং ল্যাব" : "Testing Bays"}</span>
+            <Icon name="arrow_downward" size={14} />
+          </a>
+          <a
             href="#contact"
             className="inline-flex items-center gap-1.5 px-3 sm:px-3.5 py-2 rounded-xl bg-[#FDC600]/15 hover:bg-[#FDC600]/25 text-[#080708] border border-[#FDC600]/40 text-xs font-bold transition-all hover:scale-[1.02] cursor-pointer"
           >

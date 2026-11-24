@@ -249,6 +249,33 @@ export function HeroSection() {
             </motion.div>
 
           </div>
+
+          {/* 🌐 Active Corridors Ribbon */}
+          <div className="mt-5 pt-4 border-t border-white/10 flex flex-wrap items-center justify-between gap-3 text-xs">
+            <div className="flex items-center gap-2 text-slate-400 font-semibold">
+              <Icon name="public" size={15} className="text-[#FDC600]" />
+              <span>{language === "bn" ? "প্রধান আন্তর্জাতিক কর্মসংস্থান করিডোর:" : "Active Employment Corridors:"}</span>
+            </div>
+            <div className="flex flex-wrap items-center gap-2 font-medium">
+              {[
+                { nameEn: "Saudi Arabia", nameBn: "সৌদি আরব" },
+                { nameEn: "UAE (Dubai)", nameBn: "ইউএই (দুবাই)" },
+                { nameEn: "Qatar", nameBn: "কাতার" },
+                { nameEn: "Kuwait", nameBn: "কুয়েত" },
+                { nameEn: "Oman", nameBn: "ওমান" },
+                { nameEn: "Bahrain", nameBn: "বাহরাইন" },
+                { nameEn: "Romania (EU)", nameBn: "রোমানিয়া (ইইউ)" },
+              ].map((c) => (
+                <Link
+                  key={c.nameEn}
+                  href="/corridors"
+                  className="px-2.5 py-1 rounded-lg bg-white/5 hover:bg-white/10 border border-white/10 hover:border-[#FDC600]/50 text-slate-200 hover:text-white transition-all text-[11px]"
+                >
+                  {language === "bn" ? c.nameBn : c.nameEn}
+                </Link>
+              ))}
+            </div>
+          </div>
         </div>
       </motion.div>
     </section>

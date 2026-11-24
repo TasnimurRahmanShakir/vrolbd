@@ -69,10 +69,41 @@ export default function JobsPage() {
         </section>
 
         {/* 
-          Eye-Relief Slate-50 Section for Clean Tabular Browsing
+          🌫️ Centralized Token Light Zone for Clean Tabular Browsing
         */}
-        <div className="w-full bg-[#F4F6F9] text-slate-800 relative pt-10 pb-16 transition-colors border-t border-slate-200/80">
-          <div className="max-w-[1440px] mx-auto px-4 sm:px-6 space-y-12">
+        <div 
+          className="w-full bg-canvas-base text-brand-black relative pt-10 pb-16 transition-colors border-t border-black/10"
+          style={{ backgroundColor: "var(--canvas-base, #F7F4F3)", color: "var(--brand-black, #080708)" }}
+        >
+          <div className="max-w-[1440px] mx-auto px-4 sm:px-6 space-y-10">
+
+            {/* 💬 Direct WhatsApp Candidate Fast-Track Help Desk (Solves No-CV Barrier) */}
+            <div className="p-4 sm:p-5 rounded-2xl bg-white border border-[#B2B6BD]/50 shadow-sm flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+              <div className="flex items-center gap-3.5">
+                <div className="w-11 h-11 rounded-xl bg-emerald-500/15 border border-emerald-500/30 flex items-center justify-center text-emerald-600 shrink-0">
+                  <Icon name="chat" size={24} />
+                </div>
+                <div>
+                  <h4 className="text-sm sm:text-base font-bold text-brand-black leading-tight">
+                    {language === "bn" ? "সিভি নেই? সরাসরি WhatsApp-এ আবেদন করুন" : "No CV Ready? Apply Directly on WhatsApp"}
+                  </h4>
+                  <p className="text-xs text-slate-600 mt-0.5">
+                    {language === "bn" 
+                      ? "পাসপোর্ট ও ট্রেড স্কিলের বিবরণ সরাসরি আমাদের অফিসিয়াল নম্বরে পাঠিয়ে প্রাথমিক স্ক্রিনিং নিশ্চিত করুন।"
+                      : "Send your passport copy and trade details directly to our verified recruitment desk."}
+                  </p>
+                </div>
+              </div>
+              <a
+                href="https://wa.me/8801916600229"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs shadow-sm transition-all hover:scale-[1.02] shrink-0"
+              >
+                <Icon name="send" size={15} />
+                <span>{language === "bn" ? "WhatsApp-এ মেসেজ পাঠান" : "Direct WhatsApp Apply"}</span>
+              </a>
+            </div>
             
             {/* 📊 Interactive Tabular Jobs Component */}
             <div>
@@ -96,8 +127,37 @@ export default function JobsPage() {
               </div>
             </div>
 
+            {/* 🔍 Candidate Application Tracking & Visa Status Desk */}
+            <div id="tracking" className="p-6 sm:p-8 rounded-3xl bg-white border border-[#B2B6BD]/50 shadow-md flex flex-col md:flex-row md:items-center justify-between gap-6">
+              <div className="space-y-2 max-w-xl">
+                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#080708]/8 border border-black/15 text-[11px] font-bold text-[#080708]">
+                  <Icon name="verified" size={14} className="text-[#B8860B]" />
+                  <span>{language === "bn" ? "ভিসা ও আবেদন ট্র্যাকিং" : "Application & Visa Tracking"}</span>
+                </div>
+                <h3 className="text-lg sm:text-xl font-bold font-serif text-[#080708]">
+                  {language === "bn" ? "ইতিমধ্যে আবেদন করেছেন? স্ট্যাটাস জানুন" : "Already Applied? Track Your Visa File Status"}
+                </h3>
+                <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
+                  {language === "bn"
+                    ? "আপনার পাসপোর্ট নম্বর বা রেফারেন্স টোকেন দিয়ে সরাসরি আমাদের কমপ্লায়েন্স হেল্পডেস্কে যোগাযোগ করে মেডিকেল, ভিসা স্ট্যাম্পিং বা ফ্লাইটের সর্বশেষ আপডেট জানুন।"
+                    : "Track your medical clearance, consular visa endorsement, and BMET Smart Card flight status directly with your passport number."}
+                </p>
+              </div>
+              <div className="flex flex-wrap items-center gap-3 shrink-0">
+                <a
+                  href="https://wa.me/8801916600239?text=Hello%2C%20I%20want%20to%20track%20my%20visa%20application%20status."
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 px-5 py-3 rounded-xl bg-[#080708] hover:bg-[#1a191a] text-white border border-[#FDC600]/40 text-xs font-bold shadow-md transition-all cursor-pointer"
+                >
+                  <Icon name="search" size={15} className="text-[#FDC600]" />
+                  <span>{language === "bn" ? "ফাইল স্ট্যাটাস চেক করুন" : "Track File on WhatsApp"}</span>
+                </a>
+              </div>
+            </div>
+
             {/* 🚀 B2B Enterprise CTA */}
-            <div className="pt-4 border-t border-slate-200/80">
+            <div className="pt-4 border-t border-[#B2B6BD]/30">
               <B2BEnterpriseCTASection />
             </div>
 

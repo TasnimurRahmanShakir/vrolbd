@@ -2,6 +2,7 @@ import React from "react";
 import { HeroSection } from "@/features/home/components/hero-section";
 import { DeploymentPipelineSection } from "@/features/home/components/deployment-pipeline-section";
 import { IndustryBentoSection } from "@/features/home/components/industry-bento-section";
+import { InfrastructureCapacitySection } from "@/features/home/components/infrastructure-capacity-section";
 import { LeadershipOrgChart } from "@/features/home/components/leadership-org-chart";
 import { LiveMarqueeJobsSection } from "@/features/home/components/live-marquee-jobs-section";
 import { B2BEnterpriseCTASection } from "@/features/home/components/b2b-enterprise-cta-section";
@@ -18,38 +19,57 @@ export default function HomePage() {
       <HeroSection />
 
       {/* 
-        🌫️ Industrial Modern White Smoke Zone (#F7F4F3 & #EAE6E4)
-        Ultra-soothing mist paper foundation with 18.5:1 AAA black typography (#080708)
-        and subtle pale slate zebra rhythm (#EAE6E4)
+        🌫️ Centralized Token System Light Zone
+        Powered by CSS variables: --canvas-base (#F7F4F3), --canvas-zebra (#EAE6E4), and --brand-black (#080708)
+        Edit in apps/web/app/globals.css to update colors everywhere!
       */}
-      <div className="w-full bg-[#F7F4F3] text-[#080708] relative transition-colors border-t border-black/10">
+      <div 
+        className="w-full bg-canvas-base text-brand-black relative transition-colors border-t border-black/10"
+        style={{ backgroundColor: "var(--canvas-base, #F7F4F3)", color: "var(--brand-black, #080708)" }}
+      >
+        {/* Soft atmospheric gradient feather smoothing transition from dark hero */}
+        <div className="absolute top-0 left-0 right-0 h-14 bg-gradient-to-b from-black/[0.04] to-transparent pointer-events-none" />
 
-        {/* Section 2: Leadership Architecture & Visionaries (Base Tone #F7F4F3) */}
-        <div className="bg-[#F7F4F3]">
+        {/* Section 2: Leadership Architecture & Visionaries (Base Tone) */}
+        <div className="bg-canvas-base relative z-10" style={{ backgroundColor: "var(--canvas-base, #F7F4F3)" }}>
           <LeadershipOrgChart />
         </div>
 
         {/* Subtle Pale Slate Transition Divider */}
         <div className="w-full h-[1px] bg-gradient-to-r from-transparent via-[#B2B6BD]/50 to-transparent" />
 
-        {/* Section 3: Industry Workforce Disciplines (Zebra Tone: Muted Pale Slate #EAE6E4) */}
-        <div className="bg-[#EAE6E4]/90 border-y border-[#B2B6BD]/30">
+        {/* Section 3: Industry Workforce Disciplines (Zebra Tone: Muted Pale Slate) */}
+        <div 
+          className="bg-canvas-zebra border-y border-[#B2B6BD]/30"
+          style={{ backgroundColor: "var(--canvas-zebra, #EAE6E4)" }}
+        >
           <IndustryBentoSection />
         </div>
 
         {/* Subtle Pale Slate Transition Divider */}
         <div className="w-full h-[1px] bg-gradient-to-r from-transparent via-[#B2B6BD]/50 to-transparent" />
 
-        {/* Section 4: 4-Step Deployment Pipeline (Base Tone #F7F4F3) */}
-        <div className="bg-[#F7F4F3]">
+        {/* Section 4: 4-Step Deployment Pipeline (Base Tone) */}
+        <div className="bg-canvas-base" style={{ backgroundColor: "var(--canvas-base, #F7F4F3)" }}>
           <DeploymentPipelineSection />
         </div>
 
         {/* Subtle Pale Slate Transition Divider */}
         <div className="w-full h-[1px] bg-gradient-to-r from-transparent via-[#B2B6BD]/50 to-transparent" />
 
-        {/* Section 5: Active Employment Openings (Zebra Tone: Muted Pale Slate #EAE6E4) */}
-        <div className="bg-[#EAE6E4]/90 border-y border-[#B2B6BD]/30">
+        {/* Section 5: Technical Infrastructure & Testing Center Capacity (Zebra Tone) */}
+        <div 
+          className="bg-canvas-zebra border-y border-[#B2B6BD]/30"
+          style={{ backgroundColor: "var(--canvas-zebra, #EAE6E4)" }}
+        >
+          <InfrastructureCapacitySection />
+        </div>
+
+        {/* Subtle Pale Slate Transition Divider */}
+        <div className="w-full h-[1px] bg-gradient-to-r from-transparent via-[#B2B6BD]/50 to-transparent" />
+
+        {/* Section 6: Active Overseas Job Vacancies (Base Tone) */}
+        <div className="bg-canvas-base" style={{ backgroundColor: "var(--canvas-base, #F7F4F3)" }}>
           <ErrorBoundary>
             <LiveMarqueeJobsSection />
           </ErrorBoundary>
@@ -58,8 +78,8 @@ export default function HomePage() {
         {/* Subtle Pale Slate Transition Divider */}
         <div className="w-full h-[1px] bg-gradient-to-r from-transparent via-[#B2B6BD]/50 to-transparent" />
 
-        {/* Section 6: B2B Enterprise Recruitment Gateway (Base Tone #F7F4F3) */}
-        <div className="bg-[#F7F4F3]">
+        {/* Section 7: B2B Enterprise Recruitment Gateway (Base Tone) */}
+        <div className="bg-canvas-base" style={{ backgroundColor: "var(--canvas-base, #F7F4F3)" }}>
           <B2BEnterpriseCTASection />
         </div>
 

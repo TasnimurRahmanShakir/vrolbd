@@ -164,6 +164,28 @@ const CORRIDORS_DATA: CorridorItem[] = [
     avgTimeline: "12 - 16 Days",
     activeOpenings: 95,
   },
+  {
+    id: "romania",
+    countryEn: "Romania (European Union)",
+    countryBn: "রোমানিয়া (ইউরোপীয় ইউনিয়ন)",
+    flagIcon: "euro",
+    badgeEn: "Schengen & European Gateway",
+    badgeBn: "শেনজেন ও ইউরোপীয় করিডোর",
+    headlineEn: "Manufacturing Automation, Commercial Construction & Logistics",
+    headlineBn: "ম্যানুফ্যাকচারিং, সিভিল কনস্ট্রাকশন ও ইউরোপীয় লজিস্টিকস",
+    descEn:
+      "Direct bilateral employment pipeline compliant with Romanian General Inspectorate for Immigration (IGI) work permits and BMET clearance. Deploying certified structural welders, warehouse logistics operators, civil tradesmen, and hospitality teams with European residency pathways.",
+    descBn:
+      "রোমানিয়া জেনারেল ইন্সপেক্টরেট ফর ইমিগ্রেশন (IGI) অনুমোদিত কাজের অনুমতি ও বিএমইটি স্মার্ট কার্ড সুরক্ষা। টেকনিক্যাল ফ্যাক্টরি, কনস্ট্রাকশন ও লজিস্টিকস ওয়্যারহাউসে নিরাপদ ইউরোপীয় কর্মসংস্থান।",
+    citiesEn: ["Bucharest", "Cluj-Napoca", "Timișoara", "Brașov", "Constanța"],
+    citiesBn: ["বুখারেস্ট", "ক্লুজ-নাপোকা", "তিমিশোয়ারা", "ব্রাসোভ", "কনস্টান্টা"],
+    keySectorsEn: ["Automotive & Factory Assembly", "Structural Civil Works", "Cold-Chain Logistics", "Commercial Hospitality"],
+    keySectorsBn: ["অটোমোবাইল ও ফ্যাক্টরি অ্যাসেম্বলি", "সিভিল কনস্ট্রাকশন", "কোল্ড-চেইন লজিস্টিকস", "হসপিটালিটি ও ক্যাটারিং"],
+    visaPipelineEn: "Romanian IGI Work Permit & Consular Visa Attestation",
+    visaPipelineBn: "রোমানিয়া আইজিআই (IGI) কাজের পারমিট ও দূতাবাস সত্যায়ন",
+    avgTimeline: "35 - 50 Days",
+    activeOpenings: 175,
+  },
 ];
 
 export default function CorridorsPage() {
@@ -270,9 +292,12 @@ export default function CorridorsPage() {
         </section>
 
         {/* 
-          Eye-Relief Section Foundation
+          🌫️ Centralized Token Light Zone with Zebra Separation
         */}
-        <div className="w-full bg-[#F4F6F9] text-slate-800 relative pt-12 pb-16 transition-colors border-t border-slate-200/80">
+        <div 
+          className="w-full bg-canvas-base text-brand-black relative pt-12 pb-16 transition-colors border-t border-black/10"
+          style={{ backgroundColor: "var(--canvas-base, #F7F4F3)", color: "var(--brand-black, #080708)" }}
+        >
           <div className="max-w-[1440px] mx-auto px-4 sm:px-6 space-y-16">
 
             {/* 🌐 2. Interactive Global Corridors Showcase */}
@@ -285,7 +310,7 @@ export default function CorridorsPage() {
               />
 
               {/* Corridor Country Selector Tabs */}
-              <div className="flex flex-wrap gap-2.5 p-2 rounded-2xl bg-white border border-slate-200 shadow-sm">
+              <div className="flex flex-wrap gap-2.5 p-2 rounded-2xl bg-white border border-[#B2B6BD]/50 shadow-sm">
                 {CORRIDORS_DATA.map((c) => {
                   const isSelected = selectedCorridor === c.id;
                   return (
@@ -294,14 +319,14 @@ export default function CorridorsPage() {
                       type="button"
                       onClick={() => setSelectedCorridor(c.id)}
                       className={`inline-flex items-center gap-2 px-4 py-2.5 rounded-xl text-xs font-bold transition-all cursor-pointer ${isSelected
-                          ? "bg-[#0A192F] text-[#C5A059] shadow-md"
-                          : "text-slate-600 hover:text-slate-900 hover:bg-slate-100"
+                          ? "bg-[#080708] text-white border border-[#FDC600]/40 shadow-md"
+                          : "text-slate-600 hover:text-[#080708] hover:bg-slate-100"
                         }`}
                     >
-                      <Icon name={c.flagIcon} size={16} />
+                      <Icon name={c.flagIcon} size={16} className={isSelected ? "text-[#FDC600]" : ""} />
                       <span>{language === "bn" ? c.countryBn : c.countryEn}</span>
                       <span
-                        className={`text-[10px] font-mono px-1.5 py-0.5 rounded-full ${isSelected ? "bg-[#C5A059]/20 text-[#C5A059]" : "bg-slate-200 text-slate-700"
+                        className={`text-[10px] font-mono px-1.5 py-0.5 rounded-full ${isSelected ? "bg-[#FDC600]/20 text-[#FDC600]" : "bg-slate-200 text-slate-700"
                           }`}
                       >
                         {c.activeOpenings}
@@ -317,15 +342,15 @@ export default function CorridorsPage() {
                 initial={{ opacity: 0, y: 15 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.35 }}
-                className="p-7 sm:p-10 rounded-3xl bg-white border border-slate-200/90 shadow-xl space-y-8"
+                className="p-7 sm:p-10 rounded-3xl bg-white border border-[#B2B6BD]/50 shadow-xl space-y-8"
               >
                 {/* Header Banner */}
                 <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4 pb-6 border-b border-slate-100">
                   <div className="space-y-1.5">
-                    <span className="inline-block px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider bg-[#C5A059]/15 text-[#8C6A2B] border border-[#C5A059]/30">
+                    <span className="inline-block px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider bg-[#080708]/8 text-[#080708] border border-black/15">
                       {language === "bn" ? activeItem.badgeBn : activeItem.badgeEn}
                     </span>
-                    <h2 className="text-2xl sm:text-3xl font-extrabold text-[#0A192F] font-serif">
+                    <h2 className="text-2xl sm:text-3xl font-extrabold text-[#080708] font-serif">
                       {language === "bn" ? activeItem.countryBn : activeItem.countryEn}
                     </h2>
                     <p className="text-sm font-semibold text-[#8C6A2B]">
@@ -336,13 +361,13 @@ export default function CorridorsPage() {
                   <div className="flex items-center gap-3 shrink-0">
                     <div className="p-3 rounded-2xl bg-slate-50 border border-slate-200 text-center">
                       <span className="text-[10px] text-slate-400 uppercase font-mono block">Visa Lead Time</span>
-                      <span className="text-sm font-bold text-[#0A192F] font-mono">{activeItem.avgTimeline}</span>
+                      <span className="text-sm font-bold text-[#080708] font-mono">{activeItem.avgTimeline}</span>
                     </div>
                     <Link
                       href="/jobs"
-                      className="inline-flex items-center gap-1.5 px-5 py-3 rounded-xl text-xs font-bold text-[#0A192F] bg-gradient-to-r from-[#E2CB8F] via-[#C5A059] to-[#AA853C] hover:opacity-95 shadow-md transition-all cursor-pointer"
+                      className="inline-flex items-center gap-1.5 px-5 py-3 rounded-xl text-xs font-bold text-white bg-[#080708] hover:bg-[#1a191a] border border-[#FDC600]/40 shadow-md transition-all cursor-pointer"
                     >
-                      <Icon name="work" size={15} />
+                      <Icon name="work" size={15} className="text-[#FDC600]" />
                       <span>{t.btnViewJobs}</span>
                     </Link>
                   </div>
@@ -362,7 +387,7 @@ export default function CorridorsPage() {
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-6 pt-2">
                   {/* Cities */}
                   <div className="p-5 rounded-2xl bg-slate-50 border border-slate-200/80 space-y-2.5">
-                    <div className="flex items-center gap-2 text-xs font-bold text-[#0A192F]">
+                    <div className="flex items-center gap-2 text-xs font-bold text-[#080708]">
                       <Icon name="location_on" size={16} className="text-[#8C6A2B]" />
                       <span>{language === "bn" ? "প্রজেক্ট ও শহরসমূহ" : "Major Cities & Project Zones"}</span>
                     </div>
@@ -380,7 +405,7 @@ export default function CorridorsPage() {
 
                   {/* Key Sectors */}
                   <div className="p-5 rounded-2xl bg-slate-50 border border-slate-200/80 space-y-2.5">
-                    <div className="flex items-center gap-2 text-xs font-bold text-[#0A192F]">
+                    <div className="flex items-center gap-2 text-xs font-bold text-[#080708]">
                       <Icon name="business_center" size={16} className="text-[#8C6A2B]" />
                       <span>{language === "bn" ? "প্রধান কর্মসংস্থান খাত" : "High-Demand Industry Sectors"}</span>
                     </div>
@@ -398,7 +423,7 @@ export default function CorridorsPage() {
 
                   {/* Visa Protocol */}
                   <div className="p-5 rounded-2xl bg-slate-50 border border-slate-200/80 space-y-2.5">
-                    <div className="flex items-center gap-2 text-xs font-bold text-[#0A192F]">
+                    <div className="flex items-center gap-2 text-xs font-bold text-[#080708]">
                       <Icon name="verified_user" size={16} className="text-[#8C6A2B]" />
                       <span>{language === "bn" ? "অনুমোদিত ভিসা চ্যানেল" : "Government Visa Channel"}</span>
                     </div>
@@ -410,8 +435,11 @@ export default function CorridorsPage() {
               </motion.div>
             </section>
 
-            {/* 🛠️ 3. Turnkey Consular Clearance Protocol */}
-            <section className="space-y-8 border-t border-slate-200/80 pt-10">
+            {/* 🛠️ 3. Turnkey Consular Clearance Protocol (Zebra Rhythm Section) */}
+            <section 
+              className="space-y-8 p-6 sm:p-10 rounded-3xl bg-canvas-zebra border border-[#B2B6BD]/40 shadow-xs"
+              style={{ backgroundColor: "var(--canvas-zebra, #EAE6E4)" }}
+            >
               <SectionHeader
                 tag={language === "bn" ? "কনস্যুলার পাইপলাইন" : "Consular Turnkey Protocol"}
                 tagIcon="speed"
@@ -428,11 +456,11 @@ export default function CorridorsPage() {
               />
 
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-                <div className="p-6 rounded-2xl bg-white border border-slate-200 shadow-sm space-y-3 relative">
-                  <span className="w-8 h-8 rounded-full bg-[#0A192F] text-[#C5A059] flex items-center justify-center font-mono font-bold text-xs">
+                <div className="p-6 rounded-2xl bg-white border border-[#B2B6BD]/50 shadow-sm space-y-3 relative">
+                  <span className="w-8 h-8 rounded-full bg-[#080708] text-white border border-[#FDC600]/40 flex items-center justify-center font-mono font-bold text-xs">
                     01
                   </span>
-                  <h4 className="text-base font-bold text-[#0A192F] font-serif">
+                  <h4 className="text-base font-bold text-[#080708] font-serif">
                     {language === "bn" ? "ট্রেড টেস্ট ও স্ক্রিনিং" : "Multi-Axis Trade Testing"}
                   </h4>
                   <p className="text-xs text-slate-600 leading-relaxed">
@@ -442,11 +470,11 @@ export default function CorridorsPage() {
                   </p>
                 </div>
 
-                <div className="p-6 rounded-2xl bg-white border border-slate-200 shadow-sm space-y-3 relative">
-                  <span className="w-8 h-8 rounded-full bg-[#0A192F] text-[#C5A059] flex items-center justify-center font-mono font-bold text-xs">
+                <div className="p-6 rounded-2xl bg-white border border-[#B2B6BD]/50 shadow-sm space-y-3 relative">
+                  <span className="w-8 h-8 rounded-full bg-[#080708] text-white border border-[#FDC600]/40 flex items-center justify-center font-mono font-bold text-xs">
                     02
                   </span>
-                  <h4 className="text-base font-bold text-[#0A192F] font-serif">
+                  <h4 className="text-base font-bold text-[#080708] font-serif">
                     {language === "bn" ? "গামকা মেডিকেল ও ফিটনেস" : "GAMCA Medical Clearance"}
                   </h4>
                   <p className="text-xs text-slate-600 leading-relaxed">
@@ -456,11 +484,11 @@ export default function CorridorsPage() {
                   </p>
                 </div>
 
-                <div className="p-6 rounded-2xl bg-white border border-slate-200 shadow-sm space-y-3 relative">
-                  <span className="w-8 h-8 rounded-full bg-[#0A192F] text-[#C5A059] flex items-center justify-center font-mono font-bold text-xs">
+                <div className="p-6 rounded-2xl bg-white border border-[#B2B6BD]/50 shadow-sm space-y-3 relative">
+                  <span className="w-8 h-8 rounded-full bg-[#080708] text-white border border-[#FDC600]/40 flex items-center justify-center font-mono font-bold text-xs">
                     03
                   </span>
-                  <h4 className="text-base font-bold text-[#0A192F] font-serif">
+                  <h4 className="text-base font-bold text-[#080708] font-serif">
                     {language === "bn" ? "দূতাবাস ভিসা স্ট্যাম্পিং" : "Diplomatic Visa Attestation"}
                   </h4>
                   <p className="text-xs text-slate-600 leading-relaxed">
@@ -470,11 +498,11 @@ export default function CorridorsPage() {
                   </p>
                 </div>
 
-                <div className="p-6 rounded-2xl bg-white border border-slate-200 shadow-sm space-y-3 relative">
-                  <span className="w-8 h-8 rounded-full bg-[#0A192F] text-[#C5A059] flex items-center justify-center font-mono font-bold text-xs">
+                <div className="p-6 rounded-2xl bg-white border border-[#B2B6BD]/50 shadow-sm space-y-3 relative">
+                  <span className="w-8 h-8 rounded-full bg-[#080708] text-white border border-[#FDC600]/40 flex items-center justify-center font-mono font-bold text-xs">
                     04
                   </span>
-                  <h4 className="text-base font-bold text-[#0A192F] font-serif">
+                  <h4 className="text-base font-bold text-[#080708] font-serif">
                     {language === "bn" ? "বিএমইটি ক্লিয়ারেন্স ও ফ্লাইট" : "BMET Smart Card & Departure"}
                   </h4>
                   <p className="text-xs text-slate-600 leading-relaxed">
@@ -486,8 +514,39 @@ export default function CorridorsPage() {
               </div>
             </section>
 
+            {/* 🛡️ Candidate Anti-Fraud & Fair Migration Charter Banner */}
+            <div className="p-5 sm:p-6 rounded-2xl bg-amber-500/10 border border-amber-500/30 flex flex-col md:flex-row md:items-center justify-between gap-4">
+              <div className="flex items-center gap-3.5">
+                <div className="w-11 h-11 rounded-xl bg-amber-500/20 text-amber-700 flex items-center justify-center shrink-0">
+                  <Icon name="verified_user" size={24} />
+                </div>
+                <div>
+                  <h4 className="text-sm sm:text-base font-bold text-[#080708] leading-tight">
+                    {language === "bn" ? "দালাল বা মধ্যস্বত্বভোগী থেকে সতর্ক থাকুন" : "Direct Ethical Recruitment — Zero Middlemen"}
+                  </h4>
+                  <p className="text-xs text-slate-700 mt-0.5">
+                    {language === "bn"
+                      ? "ভিশন রিক্রুটিং সরাসরি সরকারি অনুমোদিত লাইসেন্স (RL-1173) অনুযায়ী পরিচালিত হয়। অতিরিক্ত ফি দাবি বা প্রতারণা রোধে আমাদের হেল্পলাইনে যোগাযোগ করুন।"
+                      : "Vision Recruiting operates strictly under BMET RL-1173. Report any unofficial fee demands or unauthorized agents to our compliance hotline."}
+                  </p>
+                </div>
+              </div>
+              <div className="flex items-center gap-2 shrink-0">
+                <span className="font-mono text-xs font-bold text-[#080708] bg-white px-3 py-1.5 rounded-lg border border-amber-500/30 shadow-2xs">
+                  RL-1173
+                </span>
+                <a
+                  href="tel:02226639178"
+                  className="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl bg-[#080708] hover:bg-[#1a191a] text-white text-xs font-bold border border-[#FDC600]/40 shadow-xs cursor-pointer"
+                >
+                  <Icon name="phone" size={14} className="text-[#FDC600]" />
+                  <span>{language === "bn" ? "অফিসিয়াল হেল্পলাইন" : "Official Hotline"}</span>
+                </a>
+              </div>
+            </div>
+
             {/* 🚀 4. B2B Enterprise CTA */}
-            <div className="pt-4 border-t border-slate-200/80">
+            <div className="pt-4 border-t border-[#B2B6BD]/30">
               <B2BEnterpriseCTASection />
             </div>
 

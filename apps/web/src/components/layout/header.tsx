@@ -60,7 +60,7 @@ export function Header() {
         <div className="max-w-[1440px] mx-auto px-3.5 sm:px-6 h-16 sm:h-20 flex items-center justify-between gap-2 sm:gap-4">
           {/* Logo & Brand Identity */}
           <Link href="/" className="flex items-center gap-2 sm:gap-3 group shrink-0">
-            <div className="relative w-9 h-9 sm:w-11 sm:h-11 rounded-xl overflow-hidden border border-[#C5A059]/30 shadow-lg bg-transparent p-1 flex items-center justify-center group-hover:border-[#C5A059]/70 group-hover:scale-105 transition-all">
+            <div className="relative w-9 h-9 sm:w-11 sm:h-11 rounded-xl overflow-hidden border border-[#FDC600]/40 shadow-lg bg-transparent p-1 flex items-center justify-center group-hover:border-[#FDC600] group-hover:scale-105 transition-all">
               <Image
                 src="/VROLBD Logo.png"
                 alt="Vision Recruiting & Overseas Ltd."
@@ -71,8 +71,15 @@ export function Header() {
               />
             </div>
             <div>
-              <span className="text-[11px] xs:text-xs sm:text-sm md:text-base font-extrabold tracking-wider text-white font-['Outfit'] block leading-tight">
-                VISION RECRUITING <br />
+              <div className="flex items-center gap-1.5">
+                <span className="text-[11px] xs:text-xs sm:text-sm md:text-base font-extrabold tracking-wider text-white font-['Outfit'] block leading-tight">
+                  VISION RECRUITING
+                </span>
+                <span className="hidden sm:inline-flex items-center px-1.5 py-0.5 rounded text-[9px] font-mono font-bold uppercase bg-[#FDC600]/20 text-[#FDC600] border border-[#FDC600]/40">
+                  RL-1173
+                </span>
+              </div>
+              <span className="text-[10px] sm:text-xs font-bold tracking-wider text-slate-300 font-['Outfit'] block leading-tight">
                 & OVERSEAS LTD.
               </span>
             </div>

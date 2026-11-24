@@ -120,12 +120,38 @@ export function LiveMarqueeJobsSection() {
         <div className="shrink-0 flex items-center gap-3">
           <Link
             href="/jobs"
-            className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-[#080C14] hover:bg-slate-800 text-white text-xs font-bold tracking-wider uppercase transition-all shadow-md hover:shadow-lg group"
+            className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-[#080708] hover:bg-[#1a191a] text-white border border-[#FDC600]/40 text-xs font-bold tracking-wider uppercase transition-all shadow-md hover:shadow-lg group"
           >
             <span>{language === "bn" ? "সব জব দেখুন" : "View All Openings"}</span>
-            <Icon name="arrow_forward" size={16} className="text-[#C5A059] group-hover:translate-x-1 transition-transform" />
+            <Icon name="arrow_forward" size={16} className="text-[#FDC600] group-hover:translate-x-1 transition-transform" />
           </Link>
         </div>
+      </div>
+
+      {/* 🛡️ Candidate Anti-Fraud & Direct Transparency Strip */}
+      <div className="mb-6 p-3 sm:p-4 rounded-2xl bg-white border border-[#B2B6BD]/50 shadow-xs flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+        <div className="flex items-center gap-2.5">
+          <div className="w-8 h-8 rounded-lg bg-emerald-500/15 border border-emerald-500/30 text-emerald-700 flex items-center justify-center shrink-0">
+            <Icon name="verified_user" size={18} />
+          </div>
+          <div>
+            <span className="text-xs font-bold text-[#080708] block leading-tight">
+              {language === "bn" ? "দালালমুক্ত ও সরকারি লাইসেন্সকৃত (RL-1173) নিরাপদ নিয়োগ" : "100% Direct Recruitment • Govt License RL-1173"}
+            </span>
+            <span className="text-[11px] text-slate-600 font-medium">
+              {language === "bn" ? "কোনো মধ্যস্বত্বভোগী বা নগদ অর্থ লেনদেন করবেন না। সব সেবা অফিসিয়াল রসিদের মাধ্যমে পরিচালিত।" : "Zero middleman transactions. All consular fees processed under strict BMET guidelines."}
+            </span>
+          </div>
+        </div>
+        <a
+          href="https://wa.me/8801916600229"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white text-[11px] font-bold shadow-2xs transition-all shrink-0 cursor-pointer"
+        >
+          <Icon name="chat" size={14} />
+          <span>{language === "bn" ? "WhatsApp স্ক্রিনিং" : "Direct WhatsApp"}</span>
+        </a>
       </div>
 
       {/* 🔍 2. Compact, Integrated Job Search & Filter Interface */}

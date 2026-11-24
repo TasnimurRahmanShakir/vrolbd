@@ -57,11 +57,14 @@ export function JobsInteractiveSection() {
     searchQuery.trim() !== "";
 
   const quickTags = [
-    { label: "Dubai", value: "Dubai" },
     { label: "Saudi Arabia", value: "Saudi" },
+    { label: "Dubai", value: "Dubai" },
     { label: "6G Welder", value: "Welder" },
-    { label: "Healthcare", value: "Nursing" },
-    { label: "Hospitality", value: "Hospitality" },
+    { label: "Pipe Fabricator", value: "Fabricator" },
+    { label: "Heavy Driver", value: "Driver" },
+    { label: "Electrician", value: "Electrician" },
+    { label: "Healthcare / Nurse", value: "Nursing" },
+    { label: "Hospitality / Chef", value: "Hospitality" },
     { label: "MEP Engineer", value: "Engineer" },
   ];
 
@@ -257,11 +260,11 @@ export function JobsInteractiveSection() {
           <div className="space-y-4">
             
             {/* 🖥️ Desktop & Tablet Tabular View */}
-            <div className="hidden md:block rounded-3xl bg-white border border-slate-200/90 shadow-md overflow-hidden">
+            <div className="hidden md:block rounded-3xl bg-white border border-[#B2B6BD]/50 shadow-md overflow-hidden">
               <div className="overflow-x-auto">
                 <table className="w-full text-left border-collapse">
                   <thead>
-                    <tr className="bg-[#0A192F] text-white text-[11px] uppercase tracking-wider font-bold border-b border-white/10">
+                    <tr className="bg-[#080708] text-white text-[11px] uppercase tracking-wider font-bold border-b border-white/10">
                       <th className="py-4 px-5">
                         {language === "bn" ? "পদের নাম ও ক্যাটাগরি" : "Position & Discipline"}
                       </th>
@@ -287,18 +290,18 @@ export function JobsInteractiveSection() {
                       <tr
                         key={job.id}
                         onClick={() => handleOpenDetails(job)}
-                        className="hover:bg-[#FAF8F5] transition-colors group cursor-pointer"
+                        className="hover:bg-slate-50/80 transition-colors group cursor-pointer"
                       >
                         {/* Position & Category */}
                         <td className="py-4 px-5">
                           <div className="space-y-1">
                             <div className="flex items-center gap-2">
-                              <span className="font-bold text-sm text-[#0A192F] group-hover:text-[#8C6A2B] transition-colors font-serif">
+                              <span className="font-bold text-sm text-[#080708] group-hover:text-[#B8860B] transition-colors font-serif">
                                 {job.title}
                               </span>
                               {job.featured && (
-                                <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[9px] font-bold uppercase tracking-wider bg-[#C5A059]/15 text-[#8C6A2B] border border-[#C5A059]/30">
-                                  <Icon name="star" size={11} fill />
+                                <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[9px] font-bold uppercase tracking-wider bg-[#FDC600]/15 text-[#080708] border border-[#FDC600]/40">
+                                  <Icon name="star" size={11} fill className="text-[#B8860B]" />
                                   <span>Priority</span>
                                 </span>
                               )}
@@ -308,7 +311,7 @@ export function JobsInteractiveSection() {
                                 {job.category}
                               </span>
                               <span>•</span>
-                              <span className="font-semibold text-[#8C6A2B]">
+                              <span className="font-bold text-[#8C6A2B]">
                                 {job.positions} {language === "bn" ? "টি পদ" : "Positions"}
                               </span>
                             </div>
@@ -344,10 +347,10 @@ export function JobsInteractiveSection() {
 
                         {/* Salary */}
                         <td className="py-4 px-4 whitespace-nowrap">
-                          <div className="font-mono font-extrabold text-[#8C6A2B] text-xs sm:text-sm">
+                          <div className="font-mono font-extrabold text-[#080708] text-xs sm:text-sm">
                             {job.salary}
                           </div>
-                          <span className="text-[10px] text-slate-400 block font-mono">
+                          <span className="text-[10px] text-slate-500 block font-mono font-medium">
                             {language === "bn" ? "সম্পূর্ণ আবাসন সহ" : "+ Full Boarding"}
                           </span>
                         </td>
@@ -369,7 +372,7 @@ export function JobsInteractiveSection() {
                                 e.stopPropagation();
                                 handleOpenDetails(job);
                               }}
-                              className="px-3.5 py-1.5 rounded-xl bg-slate-100 hover:bg-slate-200 text-[#0A192F] font-bold text-xs transition-all cursor-pointer"
+                              className="px-3.5 py-1.5 rounded-xl bg-slate-100 hover:bg-slate-200 text-[#080708] font-bold text-xs transition-all cursor-pointer"
                             >
                               {language === "bn" ? "বিস্তারিত" : "Details"}
                             </button>
@@ -379,9 +382,9 @@ export function JobsInteractiveSection() {
                                 e.stopPropagation();
                                 handleOpenApply(job);
                               }}
-                              className="inline-flex items-center gap-1.5 px-4 py-1.5 rounded-xl bg-gradient-to-r from-[#E2CB8F] via-[#C5A059] to-[#AA853C] hover:opacity-95 text-[#0A192F] font-bold text-xs shadow-xs transition-all cursor-pointer"
+                              className="inline-flex items-center gap-1.5 px-4 py-1.5 rounded-xl bg-[#080708] hover:bg-[#1a191a] text-white border border-[#FDC600]/40 text-xs font-bold shadow-xs transition-all cursor-pointer"
                             >
-                              <Icon name="send" size={13} />
+                              <Icon name="send" size={13} className="text-[#FDC600]" />
                               <span>{language === "bn" ? "আবেদন" : "Apply"}</span>
                             </button>
                           </div>
@@ -399,25 +402,25 @@ export function JobsInteractiveSection() {
                 <div
                   key={job.id}
                   onClick={() => handleOpenDetails(job)}
-                  className="p-5 rounded-3xl bg-white border border-slate-200/90 shadow-sm space-y-3 cursor-pointer group"
+                  className="p-5 rounded-3xl bg-white border border-[#B2B6BD]/50 shadow-sm space-y-3 cursor-pointer group"
                 >
                   <div className="flex items-start justify-between gap-2">
                     <div>
-                      <span className="px-2.5 py-0.5 rounded text-[9px] font-bold uppercase tracking-wider bg-[#C5A059]/15 text-[#8C6A2B] border border-[#C5A059]/30">
+                      <span className="px-2.5 py-0.5 rounded text-[9px] font-bold uppercase tracking-wider bg-black/5 text-[#080708] border border-black/10">
                         {job.category}
                       </span>
-                      <h3 className="text-base font-bold text-[#0A192F] font-serif mt-1.5 group-hover:text-[#8C6A2B] transition-colors">
+                      <h3 className="text-base font-bold text-[#080708] font-serif mt-1.5 group-hover:text-[#B8860B] transition-colors">
                         {job.title}
                       </h3>
                     </div>
                     {job.featured && (
-                      <span className="p-1 rounded-full bg-[#C5A059]/20 text-[#8C6A2B]">
-                        <Icon name="star" size={14} fill />
+                      <span className="p-1 rounded-full bg-[#FDC600]/20 text-[#080708]">
+                        <Icon name="star" size={14} fill className="text-[#B8860B]" />
                       </span>
                     )}
                   </div>
 
-                  <div className="flex items-center gap-2 text-xs text-slate-500">
+                  <div className="flex items-center gap-2 text-xs text-slate-600">
                     <Icon name="location_on" size={15} className="text-[#8C6A2B]" />
                     <span>{job.city}, {job.country}</span>
                     <span>•</span>
@@ -426,8 +429,8 @@ export function JobsInteractiveSection() {
 
                   <div className="pt-2 border-t border-slate-100 flex items-center justify-between">
                     <div>
-                      <span className="text-[10px] text-slate-400 uppercase font-mono block">Salary</span>
-                      <span className="text-xs font-bold text-[#8C6A2B] font-mono">{job.salary}</span>
+                      <span className="text-[10px] text-slate-500 uppercase font-mono block">Salary</span>
+                      <span className="text-xs font-bold text-[#080708] font-mono">{job.salary}</span>
                     </div>
 
                     <div className="flex items-center gap-2">
@@ -447,7 +450,7 @@ export function JobsInteractiveSection() {
                           e.stopPropagation();
                           handleOpenApply(job);
                         }}
-                        className="px-3.5 py-1.5 rounded-xl bg-[#C5A059] text-xs font-bold text-[#0A192F]"
+                        className="px-3.5 py-1.5 rounded-xl bg-[#080708] hover:bg-[#1a191a] text-white border border-[#FDC600]/40 text-xs font-bold shadow-2xs"
                       >
                         Apply
                       </button>

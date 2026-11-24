@@ -16,6 +16,14 @@
     --gold-dark: #8C6A2B;
     --foreground: #F8FAFC;
     --muted-foreground: #94A3B8;
+
+    /* 🎨 VROLBD Centralized Design Token System (Change here to update site-wide!) */
+    --canvas-base: #F7F4F3;
+    --canvas-zebra: #EAE6E4;
+    --brand-black: #080708;
+    --brand-gold: #FDC600;
+    --brand-slate: #B2B6BD;
+    --card-surface: #FFFFFF;
   }
 
   @media (prefers-reduced-motion: reduce) {
@@ -139,4 +147,29 @@
 * {
   scrollbar-width: thin;
   scrollbar-color: rgba(197, 160, 89, 0.4) transparent;
+}
+
+/* 🎨 Centralized Design Token Utilities (Guaranteed to work across all Next.js/Turbopack sessions) */
+.bg-canvas-base {
+  background-color: var(--canvas-base, #F7F4F3) !important;
+}
+
+.bg-canvas-zebra {
+  background-color: var(--canvas-zebra, #EAE6E4) !important;
+}
+
+.text-brand-black {
+  color: var(--brand-black, #080708) !important;
+}
+
+.text-brand-gold {
+  color: var(--brand-gold, #FDC600) !important;
+}
+
+.border-brand-slate {
+  border-color: var(--brand-slate, #B2B6BD) !important;
+}
+
+.border-brand-gold {
+  border-color: var(--brand-gold, #FDC600) !important;
 }
