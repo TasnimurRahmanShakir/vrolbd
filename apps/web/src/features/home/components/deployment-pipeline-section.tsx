@@ -147,14 +147,14 @@ export function DeploymentPipelineSection() {
                 >
                   {/* Top Pathway Journey Anchor Pill (Numbered 1, 2, 3, 4) */}
                   <div className="flex items-center justify-center mb-4">
-                    <div className="w-14 h-14 rounded-2xl bg-[#102C57] border-2 border-[#DAC0A3] shadow-md flex items-center justify-center text-[#F8F0E5] group-hover:scale-110 group-hover:bg-[#C5A059] group-hover:text-[#080C14] transition-all duration-300 z-10 relative">
+                    <div className="w-14 h-14 rounded-2xl bg-[#080708] border-2 border-[#FDC600] shadow-md flex items-center justify-center text-white group-hover:scale-110 group-hover:bg-[#FDC600] group-hover:text-[#080708] transition-all duration-300 z-10 relative">
                       <span className="text-xl font-bold font-serif">{stepNumber}</span>
-                      <span className="absolute -bottom-1 w-2 h-2 rounded-full bg-[#DAC0A3] ring-2 ring-white" />
+                      <span className="absolute -bottom-1 w-2 h-2 rounded-full bg-[#FDC600] ring-2 ring-white" />
                     </div>
                   </div>
 
                   {/* Stage Card */}
-                  <div className="flex-1 p-5 sm:p-6 rounded-3xl bg-white border border-[#DAC0A3]/40 shadow-[0_4px_20px_-4px_rgba(16,44,87,0.06)] hover:shadow-[0_12px_28px_-6px_rgba(197,160,89,0.18)] hover:border-[#DAC0A3] transition-all duration-300 flex flex-col justify-between text-slate-800">
+                  <div className="flex-1 p-5 sm:p-6 rounded-3xl bg-white border border-[#B2B6BD]/50 shadow-[0_4px_20px_-4px_rgba(8,7,8,0.06)] hover:shadow-[0_12px_28px_-6px_rgba(253,198,0,0.18)] hover:border-[#FDC600] transition-all duration-300 flex flex-col justify-between text-slate-800">
                     <div>
                       {/* Step Thumbnail Visual */}
                       <div className="relative w-full h-36 rounded-2xl overflow-hidden mb-4 border border-slate-100 shadow-2xs">
@@ -168,7 +168,7 @@ export function DeploymentPipelineSection() {
                         <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-black/30" />
 
                         {/* Top Right: Step Icon */}
-                        <div className="absolute top-2.5 right-2.5 w-8 h-8 rounded-xl bg-black/60 backdrop-blur-md border border-white/20 text-[#E2CB8F] flex items-center justify-center shadow-xs">
+                        <div className="absolute top-2.5 right-2.5 w-8 h-8 rounded-xl bg-black/60 backdrop-blur-md border border-white/20 text-[#FDC600] flex items-center justify-center shadow-xs">
                           <Icon name={step.icon} size={16} />
                         </div>
 
@@ -181,7 +181,7 @@ export function DeploymentPipelineSection() {
                       </div>
 
                       {/* Step Title */}
-                      <h3 className="text-lg font-bold text-[#102C57] font-serif mb-2 leading-snug">
+                      <h3 className="text-lg font-bold text-[#080708] font-serif mb-2 leading-snug">
                         {language === "bn" ? step.titleBn : step.titleEn}
                       </h3>
 
@@ -193,8 +193,8 @@ export function DeploymentPipelineSection() {
 
                     {/* Step Highlight Footer */}
                     <div className="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between">
-                      <span className="inline-flex items-center gap-1.5 text-[11px] font-extrabold text-[#6B4E1B]">
-                        <Icon name="check_circle" size={14} className="text-[#C5A059]" />
+                      <span className="inline-flex items-center gap-1.5 text-[11px] font-extrabold text-[#6B5000]">
+                        <Icon name="check_circle" size={14} className="text-[#FDC600]" />
                         <span>{language === "bn" ? step.highlightBn : step.highlightEn}</span>
                       </span>
                       <span className="text-[10px] font-mono font-bold text-slate-600">

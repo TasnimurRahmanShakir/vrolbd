@@ -36,15 +36,15 @@ export function SectionHeader({
           <div
             className={`inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-[11px] font-bold uppercase tracking-wider shrink-0 shadow-xs ${
               isDark
-                ? "bg-[#C5A059]/20 border border-[#C5A059]/40 text-[#F5E6C4]"
-                : "bg-[#102C57]/10 border border-[#102C57]/25 text-[#102C57]"
+                ? "bg-[#FDC600]/15 border border-[#FDC600]/30 text-[#FDC600]"
+                : "bg-[#080708]/8 border border-[#080708]/15 text-[#080708]"
             }`}
           >
             {tagIcon && (
               <Icon
                 name={tagIcon}
                 size={14}
-                className={isDark ? "text-[#C5A059]" : "text-[#8C6A2B]"}
+                className={isDark ? "text-[#FDC600]" : "text-[#B8860B]"}
               />
             )}
             <span>{tag}</span>
@@ -52,8 +52,8 @@ export function SectionHeader({
           <div
             className={`h-px flex-1 max-w-[140px] sm:max-w-[220px] ${
               isDark
-                ? "bg-gradient-to-r from-[#C5A059]/50 via-[#C5A059]/20 to-transparent"
-                : "bg-gradient-to-r from-[#102C57]/30 via-[#DAC0A3]/40 to-transparent"
+                ? "bg-gradient-to-r from-[#FDC600]/40 via-[#FDC600]/15 to-transparent"
+                : "bg-gradient-to-r from-[#080708]/30 via-[#B2B6BD]/50 to-transparent"
             }`}
           />
         </div>
@@ -61,7 +61,7 @@ export function SectionHeader({
         {/* Section Heading */}
         <h2
           className={`text-2xl sm:text-3xl md:text-4xl font-extrabold font-serif tracking-tight leading-tight ${
-            isDark ? "text-white" : "text-[#102C57]"
+            isDark ? "text-white" : "text-[#080708]"
           }`}
         >
           {heading}

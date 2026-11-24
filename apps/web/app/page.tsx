@@ -18,48 +18,48 @@ export default function HomePage() {
       <HeroSection />
 
       {/* 
-        🌾 Eye-Soothed Editorial Linen Zone
-        Eliminates stark eye-strain and yellow glare with gentle natural paper tones (#FBFBFA & #F2EFE9)
-        Provides AAA high-contrast navy typography (#102C57) and clear section separation
+        🌫️ Industrial Modern White Smoke Zone (#F7F4F3 & #EAE6E4)
+        Ultra-soothing mist paper foundation with 18.5:1 AAA black typography (#080708)
+        and subtle pale slate zebra rhythm (#EAE6E4)
       */}
-      <div className="w-full bg-[#FBFBFA] text-[#102C57] relative transition-colors border-t border-[#102C57]/15">
+      <div className="w-full bg-[#F7F4F3] text-[#080708] relative transition-colors border-t border-black/10">
 
-        {/* Section 2: Leadership Architecture & Visionaries (Base Tone #FBFBFA) */}
-        <div className="bg-[#FBFBFA]">
+        {/* Section 2: Leadership Architecture & Visionaries (Base Tone #F7F4F3) */}
+        <div className="bg-[#F7F4F3]">
           <LeadershipOrgChart />
         </div>
 
-        {/* Subtle Gold Transition Divider */}
-        <div className="w-full h-[1px] bg-gradient-to-r from-transparent via-[#C5A059]/30 to-transparent" />
+        {/* Subtle Pale Slate Transition Divider */}
+        <div className="w-full h-[1px] bg-gradient-to-r from-transparent via-[#B2B6BD]/50 to-transparent" />
 
-        {/* Section 3: Industry Workforce Disciplines (Zebra Tone: Gentle Linen #F2EFE9) */}
-        <div className="bg-[#F2EFE9]/90 border-y border-[#102C57]/8">
+        {/* Section 3: Industry Workforce Disciplines (Zebra Tone: Muted Pale Slate #EAE6E4) */}
+        <div className="bg-[#EAE6E4]/90 border-y border-[#B2B6BD]/30">
           <IndustryBentoSection />
         </div>
 
-        {/* Subtle Gold Transition Divider */}
-        <div className="w-full h-[1px] bg-gradient-to-r from-transparent via-[#C5A059]/30 to-transparent" />
+        {/* Subtle Pale Slate Transition Divider */}
+        <div className="w-full h-[1px] bg-gradient-to-r from-transparent via-[#B2B6BD]/50 to-transparent" />
 
-        {/* Section 4: 4-Step Deployment Pipeline (Base Tone #FBFBFA) */}
-        <div className="bg-[#FBFBFA]">
+        {/* Section 4: 4-Step Deployment Pipeline (Base Tone #F7F4F3) */}
+        <div className="bg-[#F7F4F3]">
           <DeploymentPipelineSection />
         </div>
 
-        {/* Subtle Gold Transition Divider */}
-        <div className="w-full h-[1px] bg-gradient-to-r from-transparent via-[#C5A059]/30 to-transparent" />
+        {/* Subtle Pale Slate Transition Divider */}
+        <div className="w-full h-[1px] bg-gradient-to-r from-transparent via-[#B2B6BD]/50 to-transparent" />
 
-        {/* Section 5: Active Employment Openings (Zebra Tone: Gentle Linen #F2EFE9) */}
-        <div className="bg-[#F2EFE9]/90 border-y border-[#102C57]/8">
+        {/* Section 5: Active Employment Openings (Zebra Tone: Muted Pale Slate #EAE6E4) */}
+        <div className="bg-[#EAE6E4]/90 border-y border-[#B2B6BD]/30">
           <ErrorBoundary>
             <LiveMarqueeJobsSection />
           </ErrorBoundary>
         </div>
 
-        {/* Subtle Gold Transition Divider */}
-        <div className="w-full h-[1px] bg-gradient-to-r from-transparent via-[#C5A059]/30 to-transparent" />
+        {/* Subtle Pale Slate Transition Divider */}
+        <div className="w-full h-[1px] bg-gradient-to-r from-transparent via-[#B2B6BD]/50 to-transparent" />
 
-        {/* Section 6: B2B Enterprise Recruitment Gateway (Base Tone #FBFBFA) */}
-        <div className="bg-[#FBFBFA]">
+        {/* Section 6: B2B Enterprise Recruitment Gateway (Base Tone #F7F4F3) */}
+        <div className="bg-[#F7F4F3]">
           <B2BEnterpriseCTASection />
         </div>
 

@@ -43,7 +43,7 @@ export function IndustryBentoSection() {
         {/* 🏛️ 1. Large Featured Specialization Hero Panel (01: Construction & Heavy Infrastructure) */}
         <motion.div
           variants={featuredPanelVariants}
-          className="rounded-3xl bg-white border border-[#DAC0A3]/40 shadow-[0_4px_24px_-4px_rgba(16,44,87,0.06)] hover:shadow-[0_12px_28px_-6px_rgba(197,160,89,0.18)] hover:border-[#DAC0A3] transition-all duration-300 overflow-hidden group"
+          className="rounded-3xl bg-white border border-[#B2B6BD]/50 shadow-[0_4px_24px_-4px_rgba(8,7,8,0.06)] hover:shadow-[0_12px_28px_-6px_rgba(253,198,0,0.18)] hover:border-[#FDC600] transition-all duration-300 overflow-hidden group"
         >
           <div className="grid grid-cols-1 lg:grid-cols-12 items-stretch min-h-[380px]">
             {/* Left Image Column (Large Architectural Photography) */}
@@ -59,11 +59,11 @@ export function IndustryBentoSection() {
               
               {/* Category 01 Badge */}
               <div className="absolute top-4 left-4 z-10 flex items-center gap-2">
-                <span className="px-3 py-1 rounded-full bg-black/75 backdrop-blur-md border border-[#C5A059]/40 text-[#E2CB8F] text-[11px] font-mono font-bold">
+                <span className="px-3 py-1 rounded-full bg-black/75 backdrop-blur-md border border-[#FDC600]/40 text-[#FDC600] text-[11px] font-mono font-bold">
                   {"// 01 FEATURED"}
                 </span>
                 <span className="px-3 py-1 rounded-full bg-black/70 border border-white/20 backdrop-blur-md text-white text-[11px] font-bold flex items-center gap-1.5 shadow-xs">
-                  <Icon name={featuredSector.icon} size={14} className="text-[#C5A059]" />
+                  <Icon name={featuredSector.icon} size={14} className="text-[#FDC600]" />
                   <span>{language === "bn" ? "আন্তর্জাতিক চাহিদা" : "High Demand"}</span>
                 </span>
               </div>
@@ -83,11 +83,11 @@ export function IndustryBentoSection() {
             <div className="lg:col-span-5 p-6 sm:p-8 lg:p-10 flex flex-col justify-between bg-white text-slate-800">
               <div className="space-y-4">
                 <div className="flex items-center gap-2 text-[11px] font-bold uppercase tracking-wider text-[#8C6A2B]">
-                  <span className="w-2 h-2 rounded-full bg-[#C5A059]" />
+                  <span className="w-2 h-2 rounded-full bg-[#FDC600]" />
                   <span>{language === "bn" ? "প্রধান কর্মসংস্থান ক্যাটাগরি" : "Primary Accredited Discipline"}</span>
                 </div>
 
-                <h3 className="text-2xl sm:text-3xl font-bold font-serif text-[#102C57] leading-tight">
+                <h3 className="text-2xl sm:text-3xl font-bold font-serif text-[#080708] leading-tight">
                   {language === "bn" ? featuredSector.titleBn : featuredSector.titleEn}
                 </h3>
 
@@ -104,7 +104,7 @@ export function IndustryBentoSection() {
                     {(language === "bn" ? featuredSector.rolesBn : featuredSector.rolesEn).map((role) => (
                       <span
                         key={role}
-                        className="px-2.5 py-1 rounded-lg text-xs font-semibold bg-slate-100 text-[#102C57] border border-slate-300/80 shadow-2xs"
+                        className="px-2.5 py-1 rounded-lg text-xs font-semibold bg-[#F7F4F3] text-[#080708] border border-[#B2B6BD]/50 shadow-2xs"
                       >
                         {role}
                       </span>
@@ -117,10 +117,10 @@ export function IndustryBentoSection() {
               <div className="pt-6 mt-6 border-t border-slate-100 flex items-center justify-between">
                 <a
                   href="#contact"
-                  className="inline-flex items-center gap-2 text-xs sm:text-sm font-bold text-[#102C57] hover:text-[#8C6A2B] transition-colors uppercase tracking-wider"
+                  className="inline-flex items-center gap-2 text-xs sm:text-sm font-bold text-[#080708] hover:text-[#9A7800] transition-colors uppercase tracking-wider"
                 >
                   <span>{language === "bn" ? "জনশক্তি রিকুইজিশন পাঠান" : "Request Workforce Supply"}</span>
-                  <Icon name="arrow_forward" size={16} className="group-hover:translate-x-1.5 transition-transform text-[#C5A059]" />
+                  <Icon name="arrow_forward" size={16} className="group-hover:translate-x-1.5 transition-transform text-[#FDC600]" />
                 </a>
 
                 <span className="text-xs font-mono font-bold text-slate-600">
@@ -141,7 +141,7 @@ export function IndustryBentoSection() {
               <motion.div
                 key={sector.id}
                 variants={supportingCardVariants}
-                className={`rounded-2xl sm:rounded-3xl bg-white border border-[#DAC0A3]/40 shadow-[0_4px_20px_-4px_rgba(16,44,87,0.06)] hover:shadow-[0_12px_28px_-6px_rgba(197,160,89,0.18)] hover:border-[#DAC0A3] transition-all duration-300 overflow-hidden group flex flex-col justify-between ${
+                className={`rounded-2xl sm:rounded-3xl bg-white border border-[#B2B6BD]/50 shadow-[0_4px_20px_-4px_rgba(8,7,8,0.06)] hover:shadow-[0_12px_28px_-6px_rgba(253,198,0,0.18)] hover:border-[#FDC600] transition-all duration-300 overflow-hidden group flex flex-col justify-between ${
                   isWide ? "lg:col-span-2" : "col-span-1"
                 }`}
               >
@@ -159,7 +159,7 @@ export function IndustryBentoSection() {
 
                     {/* Category Number Badge */}
                     <div className="absolute top-3 left-3 z-10 flex items-center gap-2">
-                      <span className="px-2.5 py-0.5 rounded-full bg-black/75 backdrop-blur-md border border-white/20 text-[#E2CB8F] text-[10px] font-mono font-bold">
+                      <span className="px-2.5 py-0.5 rounded-full bg-black/75 backdrop-blur-md border border-white/20 text-[#FDC600] text-[10px] font-mono font-bold">
                         {"//"} {indexNumber}
                       </span>
                     </div>
@@ -174,7 +174,7 @@ export function IndustryBentoSection() {
                           {language === "bn" ? sector.metricLabelBn : sector.metricLabelEn}
                         </span>
                       </div>
-                      <div className="w-8 h-8 rounded-full bg-white/10 border border-white/15 backdrop-blur-md flex items-center justify-center text-[#E2CB8F]">
+                      <div className="w-8 h-8 rounded-full bg-white/10 border border-white/15 backdrop-blur-md flex items-center justify-center text-[#FDC600]">
                         <Icon name={sector.icon} size={16} />
                       </div>
                     </div>
@@ -182,7 +182,7 @@ export function IndustryBentoSection() {
 
                   {/* Card Content */}
                   <div className="p-5 sm:p-6 space-y-3 bg-white text-slate-800">
-                    <h4 className="text-lg font-bold font-serif text-[#102C57] leading-snug">
+                    <h4 className="text-lg font-bold font-serif text-[#080708] leading-snug">
                       {language === "bn" ? sector.titleBn : sector.titleEn}
                     </h4>
 
@@ -195,7 +195,7 @@ export function IndustryBentoSection() {
                       {(language === "bn" ? sector.rolesBn : sector.rolesEn).slice(0, 3).map((role) => (
                         <span
                           key={role}
-                          className="px-2 py-0.5 rounded-md text-[11px] font-semibold bg-slate-100 border border-slate-200 text-[#102C57]"
+                          className="px-2 py-0.5 rounded-md text-[11px] font-semibold bg-[#F7F4F3] border border-[#B2B6BD]/50 text-[#080708]"
                         >
                           {role}
                         </span>
@@ -208,10 +208,10 @@ export function IndustryBentoSection() {
                 <div className="px-5 sm:px-6 pb-5 pt-3 border-t border-slate-100 flex items-center justify-between">
                   <a
                     href="#contact"
-                    className="text-xs font-bold text-[#102C57] hover:text-[#8C6A2B] transition-colors flex items-center gap-1.5"
+                    className="text-xs font-bold text-[#080708] hover:text-[#9A7800] transition-colors flex items-center gap-1.5"
                   >
                     <span>{language === "bn" ? "ক্যাডার তালিকা দেখুন" : "View Roles"}</span>
-                    <Icon name="arrow_forward" size={14} className="text-[#C5A059] group-hover:translate-x-1 transition-transform" />
+                    <Icon name="arrow_forward" size={14} className="text-[#FDC600] group-hover:translate-x-1 transition-transform" />
                   </a>
                   <span className="text-[11px] text-slate-600 font-mono font-semibold">BMET Certified</span>
                 </div>

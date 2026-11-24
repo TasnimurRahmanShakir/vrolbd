@@ -91,7 +91,7 @@ export function HeroSection() {
             <motion.div variants={heroChildVariants} className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 pt-1">
               <a
                 href="#b2b-gateway"
-                className="py-3 px-6 sm:py-3.5 sm:px-7 rounded-xl bg-gradient-to-r from-[#E2CB8F] via-[#C5A059] to-[#AA853C] hover:opacity-95 text-[#080C14] text-xs sm:text-sm font-bold uppercase tracking-wider flex items-center justify-center gap-2 shadow-lg shadow-[#C5A059]/25 hover:scale-[1.02] transition-all cursor-pointer min-h-[46px]"
+                className="py-3 px-6 sm:py-3.5 sm:px-7 rounded-xl bg-[#FDC600] hover:bg-[#FDC600]/90 text-[#080708] text-xs sm:text-sm font-extrabold uppercase tracking-wider flex items-center justify-center gap-2 shadow-lg shadow-[#FDC600]/25 hover:scale-[1.02] transition-all cursor-pointer min-h-[46px]"
               >
                 <Icon name="corporate_fare" size={18} />
                 <span>{t.b2bRequest}</span>
@@ -99,9 +99,9 @@ export function HeroSection() {
 
               <Link
                 href="/jobs"
-                className="py-3 px-6 sm:py-3.5 sm:px-7 rounded-xl bg-white/5 hover:bg-white/10 border border-white/20 hover:border-[#C5A059]/60 text-slate-100 text-xs sm:text-sm font-bold uppercase tracking-wider flex items-center justify-center gap-2 hover:scale-[1.02] transition-all cursor-pointer min-h-[46px] backdrop-blur-sm"
+                className="py-3 px-6 sm:py-3.5 sm:px-7 rounded-xl bg-white/5 hover:bg-white/10 border border-white/20 hover:border-[#FDC600]/70 text-slate-100 text-xs sm:text-sm font-bold uppercase tracking-wider flex items-center justify-center gap-2 hover:scale-[1.02] transition-all cursor-pointer min-h-[46px] backdrop-blur-sm"
               >
-                <Icon name="travel_explore" size={18} className="text-[#C5A059]" />
+                <Icon name="travel_explore" size={18} className="text-[#FDC600]" />
                 <span>{t.exploreRequisitions}</span>
               </Link>
             </motion.div>
@@ -114,7 +114,7 @@ export function HeroSection() {
             animate="visible"
             className="w-full"
           >
-            <div className="rounded-2xl sm:rounded-3xl border border-white/15 hover:border-[#C5A059]/30 transition-colors bg-[#0B0F19]/65 backdrop-blur-md p-2.5 sm:p-3 shadow-2xl shadow-black/60 relative overflow-hidden">
+            <div className="rounded-2xl sm:rounded-3xl border border-white/15 hover:border-[#FDC600]/40 transition-colors bg-[#0B0F19]/65 backdrop-blur-md p-2.5 sm:p-3 shadow-2xl shadow-black/60 relative overflow-hidden">
               <InteractiveWorldMap variant="hero" />
             </div>
           </motion.div>
@@ -128,19 +128,19 @@ export function HeroSection() {
         initial="hidden"
         whileInView="visible"
         viewport={VIEWPORT_CONFIG}
-        className="relative z-10 w-full border-t border-[#DAC0A3]/30 bg-[#0A1A33]/95 backdrop-blur-xl py-6 sm:py-8 px-4 sm:px-6 lg:px-8 shadow-2xl"
+        className="relative z-10 w-full border-t border-[#FDC600]/30 bg-[#080708]/95 backdrop-blur-xl py-6 sm:py-8 px-4 sm:px-6 lg:px-8 shadow-2xl"
       >
         <div className="max-w-7xl mx-auto">
           {/* Section Micro-header for Authority */}
           <div className="flex items-center justify-between mb-4 pb-2 border-b border-white/10">
             <div className="flex items-center gap-2">
-              <span className="w-2 h-2 rounded-full bg-[#DAC0A3] animate-pulse" />
-              <p className="text-[11px] sm:text-xs font-mono uppercase tracking-widest text-[#DAC0A3] font-semibold">
+              <span className="w-2 h-2 rounded-full bg-[#FDC600] animate-pulse" />
+              <p className="text-[11px] sm:text-xs font-mono uppercase tracking-widest text-[#FDC600] font-bold">
                 {language === "bn" ? "অফিসিয়াল অনুমোদন ও আন্তর্জাতিক এক্রেডিটেশন" : "Official Accreditations & Compliance Framework"}
               </p>
             </div>
             <div className="hidden sm:flex items-center gap-2 text-[11px] text-slate-300">
-              <Icon name="verified_user" size={14} className="text-[#DAC0A3]" />
+              <Icon name="verified_user" size={14} className="text-[#FDC600]" />
               <span>{language === "bn" ? "১০০% যাচাইকৃত ও সুরক্ষিত" : "100% Verified & Fully Regulated"}</span>
             </div>
           </div>
@@ -151,18 +151,18 @@ export function HeroSection() {
             {/* Card 1: Govt BMET License */}
             <motion.div
               variants={trustItemVariants}
-              className="relative rounded-2xl bg-[#102C57]/80 hover:bg-[#102C57] border border-[#DAC0A3]/30 hover:border-[#DAC0A3] p-4 transition-all duration-300 shadow-md hover:shadow-[0_8px_25px_-5px_rgba(218,192,163,0.2)] group flex flex-col justify-between"
+              className="relative rounded-2xl bg-[#121112] hover:bg-[#1a181a] border border-white/10 hover:border-[#FDC600] p-4 transition-all duration-300 shadow-md hover:shadow-[0_8px_25px_-5px_rgba(253,198,0,0.2)] group flex flex-col justify-between"
             >
               <div className="flex items-start justify-between gap-3 mb-2.5">
-                <div className="w-11 h-11 rounded-xl bg-gradient-to-br from-[#DAC0A3]/25 to-[#C5A059]/10 border border-[#DAC0A3]/40 flex items-center justify-center shrink-0 group-hover:scale-105 transition-transform">
-                  <Icon name="verified" size={24} className="text-[#F5E6C4]" />
+                <div className="w-11 h-11 rounded-xl bg-gradient-to-br from-[#FDC600]/25 to-black/40 border border-[#FDC600]/40 flex items-center justify-center shrink-0 group-hover:scale-105 transition-transform">
+                  <Icon name="verified" size={24} className="text-[#FDC600]" />
                 </div>
-                <span className="px-2 py-0.5 rounded-full text-[10px] font-mono font-bold tracking-wider uppercase bg-[#DAC0A3]/15 text-[#F5E6C4] border border-[#DAC0A3]/30">
+                <span className="px-2 py-0.5 rounded-full text-[10px] font-mono font-bold tracking-wider uppercase bg-[#FDC600]/15 text-[#FDC600] border border-[#FDC600]/30">
                   {language === "bn" ? "সরকারি অনুমোদন" : "Govt. Licensed"}
                 </span>
               </div>
               <div>
-                <h4 className="text-white font-serif font-bold text-sm sm:text-base tracking-tight group-hover:text-[#F5E6C4] transition-colors">
+                <h4 className="text-white font-serif font-bold text-sm sm:text-base tracking-tight group-hover:text-[#FDC600] transition-colors">
                   {language === "bn" ? "বিএমইটি লাইসেন্স আরএল-১১৭৩" : "BMET License RL-1173"}
                 </h4>
                 <p className="text-[11px] sm:text-xs text-slate-300 mt-1 leading-snug">
@@ -176,18 +176,18 @@ export function HeroSection() {
             {/* Card 2: ISO 9001:2015 */}
             <motion.div
               variants={trustItemVariants}
-              className="relative rounded-2xl bg-[#102C57]/80 hover:bg-[#102C57] border border-[#DAC0A3]/30 hover:border-[#DAC0A3] p-4 transition-all duration-300 shadow-md hover:shadow-[0_8px_25px_-5px_rgba(218,192,163,0.2)] group flex flex-col justify-between"
+              className="relative rounded-2xl bg-[#121112] hover:bg-[#1a181a] border border-white/10 hover:border-[#FDC600] p-4 transition-all duration-300 shadow-md hover:shadow-[0_8px_25px_-5px_rgba(253,198,0,0.2)] group flex flex-col justify-between"
             >
               <div className="flex items-start justify-between gap-3 mb-2.5">
-                <div className="w-11 h-11 rounded-xl bg-gradient-to-br from-[#DAC0A3]/25 to-[#C5A059]/10 border border-[#DAC0A3]/40 flex items-center justify-center shrink-0 group-hover:scale-105 transition-transform">
-                  <Icon name="military_tech" size={24} className="text-[#F5E6C4]" />
+                <div className="w-11 h-11 rounded-xl bg-gradient-to-br from-[#FDC600]/25 to-black/40 border border-[#FDC600]/40 flex items-center justify-center shrink-0 group-hover:scale-105 transition-transform">
+                  <Icon name="military_tech" size={24} className="text-[#FDC600]" />
                 </div>
-                <span className="px-2 py-0.5 rounded-full text-[10px] font-mono font-bold tracking-wider uppercase bg-[#DAC0A3]/15 text-[#F5E6C4] border border-[#DAC0A3]/30">
+                <span className="px-2 py-0.5 rounded-full text-[10px] font-mono font-bold tracking-wider uppercase bg-[#FDC600]/15 text-[#FDC600] border border-[#FDC600]/30">
                   {language === "bn" ? "আন্তর্জাতিক মানদণ্ড" : "ISO Accredited"}
                 </span>
               </div>
               <div>
-                <h4 className="text-white font-serif font-bold text-sm sm:text-base tracking-tight group-hover:text-[#F5E6C4] transition-colors">
+                <h4 className="text-white font-serif font-bold text-sm sm:text-base tracking-tight group-hover:text-[#FDC600] transition-colors">
                   {language === "bn" ? "আইএসও ৯০০১:২০১৫ সার্টিফাইড" : "ISO 9001:2015 Accredited"}
                 </h4>
                 <p className="text-[11px] sm:text-xs text-slate-300 mt-1 leading-snug">
@@ -201,18 +201,18 @@ export function HeroSection() {
             {/* Card 3: ILO Fair Framework */}
             <motion.div
               variants={trustItemVariants}
-              className="relative rounded-2xl bg-[#102C57]/80 hover:bg-[#102C57] border border-[#DAC0A3]/30 hover:border-[#DAC0A3] p-4 transition-all duration-300 shadow-md hover:shadow-[0_8px_25px_-5px_rgba(218,192,163,0.2)] group flex flex-col justify-between"
+              className="relative rounded-2xl bg-[#121112] hover:bg-[#1a181a] border border-white/10 hover:border-[#FDC600] p-4 transition-all duration-300 shadow-md hover:shadow-[0_8px_25px_-5px_rgba(253,198,0,0.2)] group flex flex-col justify-between"
             >
               <div className="flex items-start justify-between gap-3 mb-2.5">
-                <div className="w-11 h-11 rounded-xl bg-gradient-to-br from-[#DAC0A3]/25 to-[#C5A059]/10 border border-[#DAC0A3]/40 flex items-center justify-center shrink-0 group-hover:scale-105 transition-transform">
-                  <Icon name="shield" size={24} className="text-[#F5E6C4]" />
+                <div className="w-11 h-11 rounded-xl bg-gradient-to-br from-[#FDC600]/25 to-black/40 border border-[#FDC600]/40 flex items-center justify-center shrink-0 group-hover:scale-105 transition-transform">
+                  <Icon name="shield" size={24} className="text-[#FDC600]" />
                 </div>
-                <span className="px-2 py-0.5 rounded-full text-[10px] font-mono font-bold tracking-wider uppercase bg-[#DAC0A3]/15 text-[#F5E6C4] border border-[#DAC0A3]/30">
+                <span className="px-2 py-0.5 rounded-full text-[10px] font-mono font-bold tracking-wider uppercase bg-[#FDC600]/15 text-[#FDC600] border border-[#FDC600]/30">
                   {language === "bn" ? "নৈতিক নিয়োগ" : "Ethical Standard"}
                 </span>
               </div>
               <div>
-                <h4 className="text-white font-serif font-bold text-sm sm:text-base tracking-tight group-hover:text-[#F5E6C4] transition-colors">
+                <h4 className="text-white font-serif font-bold text-sm sm:text-base tracking-tight group-hover:text-[#FDC600] transition-colors">
                   {language === "bn" ? "আইএলও নৈতিক নিয়োগ ফ্রেমওয়ার্ক" : "ILO Fair Recruitment Framework"}
                 </h4>
                 <p className="text-[11px] sm:text-xs text-slate-300 mt-1 leading-snug">
@@ -226,18 +226,18 @@ export function HeroSection() {
             {/* Card 4: 100% Embassy Attested */}
             <motion.div
               variants={trustItemVariants}
-              className="relative rounded-2xl bg-[#102C57]/80 hover:bg-[#102C57] border border-[#DAC0A3]/30 hover:border-[#DAC0A3] p-4 transition-all duration-300 shadow-md hover:shadow-[0_8px_25px_-5px_rgba(218,192,163,0.2)] group flex flex-col justify-between"
+              className="relative rounded-2xl bg-[#121112] hover:bg-[#1a181a] border border-white/10 hover:border-[#FDC600] p-4 transition-all duration-300 shadow-md hover:shadow-[0_8px_25px_-5px_rgba(253,198,0,0.2)] group flex flex-col justify-between"
             >
               <div className="flex items-start justify-between gap-3 mb-2.5">
-                <div className="w-11 h-11 rounded-xl bg-gradient-to-br from-[#DAC0A3]/25 to-[#C5A059]/10 border border-[#DAC0A3]/40 flex items-center justify-center shrink-0 group-hover:scale-105 transition-transform">
-                  <Icon name="flight_takeoff" size={24} className="text-[#F5E6C4]" />
+                <div className="w-11 h-11 rounded-xl bg-gradient-to-br from-[#FDC600]/25 to-black/40 border border-[#FDC600]/40 flex items-center justify-center shrink-0 group-hover:scale-105 transition-transform">
+                  <Icon name="flight_takeoff" size={24} className="text-[#FDC600]" />
                 </div>
-                <span className="px-2 py-0.5 rounded-full text-[10px] font-mono font-bold tracking-wider uppercase bg-[#DAC0A3]/15 text-[#F5E6C4] border border-[#DAC0A3]/30">
+                <span className="px-2 py-0.5 rounded-full text-[10px] font-mono font-bold tracking-wider uppercase bg-[#FDC600]/15 text-[#FDC600] border border-[#FDC600]/30">
                   {language === "bn" ? "আইনি নিশ্চয়তা" : "100% Attested"}
                 </span>
               </div>
               <div>
-                <h4 className="text-white font-serif font-bold text-sm sm:text-base tracking-tight group-hover:text-[#F5E6C4] transition-colors">
+                <h4 className="text-white font-serif font-bold text-sm sm:text-base tracking-tight group-hover:text-[#FDC600] transition-colors">
                   {language === "bn" ? "দূতাবাস সত্যায়িত ভিসা" : "100% Embassy Attested Visas"}
                 </h4>
                 <p className="text-[11px] sm:text-xs text-slate-300 mt-1 leading-snug">
