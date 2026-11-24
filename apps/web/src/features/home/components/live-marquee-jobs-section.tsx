@@ -129,23 +129,23 @@ export function LiveMarqueeJobsSection() {
       </div>
 
       {/* 🔍 2. Compact, Integrated Job Search & Filter Interface */}
-      <div className="rounded-2xl sm:rounded-3xl bg-white border border-slate-200/90 p-3 sm:p-4 shadow-xs mb-8">
+      <div className="rounded-2xl sm:rounded-3xl bg-white border border-[#DAC0A3]/40 p-3 sm:p-4 shadow-[0_4px_20px_-4px_rgba(16,44,87,0.06)] mb-8">
         <div className="grid grid-cols-1 sm:grid-cols-12 gap-3 items-center">
           {/* Keyword Search Input */}
           <div className="sm:col-span-5 relative">
-            <Icon name="search" size={18} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400 pointer-events-none" />
+            <Icon name="search" size={18} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-500 pointer-events-none" />
             <input
               type="text"
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               placeholder={language === "bn" ? "পদের নাম বা ট্রেড দিয়ে খুঁজুন (যেমন: Welder, Nurse, Engineer)..." : "Search job title or trade (e.g. Welder, Nurse, Engineer)..."}
-              className="w-full pl-10 pr-8 py-2.5 rounded-xl bg-slate-50 border border-slate-200 text-xs sm:text-sm text-slate-900 placeholder:text-slate-400 focus:outline-none focus:border-[#C5A059] focus:bg-white focus:ring-1 focus:ring-[#C5A059]/30 transition-all"
+              className="w-full pl-10 pr-8 py-2.5 rounded-xl bg-slate-50 border border-slate-300 text-xs sm:text-sm text-slate-900 placeholder:text-slate-500 font-medium focus:outline-none focus:border-[#102C57] focus:bg-white focus:ring-1 focus:ring-[#102C57]/20 transition-all"
             />
             {searchQuery && (
               <button
                 type="button"
                 onClick={() => setSearchQuery("")}
-                className="absolute right-2.5 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-700 p-1"
+                className="absolute right-2.5 top-1/2 -translate-y-1/2 text-slate-500 hover:text-slate-800 p-1"
               >
                 <Icon name="close" size={14} />
               </button>
@@ -157,27 +157,27 @@ export function LiveMarqueeJobsSection() {
             <button
               type="button"
               onClick={() => setIsCountryDropdownOpen(!isCountryDropdownOpen)}
-              className="w-full px-3 py-2.5 rounded-xl bg-slate-50 border border-slate-200 text-xs sm:text-sm text-slate-800 flex items-center justify-between gap-2 text-left focus:outline-none focus:border-[#C5A059] focus:bg-white transition-all cursor-pointer shadow-2xs"
+              className="w-full px-3 py-2.5 rounded-xl bg-slate-50 border border-slate-300 text-xs sm:text-sm text-slate-900 font-medium flex items-center justify-between gap-2 text-left focus:outline-none focus:border-[#102C57] focus:bg-white transition-all cursor-pointer shadow-2xs"
             >
               <div className="flex items-center gap-2 truncate">
                 {selectedCountry === "All" ? (
                   <>
-                    <Icon name="public" size={16} className="text-[#C5A059] shrink-0" />
-                    <span className="font-medium text-slate-600">
-                      {language === "bn" ? "সব দেশ (All)" : "All Countries"}
+                    <Icon name="public" size={16} className="text-[#8C6A2B] shrink-0" />
+                    <span className="font-semibold text-slate-800">
+                      {language === "bn" ? "সব দেশ (All Countries)" : "All Countries"}
                     </span>
                   </>
                 ) : (
                   <>
                     <CountryFlag country={selectedCountry} className="w-5 h-3.5" />
-                    <span className="font-semibold text-slate-900 truncate">{formatCountry(selectedCountry)}</span>
+                    <span className="font-bold text-slate-900 truncate">{formatCountry(selectedCountry)}</span>
                   </>
                 )}
               </div>
               <Icon
                 name="expand_more"
                 size={18}
-                className={`text-slate-400 transition-transform duration-200 shrink-0 ${
+                className={`text-slate-600 transition-transform duration-200 shrink-0 ${
                   isCountryDropdownOpen ? "rotate-180" : ""
                 }`}
               />
@@ -302,54 +302,54 @@ export function LiveMarqueeJobsSection() {
               <motion.div
                 key={job.id}
                 variants={jobRowVariants}
-                className="group relative rounded-2xl bg-white border border-slate-200/90 hover:border-slate-300 hover:shadow-md p-5 sm:p-5.5 shadow-xs transition-all duration-300 flex flex-col justify-between overflow-hidden text-slate-800"
+                className="group relative rounded-2xl bg-white border border-[#DAC0A3]/40 hover:border-[#DAC0A3] hover:shadow-[0_12px_28px_-6px_rgba(197,160,89,0.18)] p-5 sm:p-5.5 shadow-[0_4px_16px_-4px_rgba(16,44,87,0.05)] transition-all duration-300 flex flex-col justify-between overflow-hidden text-slate-800"
               >
                 <div>
                   {/* Row 1: Category Tag & Employment Type */}
                   <div className="flex items-center justify-between gap-2 mb-2.5">
-                    <span className="px-2.5 py-1 rounded-md text-[10px] font-bold tracking-wider uppercase bg-[#C5A059]/10 text-[#8C6A2B] border border-[#C5A059]/25 shrink-0">
+                    <span className="px-2.5 py-1 rounded-md text-[10px] font-bold tracking-wider uppercase bg-[#102C57]/10 text-[#102C57] border border-[#102C57]/20 shrink-0">
                       {job.category}
                     </span>
-                    <span className="text-[11px] font-medium text-slate-400">
+                    <span className="text-[11px] font-semibold text-slate-600">
                       {job.type}
                     </span>
                   </div>
 
-                  {/* Row 2: Job Title (Balanced weight, clean dark text, NO gold hover shift) */}
-                  <h3 className="text-base sm:text-lg font-semibold text-slate-900 leading-snug tracking-tight mb-1.5">
+                  {/* Row 2: Job Title */}
+                  <h3 className="text-base sm:text-lg font-bold font-serif text-[#102C57] leading-snug tracking-tight mb-1.5">
                     {job.title}
                   </h3>
 
-                  {/* Row 3: Destination Country & City (Dedicated line with Real SVG Flag, no awkward truncation) */}
-                  <div className="flex items-center gap-2 text-xs text-slate-500 font-normal mb-3">
+                  {/* Row 3: Destination Country & City */}
+                  <div className="flex items-center gap-2 text-xs text-slate-700 font-medium mb-3">
                     <CountryFlag country={job.country} className="w-4 h-3 rounded-xs shrink-0" />
                     <span className="truncate">{job.city}, {formatCountry(job.country)}</span>
                   </div>
 
                   {/* Row 4: Salary & Vacancies Block */}
-                  <div className="mb-3.5 p-3 rounded-xl bg-slate-50/80 border border-slate-100 flex items-center justify-between">
+                  <div className="mb-3.5 p-3 rounded-xl bg-slate-50 border border-slate-200/90 flex items-center justify-between">
                     <div>
-                      <span className="text-[10px] uppercase tracking-wider text-slate-400 font-medium block">
+                      <span className="text-[10px] uppercase tracking-wider text-slate-600 font-bold block">
                         {language === "bn" ? "নির্ধারিত বেতন" : "Monthly Tax-Free Salary"}
                       </span>
-                      <span className="text-sm sm:text-base font-bold font-mono text-slate-900">
+                      <span className="text-sm sm:text-base font-bold font-mono text-[#102C57]">
                         {job.salary}
                       </span>
                     </div>
                     <div className="text-right">
-                      <span className="text-[10px] uppercase tracking-wider text-slate-400 font-medium block">
+                      <span className="text-[10px] uppercase tracking-wider text-slate-600 font-bold block">
                         {language === "bn" ? "শূন্যপদ" : "Openings"}
                       </span>
-                      <span className="text-xs font-semibold text-slate-700">
+                      <span className="text-xs font-bold text-[#102C57]">
                         {job.positions} {language === "bn" ? "টি" : "Seats"}
                       </span>
                     </div>
                   </div>
 
-                  {/* Row 5: Minimal Supporting Perk (Halka text) */}
+                  {/* Row 5: Minimal Supporting Perk */}
                   {job.benefits && job.benefits.length > 0 && (
-                    <div className="flex items-center gap-1.5 text-xs text-slate-500 font-normal truncate mb-1">
-                      <Icon name="check_circle" size={13} className="text-[#C5A059] shrink-0" />
+                    <div className="flex items-center gap-1.5 text-xs text-slate-700 font-medium truncate mb-1">
+                      <Icon name="check_circle" size={13} className="text-[#8C6A2B] shrink-0" />
                       <span className="truncate">{job.benefits[0]}</span>
                     </div>
                   )}
@@ -360,7 +360,7 @@ export function LiveMarqueeJobsSection() {
                   <button
                     type="button"
                     onClick={() => handleOpenDetails(job)}
-                    className="text-xs font-semibold text-slate-600 hover:text-slate-900 transition-colors cursor-pointer py-1.5 flex items-center gap-1"
+                    className="text-xs font-semibold text-[#102C57] hover:text-[#8C6A2B] transition-colors cursor-pointer py-1.5 flex items-center gap-1"
                   >
                     <span>{language === "bn" ? "বিস্তারিত" : "Details"}</span>
                     <Icon name="chevron_right" size={14} className="text-slate-400" />
@@ -369,10 +369,10 @@ export function LiveMarqueeJobsSection() {
                   <button
                     type="button"
                     onClick={(e) => handleOpenApply(job, e)}
-                    className="px-4 py-2 rounded-xl bg-[#080C14] hover:bg-slate-800 text-white text-xs font-bold transition-all shadow-xs hover:shadow-md flex items-center gap-1.5 cursor-pointer"
+                    className="px-4 py-2 rounded-xl bg-[#102C57] hover:bg-[#102C57]/90 text-[#F8F0E5] border border-[#DAC0A3]/30 text-xs font-bold transition-all shadow-xs hover:shadow-md flex items-center gap-1.5 cursor-pointer"
                   >
                     <span>{language === "bn" ? "আবেদন করুন" : "Apply Now"}</span>
-                    <Icon name="arrow_forward" size={12} className="text-[#C5A059]" />
+                    <Icon name="arrow_forward" size={12} className="text-[#DAC0A3]" />
                   </button>
                 </div>
               </motion.div>

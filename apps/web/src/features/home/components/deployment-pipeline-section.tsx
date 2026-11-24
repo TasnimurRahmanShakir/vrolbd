@@ -147,14 +147,14 @@ export function DeploymentPipelineSection() {
                 >
                   {/* Top Pathway Journey Anchor Pill (Numbered 1, 2, 3, 4) */}
                   <div className="flex items-center justify-center mb-4">
-                    <div className="w-14 h-14 rounded-2xl bg-white border-2 border-[#C5A059] shadow-sm flex items-center justify-center text-[#080C14] group-hover:scale-110 group-hover:bg-[#C5A059] transition-all duration-300 z-10 relative">
+                    <div className="w-14 h-14 rounded-2xl bg-[#102C57] border-2 border-[#DAC0A3] shadow-md flex items-center justify-center text-[#F8F0E5] group-hover:scale-110 group-hover:bg-[#C5A059] group-hover:text-[#080C14] transition-all duration-300 z-10 relative">
                       <span className="text-xl font-bold font-serif">{stepNumber}</span>
-                      <span className="absolute -bottom-1 w-2 h-2 rounded-full bg-[#C5A059] ring-2 ring-white" />
+                      <span className="absolute -bottom-1 w-2 h-2 rounded-full bg-[#DAC0A3] ring-2 ring-white" />
                     </div>
                   </div>
 
                   {/* Stage Card */}
-                  <div className="flex-1 p-5 sm:p-6 rounded-3xl bg-white border border-slate-200/90 shadow-sm hover:shadow-md hover:border-slate-300 transition-all duration-300 flex flex-col justify-between text-slate-800">
+                  <div className="flex-1 p-5 sm:p-6 rounded-3xl bg-white border border-[#DAC0A3]/40 shadow-[0_4px_20px_-4px_rgba(16,44,87,0.06)] hover:shadow-[0_12px_28px_-6px_rgba(197,160,89,0.18)] hover:border-[#DAC0A3] transition-all duration-300 flex flex-col justify-between text-slate-800">
                     <div>
                       {/* Step Thumbnail Visual */}
                       <div className="relative w-full h-36 rounded-2xl overflow-hidden mb-4 border border-slate-100 shadow-2xs">
@@ -181,23 +181,23 @@ export function DeploymentPipelineSection() {
                       </div>
 
                       {/* Step Title */}
-                      <h3 className="text-lg font-bold text-[#080C14] font-serif mb-2 leading-snug">
+                      <h3 className="text-lg font-bold text-[#102C57] font-serif mb-2 leading-snug">
                         {language === "bn" ? step.titleBn : step.titleEn}
                       </h3>
 
                       {/* Step Description */}
-                      <p className="text-xs text-slate-600 leading-relaxed">
+                      <p className="text-xs text-slate-700 font-medium leading-relaxed">
                         {language === "bn" ? step.descBn : step.descEn}
                       </p>
                     </div>
 
                     {/* Step Highlight Footer */}
                     <div className="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between">
-                      <span className="inline-flex items-center gap-1.5 text-[11px] font-bold text-[#8C6A2B]">
+                      <span className="inline-flex items-center gap-1.5 text-[11px] font-extrabold text-[#6B4E1B]">
                         <Icon name="check_circle" size={14} className="text-[#C5A059]" />
                         <span>{language === "bn" ? step.highlightBn : step.highlightEn}</span>
                       </span>
-                      <span className="text-[10px] font-mono text-slate-400">
+                      <span className="text-[10px] font-mono font-bold text-slate-600">
                         STEP 0{stepNumber}
                       </span>
                     </div>

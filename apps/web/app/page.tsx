@@ -18,35 +18,48 @@ export default function HomePage() {
       <HeroSection />
 
       {/* 
-        Eye-Relief Light Tone Zone
-        Soft off-white/slate-50 foundation with dark charcoal typography and warm gold accents
+        🌾 Eye-Soothed Editorial Linen Zone
+        Eliminates stark eye-strain and yellow glare with gentle natural paper tones (#FBFBFA & #F2EFE9)
+        Provides AAA high-contrast navy typography (#102C57) and clear section separation
       */}
-      <div className="w-full bg-[#F8FAFC] text-slate-800 relative transition-colors border-t border-slate-200/80">
+      <div className="w-full bg-[#FBFBFA] text-[#102C57] relative transition-colors border-t border-[#102C57]/15">
 
-        {/* Section 2: Leadership Architecture & Visionaries */}
-        <div className="border-b border-slate-200/80">
+        {/* Section 2: Leadership Architecture & Visionaries (Base Tone #FBFBFA) */}
+        <div className="bg-[#FBFBFA]">
           <LeadershipOrgChart />
         </div>
 
-        {/* Section 3: Industry Workforce Disciplines */}
-        <div className="bg-[#FAF8F5]/80 border-b border-slate-200/80">
+        {/* Subtle Gold Transition Divider */}
+        <div className="w-full h-[1px] bg-gradient-to-r from-transparent via-[#C5A059]/30 to-transparent" />
+
+        {/* Section 3: Industry Workforce Disciplines (Zebra Tone: Gentle Linen #F2EFE9) */}
+        <div className="bg-[#F2EFE9]/90 border-y border-[#102C57]/8">
           <IndustryBentoSection />
         </div>
 
-        {/* Section 4: 4-Step Deployment Pipeline */}
-        <div className="border-b border-slate-200/80">
+        {/* Subtle Gold Transition Divider */}
+        <div className="w-full h-[1px] bg-gradient-to-r from-transparent via-[#C5A059]/30 to-transparent" />
+
+        {/* Section 4: 4-Step Deployment Pipeline (Base Tone #FBFBFA) */}
+        <div className="bg-[#FBFBFA]">
           <DeploymentPipelineSection />
         </div>
 
-        {/* Section 5: Active Employment Openings */}
-        <div className="bg-[#FAF8F5]/80 border-b border-slate-200/80">
+        {/* Subtle Gold Transition Divider */}
+        <div className="w-full h-[1px] bg-gradient-to-r from-transparent via-[#C5A059]/30 to-transparent" />
+
+        {/* Section 5: Active Employment Openings (Zebra Tone: Gentle Linen #F2EFE9) */}
+        <div className="bg-[#F2EFE9]/90 border-y border-[#102C57]/8">
           <ErrorBoundary>
             <LiveMarqueeJobsSection />
           </ErrorBoundary>
         </div>
 
-        {/* Section 6: B2B Enterprise Recruitment Gateway */}
-        <div>
+        {/* Subtle Gold Transition Divider */}
+        <div className="w-full h-[1px] bg-gradient-to-r from-transparent via-[#C5A059]/30 to-transparent" />
+
+        {/* Section 6: B2B Enterprise Recruitment Gateway (Base Tone #FBFBFA) */}
+        <div className="bg-[#FBFBFA]">
           <B2BEnterpriseCTASection />
         </div>
 

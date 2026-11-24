@@ -122,56 +122,133 @@ export function HeroSection() {
         </div>
       </div>
 
-      {/* 🏛️ Full-Width Institutional Credential Ribbon with Sequential Reveal */}
+      {/* 🏛️ Prominent Institutional Authority Credential Deck (Client Highlight Requirement) */}
       <motion.div
         variants={trustStripVariants}
         initial="hidden"
         whileInView="visible"
         viewport={VIEWPORT_CONFIG}
-        className="relative z-10 w-full border-t border-white/15 bg-[#060910]/95 backdrop-blur-md py-4 sm:py-4.5 px-4 sm:px-6 lg:px-8"
+        className="relative z-10 w-full border-t border-[#DAC0A3]/30 bg-[#0A1A33]/95 backdrop-blur-xl py-6 sm:py-8 px-4 sm:px-6 lg:px-8 shadow-2xl"
       >
-        <div className="max-w-7xl mx-auto grid grid-cols-2 lg:flex lg:items-center lg:justify-between gap-x-6 gap-y-4 sm:gap-6 text-sm">
-          <motion.div variants={trustItemVariants} className="flex items-center gap-3 min-w-0">
-            <div className="w-9 h-9 rounded-xl bg-[#C5A059]/15 border border-[#C5A059]/30 flex items-center justify-center shrink-0">
-              <Icon name="verified" size={20} className="text-[#E2CB8F]" />
+        <div className="max-w-7xl mx-auto">
+          {/* Section Micro-header for Authority */}
+          <div className="flex items-center justify-between mb-4 pb-2 border-b border-white/10">
+            <div className="flex items-center gap-2">
+              <span className="w-2 h-2 rounded-full bg-[#DAC0A3] animate-pulse" />
+              <p className="text-[11px] sm:text-xs font-mono uppercase tracking-widest text-[#DAC0A3] font-semibold">
+                {language === "bn" ? "অফিসিয়াল অনুমোদন ও আন্তর্জাতিক এক্রেডিটেশন" : "Official Accreditations & Compliance Framework"}
+              </p>
             </div>
-            <span className="font-bold text-white text-xs sm:text-sm lg:text-[15px] tracking-tight">
-              {language === "bn" ? "বিএমইটি লাইসেন্স আরএল-১১৭৩" : "BMET License RL-1173"}
-            </span>
-          </motion.div>
-
-          <div className="hidden lg:block h-7 w-px bg-white/20" />
-
-          <motion.div variants={trustItemVariants} className="flex items-center gap-3 min-w-0">
-            <div className="w-9 h-9 rounded-xl bg-[#C5A059]/15 border border-[#C5A059]/30 flex items-center justify-center shrink-0">
-              <Icon name="military_tech" size={20} className="text-[#E2CB8F]" />
+            <div className="hidden sm:flex items-center gap-2 text-[11px] text-slate-300">
+              <Icon name="verified_user" size={14} className="text-[#DAC0A3]" />
+              <span>{language === "bn" ? "১০০% যাচাইকৃত ও সুরক্ষিত" : "100% Verified & Fully Regulated"}</span>
             </div>
-            <span className="font-bold text-white text-xs sm:text-sm lg:text-[15px] tracking-tight">
-              {language === "bn" ? "আইএসও ৯০০১:২০১৫ সার্টিফাইড" : "ISO 9001:2015 Accredited"}
-            </span>
-          </motion.div>
+          </div>
 
-          <div className="hidden lg:block h-7 w-px bg-white/20" />
+          {/* 4 Prominent High-Impact Credential Pillars */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3.5 sm:gap-4 lg:gap-5">
+            
+            {/* Card 1: Govt BMET License */}
+            <motion.div
+              variants={trustItemVariants}
+              className="relative rounded-2xl bg-[#102C57]/80 hover:bg-[#102C57] border border-[#DAC0A3]/30 hover:border-[#DAC0A3] p-4 transition-all duration-300 shadow-md hover:shadow-[0_8px_25px_-5px_rgba(218,192,163,0.2)] group flex flex-col justify-between"
+            >
+              <div className="flex items-start justify-between gap-3 mb-2.5">
+                <div className="w-11 h-11 rounded-xl bg-gradient-to-br from-[#DAC0A3]/25 to-[#C5A059]/10 border border-[#DAC0A3]/40 flex items-center justify-center shrink-0 group-hover:scale-105 transition-transform">
+                  <Icon name="verified" size={24} className="text-[#F5E6C4]" />
+                </div>
+                <span className="px-2 py-0.5 rounded-full text-[10px] font-mono font-bold tracking-wider uppercase bg-[#DAC0A3]/15 text-[#F5E6C4] border border-[#DAC0A3]/30">
+                  {language === "bn" ? "সরকারি অনুমোদন" : "Govt. Licensed"}
+                </span>
+              </div>
+              <div>
+                <h4 className="text-white font-serif font-bold text-sm sm:text-base tracking-tight group-hover:text-[#F5E6C4] transition-colors">
+                  {language === "bn" ? "বিএমইটি লাইসেন্স আরএল-১১৭৩" : "BMET License RL-1173"}
+                </h4>
+                <p className="text-[11px] sm:text-xs text-slate-300 mt-1 leading-snug">
+                  {language === "bn" 
+                    ? "প্রবাসী কল্যাণ ও বৈদেশিক কর্মসংস্থান মন্ত্রণালয় অনুমোদিত" 
+                    : "Ministry of Expatriates' Welfare & Overseas Employment"}
+                </p>
+              </div>
+            </motion.div>
 
-          <motion.div variants={trustItemVariants} className="flex items-center gap-3 min-w-0">
-            <div className="w-9 h-9 rounded-xl bg-[#C5A059]/15 border border-[#C5A059]/30 flex items-center justify-center shrink-0">
-              <Icon name="shield" size={20} className="text-[#E2CB8F]" />
-            </div>
-            <span className="font-bold text-white text-xs sm:text-sm lg:text-[15px] tracking-tight">
-              {language === "bn" ? "আইএলও নৈতিক নিয়োগ ফ্রেমওয়ার্ক" : "Ethical Recruitment Framework"}
-            </span>
-          </motion.div>
+            {/* Card 2: ISO 9001:2015 */}
+            <motion.div
+              variants={trustItemVariants}
+              className="relative rounded-2xl bg-[#102C57]/80 hover:bg-[#102C57] border border-[#DAC0A3]/30 hover:border-[#DAC0A3] p-4 transition-all duration-300 shadow-md hover:shadow-[0_8px_25px_-5px_rgba(218,192,163,0.2)] group flex flex-col justify-between"
+            >
+              <div className="flex items-start justify-between gap-3 mb-2.5">
+                <div className="w-11 h-11 rounded-xl bg-gradient-to-br from-[#DAC0A3]/25 to-[#C5A059]/10 border border-[#DAC0A3]/40 flex items-center justify-center shrink-0 group-hover:scale-105 transition-transform">
+                  <Icon name="military_tech" size={24} className="text-[#F5E6C4]" />
+                </div>
+                <span className="px-2 py-0.5 rounded-full text-[10px] font-mono font-bold tracking-wider uppercase bg-[#DAC0A3]/15 text-[#F5E6C4] border border-[#DAC0A3]/30">
+                  {language === "bn" ? "আন্তর্জাতিক মানদণ্ড" : "ISO Accredited"}
+                </span>
+              </div>
+              <div>
+                <h4 className="text-white font-serif font-bold text-sm sm:text-base tracking-tight group-hover:text-[#F5E6C4] transition-colors">
+                  {language === "bn" ? "আইএসও ৯০০১:২০১৫ সার্টিফাইড" : "ISO 9001:2015 Accredited"}
+                </h4>
+                <p className="text-[11px] sm:text-xs text-slate-300 mt-1 leading-snug">
+                  {language === "bn"
+                    ? "আন্তর্জাতিক মানসম্পন্ন জনশক্তি ব্যবস্থাপনা ও যাচাইকরণ"
+                    : "Quality Management System for Global Recruitment"}
+                </p>
+              </div>
+            </motion.div>
 
-          <div className="hidden lg:block h-7 w-px bg-white/20" />
+            {/* Card 3: ILO Fair Framework */}
+            <motion.div
+              variants={trustItemVariants}
+              className="relative rounded-2xl bg-[#102C57]/80 hover:bg-[#102C57] border border-[#DAC0A3]/30 hover:border-[#DAC0A3] p-4 transition-all duration-300 shadow-md hover:shadow-[0_8px_25px_-5px_rgba(218,192,163,0.2)] group flex flex-col justify-between"
+            >
+              <div className="flex items-start justify-between gap-3 mb-2.5">
+                <div className="w-11 h-11 rounded-xl bg-gradient-to-br from-[#DAC0A3]/25 to-[#C5A059]/10 border border-[#DAC0A3]/40 flex items-center justify-center shrink-0 group-hover:scale-105 transition-transform">
+                  <Icon name="shield" size={24} className="text-[#F5E6C4]" />
+                </div>
+                <span className="px-2 py-0.5 rounded-full text-[10px] font-mono font-bold tracking-wider uppercase bg-[#DAC0A3]/15 text-[#F5E6C4] border border-[#DAC0A3]/30">
+                  {language === "bn" ? "নৈতিক নিয়োগ" : "Ethical Standard"}
+                </span>
+              </div>
+              <div>
+                <h4 className="text-white font-serif font-bold text-sm sm:text-base tracking-tight group-hover:text-[#F5E6C4] transition-colors">
+                  {language === "bn" ? "আইএলও নৈতিক নিয়োগ ফ্রেমওয়ার্ক" : "ILO Fair Recruitment Framework"}
+                </h4>
+                <p className="text-[11px] sm:text-xs text-slate-300 mt-1 leading-snug">
+                  {language === "bn"
+                    ? "শোষণমুক্ত, স্বচ্ছ ও ন্যায়সংগত আন্তর্জাতিক রিক্রুটমেন্ট"
+                    : "Zero-Exploitation, Transparent & Fair Employment Practices"}
+                </p>
+              </div>
+            </motion.div>
 
-          <motion.div variants={trustItemVariants} className="flex items-center gap-3 min-w-0">
-            <div className="w-9 h-9 rounded-xl bg-[#C5A059]/15 border border-[#C5A059]/30 flex items-center justify-center shrink-0">
-              <Icon name="flight_takeoff" size={20} className="text-[#E2CB8F]" />
-            </div>
-            <span className="font-bold text-white text-xs sm:text-sm lg:text-[15px] tracking-tight">
-              {language === "bn" ? "দূতাবাস সত্যায়িত ভিসা" : "100% Embassy Attested Visas"}
-            </span>
-          </motion.div>
+            {/* Card 4: 100% Embassy Attested */}
+            <motion.div
+              variants={trustItemVariants}
+              className="relative rounded-2xl bg-[#102C57]/80 hover:bg-[#102C57] border border-[#DAC0A3]/30 hover:border-[#DAC0A3] p-4 transition-all duration-300 shadow-md hover:shadow-[0_8px_25px_-5px_rgba(218,192,163,0.2)] group flex flex-col justify-between"
+            >
+              <div className="flex items-start justify-between gap-3 mb-2.5">
+                <div className="w-11 h-11 rounded-xl bg-gradient-to-br from-[#DAC0A3]/25 to-[#C5A059]/10 border border-[#DAC0A3]/40 flex items-center justify-center shrink-0 group-hover:scale-105 transition-transform">
+                  <Icon name="flight_takeoff" size={24} className="text-[#F5E6C4]" />
+                </div>
+                <span className="px-2 py-0.5 rounded-full text-[10px] font-mono font-bold tracking-wider uppercase bg-[#DAC0A3]/15 text-[#F5E6C4] border border-[#DAC0A3]/30">
+                  {language === "bn" ? "আইনি নিশ্চয়তা" : "100% Attested"}
+                </span>
+              </div>
+              <div>
+                <h4 className="text-white font-serif font-bold text-sm sm:text-base tracking-tight group-hover:text-[#F5E6C4] transition-colors">
+                  {language === "bn" ? "দূতাবাস সত্যায়িত ভিসা" : "100% Embassy Attested Visas"}
+                </h4>
+                <p className="text-[11px] sm:text-xs text-slate-300 mt-1 leading-snug">
+                  {language === "bn"
+                    ? "পররাষ্ট্র মন্ত্রণালয় ও সংশ্লিষ্ট দূতাবাস অনুমোদিত বৈধ চুক্তি"
+                    : "MoFA & Embassy Verified Work Contracts & Visas"}
+                </p>
+              </div>
+            </motion.div>
+
+          </div>
         </div>
       </motion.div>
     </section>

@@ -95,14 +95,65 @@ export function LeadershipOrgChart() {
           }
           subheading={
             language === "bn"
-              ? "অভিজ্ঞ নেতৃত্বের দিকনির্দেশনায় আমরা শতভাগ স্বচ্ছতা ও আস্থার সাথে দক্ষ জনশক্তিকে পৌঁছে দিচ্ছি আন্তর্জাতিক কর্মক্ষেত্রে।"
+              ? "অভিজ্ঞ নেতৃত্বের দিকনির্দেশনায় আমরা শতভাগ স্বচ্ছতা, আইনি সুরক্ষা ও আস্থার সাথে দক্ষ জনশক্তিকে পৌঁছে দিচ্ছি আন্তর্জাতিক কর্মক্ষেত্রে।"
               : "Meet the dedicated leaders guiding our ethical recruitment and connecting skilled talent with trusted international employers."
           }
         />
       </div>
 
+      {/* ⚡ Fast-Track Action Dock for Candidates & Hirers (Client Retention Solution) */}
+      <div className="mb-8 p-3 sm:p-4 rounded-2xl bg-white border border-[#DAC0A3]/50 shadow-[0_4px_20px_-4px_rgba(16,44,87,0.06)] flex flex-col md:flex-row md:items-center justify-between gap-3">
+        <div className="flex items-center gap-2.5">
+          <div className="w-8 h-8 rounded-lg bg-[#102C57] flex items-center justify-center shrink-0">
+            <Icon name="bolt" size={18} className="text-[#DAC0A3]" />
+          </div>
+          <div>
+            <h5 className="text-xs sm:text-sm font-bold text-[#102C57] leading-tight">
+              {language === "bn" ? "সরাসরি নির্দিষ্ট সেকশনে যেতে চান?" : "Looking for Immediate Services?"}
+            </h5>
+            <p className="text-[11px] text-slate-600 font-medium">
+              {language === "bn" ? "নিচের শর্টকাট বাটনে ক্লিক করে সরাসরি প্রয়োজনীয় সেকশনে যান" : "Quickly jump to active jobs, industry sectors, or corporate inquiry"}
+            </p>
+          </div>
+        </div>
+        <div className="flex flex-wrap items-center gap-2">
+          <a
+            href="#opportunities"
+            className="inline-flex items-center gap-1.5 px-3 sm:px-3.5 py-2 rounded-xl bg-[#102C57] hover:bg-[#102C57]/90 text-white text-xs font-bold shadow-sm transition-all hover:scale-[1.02] cursor-pointer"
+          >
+            <Icon name="work" size={15} className="text-[#F5E6C4]" />
+            <span>{language === "bn" ? "চলমান জবের তালিকা (Hot Jobs)" : "Explore Jobs"}</span>
+            <Icon name="arrow_downward" size={14} />
+          </a>
+          <a
+            href="#sectors"
+            className="inline-flex items-center gap-1.5 px-3 sm:px-3.5 py-2 rounded-xl bg-white hover:bg-slate-50 text-[#102C57] border border-slate-300 text-xs font-bold shadow-2xs transition-all hover:scale-[1.02] cursor-pointer"
+          >
+            <Icon name="domain" size={15} className="text-[#8C6A2B]" />
+            <span>{language === "bn" ? "কাজের খাতসমূহ" : "Industry Sectors"}</span>
+            <Icon name="arrow_downward" size={14} />
+          </a>
+          <a
+            href="#capabilities"
+            className="inline-flex items-center gap-1.5 px-3 sm:px-3.5 py-2 rounded-xl bg-white hover:bg-slate-50 text-[#102C57] border border-slate-300 text-xs font-bold shadow-2xs transition-all hover:scale-[1.02] cursor-pointer"
+          >
+            <Icon name="sync_alt" size={15} className="text-[#8C6A2B]" />
+            <span>{language === "bn" ? "নিয়োগ প্রক্রিয়া" : "Recruitment Flow"}</span>
+            <Icon name="arrow_downward" size={14} />
+          </a>
+          <a
+            href="#contact"
+            className="inline-flex items-center gap-1.5 px-3 sm:px-3.5 py-2 rounded-xl bg-[#102C57]/10 hover:bg-[#102C57]/15 text-[#102C57] border border-[#102C57]/30 text-xs font-bold transition-all hover:scale-[1.02] cursor-pointer"
+          >
+            <Icon name="business_center" size={15} className="text-[#8C6A2B]" />
+            <span>{language === "bn" ? "নিয়োগকর্তা ফর্ম" : "Hire Workforce"}</span>
+            <Icon name="arrow_downward" size={14} />
+          </a>
+        </div>
+      </div>
+
       {/* 🧭 Interactive Org Chart Canvas */}
-      <div className="relative w-full rounded-3xl bg-slate-50/70 border border-slate-200/80 p-4 sm:p-6 lg:p-8 shadow-xs overflow-hidden">
+      <div className="relative w-full rounded-3xl bg-white/70 border border-[#DAC0A3]/35 p-4 sm:p-6 lg:p-8 shadow-[0_4px_24px_-4px_rgba(16,44,87,0.06)] overflow-hidden">
         {/* Subtle grid background */}
         <div
           className="absolute inset-0 opacity-[0.035] pointer-events-none"
@@ -505,8 +556,8 @@ function OrgNodeCard({ leader, language, onSelect, isApex = false }: OrgNodeCard
       <div
         className={`bg-white rounded-2xl pt-12 pb-5 px-4 text-center border transition-all duration-300 relative ${
           isApex
-            ? "border-[#C5A059]/40 shadow-md hover:shadow-xl hover:border-[#C5A059]"
-            : "border-slate-200 shadow-sm hover:shadow-lg hover:border-[#C5A059]/60 hover:-translate-y-1"
+            ? "border-[#DAC0A3]/60 shadow-[0_6px_24px_-4px_rgba(16,44,87,0.08)] hover:shadow-[0_14px_30px_-6px_rgba(197,160,89,0.22)] hover:border-[#DAC0A3]"
+            : "border-[#DAC0A3]/35 shadow-[0_4px_16px_-4px_rgba(16,44,87,0.05)] hover:shadow-[0_12px_24px_-6px_rgba(197,160,89,0.16)] hover:border-[#DAC0A3] hover:-translate-y-1"
         }`}
       >
         {/* 👤 Floating Circular Avatar Overlapping Top Edge */}
@@ -527,12 +578,12 @@ function OrgNodeCard({ leader, language, onSelect, isApex = false }: OrgNodeCard
         </div>
 
         {/* Name */}
-        <h4 className="text-sm sm:text-base font-bold font-serif text-[#080C14] group-hover:text-[#8C6A2B] transition-colors leading-tight">
+        <h4 className="text-sm sm:text-base font-bold font-serif text-[#102C57] group-hover:text-[#8C6A2B] transition-colors leading-tight">
           {language === "bn" ? leader.nameBn : leader.nameEn}
         </h4>
 
         {/* Role Designation */}
-        <p className="text-[11px] font-semibold text-slate-500 mt-0.5 mb-2 line-clamp-1">
+        <p className="text-[11px] font-bold text-[#8C6A2B] mt-0.5 mb-2 line-clamp-1">
           {language === "bn" ? leader.roleBn : leader.roleEn}
         </p>
 
@@ -546,17 +597,15 @@ function OrgNodeCard({ leader, language, onSelect, isApex = false }: OrgNodeCard
         </div>
 
         {/* Location Pin */}
-        <div className="flex items-center justify-center gap-1 text-[10.5px] text-slate-400 font-medium">
-          <Icon name="location_on" size={13} className="text-slate-400" />
-          <span className="truncate">
-            {language === "bn" ? location.bn : location.en}
-          </span>
+        <div className="flex items-center justify-center gap-1 text-[10.5px] text-slate-600 font-semibold">
+          <Icon name="location_on" size={12} className="text-slate-500 shrink-0" />
+          <span>{language === "bn" ? location.bn : location.en}</span>
         </div>
 
-        {/* Bottom Expand Indicator / Interactive Pill (Matching reference image) */}
-        <div className="absolute -bottom-3 left-1/2 -translate-x-1/2 z-20 bg-white ring-2 ring-white border border-slate-200/90 shadow-xs group-hover:border-[#C5A059] px-2.5 py-0.5 rounded-full text-[9.5px] font-bold text-slate-500 group-hover:text-[#8C6A2B] flex items-center gap-1 transition-colors whitespace-nowrap">
+        {/* View Profile Pill at Bottom */}
+        <div className="absolute -bottom-3 left-1/2 -translate-x-1/2 z-20 bg-white ring-2 ring-white border border-slate-300 shadow-2xs px-2.5 py-0.5 rounded-full text-[9.5px] font-bold text-[#102C57] flex items-center gap-1 group-hover:border-[#102C57]">
           <span>{language === "bn" ? "প্রোফাইল" : "Profile"}</span>
-          <Icon name="expand_more" size={12} />
+          <Icon name="expand_more" size={13} className="text-[#8C6A2B]" />
         </div>
       </div>
     </div>
